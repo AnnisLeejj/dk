@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path
+            name="external_storage_root"
+            path="." />
+    <external-path
+            name="files_root"
+            path="Android/data/com.cmct.pile.app/" />
+    <files-path
+            name="storage_fdir"
+            path="Android/storage/emulated/0/com.cmct.pile.app/"/>
+</paths>

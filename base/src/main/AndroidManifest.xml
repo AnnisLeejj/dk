@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.annis.baselib">
+    <application android:name="com.annis.baselib.base.APP">
+
+        <provider
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="${authorities}"
+                android:exported="false"
+                android:grantUriPermissions="true"
+                tools:replace="authorities">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/filepaths"/>
+        </provider>
+
+        <meta-data
+                android:name="design_width_in_dp"
+                android:value="${autowidth}"/>
+        <meta-data
+                android:name="design_height_in_dp"
+                android:value="${autoheight}"/>
+    </application>
+</manifest>

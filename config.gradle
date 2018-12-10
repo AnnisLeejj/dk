@@ -1,0 +1,29 @@
+ext {
+    applicationId = "com.annis.dk"
+
+    android = [ //开发环境
+                applicationId    : "${applicationId}",
+
+                appName          : 'dk',
+                versionName      : '1.0.01',
+                versionCode      : 2,
+
+                minSdkVersion    : 16,
+                targetSdkVersion : 28,
+
+                compileSdkVersion: 28,
+                buildToolsVersion: '28.0.3',
+    ]
+
+    autosize = [ //自适应布局 设计图大小
+                 autowidth : 1080,
+                 autoheight: 1920,
+    ]
+
+    sign = [//签名信息
+            keyAlias     : 'dk',
+            keyPassword  : 'dk123456',
+            storeFile    : '../key.store/dk.jks',
+            storePassword: 'dk123456',
+    ]
+}

@@ -1,0 +1,107 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
+        //线上
+        xs {
+//            applicationIdSuffix ""
+            buildConfigField "String", "IP", '"39.108.76.161"'
+            buildConfigField "String", "USER_PORT", '"8051"'
+            buildConfigField "String", "PILE_PORT", '"8052"'
+            buildConfigField "String", "AUTHORITIES", "\"${rootProject.ext.android.applicationId}.fileprovider\""
+            manifestPlaceholders = [
+                    authorities: "${rootProject.ext.android.applicationId}.fileprovider",
+                    autowidth  : "${rootProject.ext.autosize.autowidth}",
+                    autoheight : "${rootProject.ext.autosize.autoheight}",
+            ]
+        }
+        //测试
+        cs {
+//            applicationIdSuffix ".cs"
+            buildConfigField "String", "IP", '"120.78.170.2"'
+            buildConfigField "String", "USER_PORT", '"8051"'
+            buildConfigField "String", "PILE_PORT", '"8052"'
+            buildConfigField "String", "AUTHORITIES", "\"${rootProject.ext.android.applicationId}.cs.fileprovider\""
+            manifestPlaceholders = [
+                    authorities: "${rootProject.ext.android.applicationId}.cs.fileprovider",
+                    autowidth  : "${rootProject.ext.autosize.autowidth}",
+                    autoheight : "${rootProject.ext.autosize.autoheight}",
+            ]
+        }
+        //开发
+        kf {
+//            applicationIdSuffix ".kf"
+            buildConfigField "String", "IP", '"10.192.34.12"'
+            buildConfigField "String", "USER_PORT", '"8051"'
+            buildConfigField "String", "PILE_PORT", '"8052"'
+            buildConfigField "String", "AUTHORITIES", "\"${rootProject.ext.android.applicationId}.kf.fileprovider\""
+            manifestPlaceholders = [
+                    authorities: "${rootProject.ext.android.applicationId}.kf.fileprovider",
+                    autowidth  : "${rootProject.ext.autosize.autowidth}",
+                    autoheight : "${rootProject.ext.autosize.autoheight}",
+            ]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //Androidx
+    //底部导航栏
+    api 'com.google.android.material:material:1.0.0'
+    //约束布局
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //自适应布局
+    api 'me.jessyan:autosize:1.1.0'
+//    api 'cat.ereza:customactivityoncrash:2.2.0'
+    //rv
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    //NETWORK
+    api "com.squareup.okhttp3:okhttp:3.11.0"
+    api "com.squareup.okhttp3:logging-interceptor:3.11.0"
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    //Rx
+    api "io.reactivex.rxjava2:rxjava:2.2.3"
+    api "io.reactivex.rxjava2:rxandroid:2.1.0"
+    //图片压缩
+    api 'top.zibin:Luban:1.1.6'
+    //权限
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5'
+    //图片展示
+    api "com.squareup.picasso:picasso:2.71828"
+    //图片预览
+    api 'com.bm.photoview:library:1.4.1'
+    //图片选择
+    api('com.werb.pickphotoview:pickphotoview:0.4.6', {
+        exclude group: 'com.google.code.gson'
+    })
+}
