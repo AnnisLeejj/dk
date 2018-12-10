@@ -16,8 +16,8 @@ ext {
     ]
 
     autosize = [ //自适应布局 设计图大小
-                 autowidth : 1080,
-                 autoheight: 1920,
+                 autowidth : 540,
+                 autoheight: 960,
     ]
 
     sign = [//签名信息

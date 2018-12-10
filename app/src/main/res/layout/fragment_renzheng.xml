@@ -1,0 +1,239 @@
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.annis.dk.main.renzheng.RenzhengFragment">
+    
+    <ImageView
+            android:id="@+id/frag_renzheng_banner"
+            android:layout_width="match_parent"
+            android:src="@drawable/banner2"
+            android:scaleType="fitXY"
+            android:layout_height="405px"/>
+    
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/frag_renzheng_banner"
+            android:layout_height="wrap_content">
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <ImageView
+                    android:id="@+id/item_img_1"
+                    android:src="@drawable/cell_button2_01"
+                    android:layout_centerVertical="true"
+                    android:layout_width="@dimen/hint_img_size"
+                    android:layout_height="@dimen/hint_img_size"/>
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_1"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/bt_text_size"
+                    android:text="身份证认证"
+                    android:textColor="#696969"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            
+            <TextView
+                    android:id="@+id/item_tv_1_status"
+                    android:text="未认证"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="@dimen/bt_text_size"
+                    android:layout_toLeftOf="@+id/item_img_1_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <ImageView
+                    android:id="@+id/item_img_1_status"
+                    android:layout_width="51px"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/a"
+                    android:layout_height="58px"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:id="@+id/act_tel_line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <ImageView
+                    android:id="@+id/item_img_2"
+                    android:src="@drawable/cell_button2_02"
+                    android:layout_centerVertical="true"
+                    android:layout_width="@dimen/hint_img_size"
+                    android:layout_height="@dimen/hint_img_size"/>
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_2"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/bt_text_size"
+                    android:text="运营商认证"
+                    android:textColor="#696969"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            
+            <TextView
+                    android:id="@+id/item_tv_2_status"
+                    android:text="未认证"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="@dimen/bt_text_size"
+                    android:layout_toLeftOf="@+id/item_img_2_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <ImageView
+                    android:id="@+id/item_img_2_status"
+                    android:layout_width="51px"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/a"
+                    android:layout_height="58px"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <ImageView
+                    android:id="@+id/item_img_3"
+                    android:src="@drawable/cell_button2_03"
+                    android:layout_centerVertical="true"
+                    android:layout_width="@dimen/hint_img_size"
+                    android:layout_height="@dimen/hint_img_size"/>
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_3"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/bt_text_size"
+                    android:text="支付宝认证"
+                    android:textColor="#696969"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            
+            <TextView
+                    android:id="@+id/item_tv_3_status"
+                    android:text="未认证"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="@dimen/bt_text_size"
+                    android:layout_toLeftOf="@+id/item_img_3_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <ImageView
+                    android:id="@+id/item_img_3_status"
+                    android:layout_width="51px"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/a"
+                    android:layout_height="58px"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <ImageView
+                    android:id="@+id/item_img_4"
+                    android:src="@drawable/cell_button2_04"
+                    android:layout_centerVertical="true"
+                    android:layout_width="@dimen/hint_img_size"
+                    android:layout_height="@dimen/hint_img_size"/>
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_4"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/bt_text_size"
+                    android:text="银行卡认证"
+                    android:textColor="#696969"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            
+            <TextView
+                    android:id="@+id/item_tv_4_status"
+                    android:text="未认证"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="@dimen/bt_text_size"
+                    android:layout_toLeftOf="@+id/item_img_4_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <ImageView
+                    android:id="@+id/item_img_4_status"
+                    android:layout_width="51px"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/a"
+                    android:layout_height="58px"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+    </LinearLayout>
+    
+    <Button
+            android:id="@+id/act_bt_login"
+            android:textColor="@color/white"
+            android:text="提交贷款申请"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="188px"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:background="@drawable/sp_bt_bg_gray_c"
+            android:textSize="@dimen/bt_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_h"/>
+</RelativeLayout>

@@ -6,5 +6,75 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.annis.dk.login.LoginActivity">
-
+    <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="184px"
+            android:layout_width="250px"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/logo"
+            android:layout_height="360px"/>
+    <EditText
+            android:id="@+id/act_et_tel"
+            android:lines="1"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@+id/act_tel_line"
+            android:textColorHint="@color/et_hint_color"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:layout_marginLeft="56px"
+            android:hint="登录手机号"
+            android:textSize="@dimen/et_text_size"
+            android:layout_height="192px"/>
+    <View
+            android:id="@+id/act_tel_line"
+            app:layout_constraintBottom_toTopOf="@+id/act_et_code"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d7d7d7"/>
+    
+    <EditText
+            android:id="@+id/act_et_code"
+            app:layout_constraintBottom_toTopOf="@+id/act_code_line"
+            android:textColorHint="@color/et_hint_color"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:lines="1"
+            android:inputType="number"
+            android:layout_marginLeft="56px"
+            android:hint="输入手机验证码"
+            android:textSize="@dimen/et_text_size"
+            android:layout_height="192px"/>
+    
+    <Button
+            android:id="@+id/act_bt_getcode"
+            android:layout_width="280px"
+            android:layout_height="108px"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginRight="64px"
+            android:background="@drawable/sp_bt_get_code"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="发送验证码"
+            app:layout_constraintTop_toTopOf="@+id/act_et_code"
+            app:layout_constraintBottom_toBottomOf="@+id/act_et_code"
+            android:textSize="@dimen/et_text_size"/>
+    <View
+            android:id="@+id/act_code_line"
+            app:layout_constraintBottom_toTopOf="@+id/act_bt_login"
+            android:layout_marginBottom="88px"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d7d7d7"/>
+    
+    <Button
+            android:id="@+id/act_bt_login"
+            android:textColor="@color/white"
+            android:text="登 录"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="509px"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:background="@drawable/sp_bt_bg_primary_c"
+            android:textSize="@dimen/bt_text_size"
+            android:layout_width="match_parent" android:layout_height="@dimen/button_h"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
