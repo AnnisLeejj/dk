@@ -1,4 +1,4 @@
-package com.annis.dk.main.renzheng
+package com.annis.dk.ui.renzheng
 
 import com.annis.dk.base.DKPresenter
 

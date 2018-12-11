@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.annis.dk.ui.authentication.alipay.AuthAlipayActivity">
+    
+    <EditText
+            android:id="@+id/act_et_tel"
+            android:lines="1"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColorHint="@color/et_hint_color"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:paddingLeft="@dimen/margin_window"
+            android:maxLength="12"
+            android:hint="支付宝账号"
+            android:textSize="@dimen/et_text_size"
+            android:layout_height="192px"/>
+    
+    <View
+            android:id="@+id/act_tel_line"
+            app:layout_constraintTop_toBottomOf="@+id/act_et_tel"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d7d7d7"/>
+    
+    <EditText
+            android:id="@+id/act_et_tel_psw"
+            android:lines="1"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/act_tel_line"
+            android:textColorHint="@color/et_hint_color"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:paddingLeft="@dimen/margin_window"
+            android:hint="请输入服务密码"
+            android:textSize="@dimen/et_text_size"
+            android:maxLength="16"
+            android:layout_height="192px"/>
+    
+    <View
+            android:id="@+id/act_et_tel_psw_line"
+            app:layout_constraintTop_toBottomOf="@+id/act_et_tel_psw"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d7d7d7"/>
+    
+    <TextView
+            android:layout_marginTop="32px"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="上传截图"
+            android:textSize="@dimen/bt_text_size"
+            app:layout_constraintTop_toBottomOf="@+id/act_et_tel_psw_line"
+            android:layout_marginLeft="@dimen/margin_window"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_color_black"
+            android:layout_height="wrap_content"/>
+    
+    <ImageView
+            android:id="@+id/auth_alipay_img"
+            android:layout_marginTop="32px"
+            app:layout_constraintTop_toBottomOf="@+id/act_et_tel_psw_line"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@drawable/upload_button"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="304px"
+            android:layout_height="304px"/>
+    
+    <TextView
+            android:id="@+id/auth_alipay_img_hint"
+            android:layout_marginTop="32px"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="上传芝麻信用页面截图"
+            android:textSize="@dimen/bt_hinttext_size"
+            app:layout_constraintTop_toBottomOf="@+id/auth_alipay_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    <ImageView
+            android:src="@drawable/my_credit"
+            android:layout_marginTop="70px"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/auth_alipay_img_hint"
+            android:layout_width="762px"
+            android:layout_height="547px"/>
+    <!--卡片实际大小-->
+    <!--android:layout_width="762px"-->
+    <!--android:layout_height="497px"/-->
+    <!--762 × 547-->
+    
+    <Button
+            android:id="@+id/act_bt_commit"
+            android:textColor="@color/white"
+            android:text="提 交"
+            android:layout_marginTop="174px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/act_code_line"
+            android:layout_marginBottom="80px"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:background="@drawable/sp_bt_bg_primary_c"
+            android:textSize="@dimen/bt_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_h"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,4 +7,5 @@
     
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="daikuan_remark">提前申请小额贷款需预先收取会员服务费，若未收到放款，将在一个工作日退回会员服务费至原账户。 放款为人工放款，请耐心等待放款通知（通知会以短信形式发送到注册账户手机号）。若已经支付，请勿重复支付 ！</string>
 </resources>

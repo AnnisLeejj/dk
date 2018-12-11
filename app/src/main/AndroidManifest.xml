@@ -11,13 +11,27 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.mine.progress.SuccessActivity">
+        </activity>
+        <activity android:name=".ui.mine.progress.FailedActivity">
+        </activity>
+        <activity android:name=".ui.mine.progress.WaitingActivity">
+        </activity>
+        <activity android:name=".ui.authentication.idCard.AuthIdcardActivity">
+        </activity>
+        <activity android:name=".ui.authentication.operator.AuthoperatorActivity">
+        </activity>
+        <activity android:name=".ui.authentication.bank.AuthBankActivity">
+        </activity>
+        <activity android:name=".ui.authentication.alipay.AuthAlipayActivity">
+        </activity>
         <activity
-                android:name=".main.Main2Activity"
+                android:name=".ui.main.Main2Activity"
                 android:label="@string/title_activity_main2">
         </activity>
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".ui.MainActivity">
         </activity>
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
     

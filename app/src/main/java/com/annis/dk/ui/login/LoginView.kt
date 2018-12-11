@@ -1,4 +1,4 @@
-package com.annis.dk.login
+package com.annis.dk.ui.login
 
 import com.annis.baselib.base.mvp.BaseView
 

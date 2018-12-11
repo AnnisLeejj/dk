@@ -1,11 +1,11 @@
-package com.annis.dk.login
+package com.annis.dk.ui.login
 
 import android.os.Bundle
 import android.os.CountDownTimer
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
-import com.annis.dk.main.MainActivity
+import com.annis.dk.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : MVPActivty<LoginPersenter>(), LoginView {
@@ -29,9 +29,9 @@ class LoginActivity : MVPActivty<LoginPersenter>(), LoginView {
 
     var timer: CountDownTimer? = null
     fun onClick() {
-
         act_bt_login.setOnClickListener {
             startActivity(MainActivity::class.java)
+            finish()
         }
 
         act_bt_getcode.setOnClickListener {

@@ -1,15 +1,14 @@
-package com.annis.dk.main
+package com.annis.dk.ui
 
 import android.os.Bundle
 import com.annis.baselib.base.base.BaseFragment
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.BaseView
 import com.annis.baselib.base.mvp.MVPActivty
-import com.annis.baselib.base.mvp.MVPFragment
 import com.annis.baselib.base.mvp.MvpPersenter
 import com.annis.dk.R
-import com.annis.dk.main.mine.MineFragment
-import com.annis.dk.main.renzheng.RenzhengFragment
+import com.annis.dk.ui.mine.MineFragment
+import com.annis.dk.ui.renzheng.RenzhengFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : MVPActivty<MvpPersenter<BaseView>>(), BaseView {

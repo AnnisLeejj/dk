@@ -2,4 +2,6 @@
 <resources>
     <color name="et_hint_color">#cccccd</color>
     <color name="text_color_gray">#cccccc</color>
+    <color name="text_color_black">#696969</color>
+    <color name="text_color_black_light">#afafaf</color>
 </resources>

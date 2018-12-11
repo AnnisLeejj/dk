@@ -9,4 +9,8 @@
     <dimen name="item_layout_h">192px</dimen>
     <dimen name="hint_img_size">82px</dimen>
     <dimen name="item_layout_margin_left">56px</dimen>
+    <dimen name="textview_size">50px</dimen>
+    <dimen name="margin_window">56px</dimen>
+    <dimen name="bt_hinttext_size">33px</dimen>
+    <dimen name="bt_margin_window_bottom">80px</dimen>
 </resources>

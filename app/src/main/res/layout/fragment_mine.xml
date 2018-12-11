@@ -3,14 +3,49 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.annis.dk.main.renzheng.RenzhengFragment">
+        tools:context=".ui.renzheng.RenzhengFragment">
     
     <RelativeLayout
             android:id="@+id/frag_renzheng_banner"
             android:layout_width="match_parent"
             android:background="@drawable/banner"
             android:scaleType="fitXY"
-            android:layout_height="500px"/>
+            android:layout_height="500px">
+        
+        <ImageView
+                android:id="@+id/frag_mine_header"
+                android:src="@drawable/touxiang"
+                android:layout_marginTop="80px"
+                android:layout_width="200px"
+                android:layout_centerHorizontal="true"
+                android:layout_height="200px"/>
+        
+        <TextView
+                android:id="@+id/frag_mine_count"
+                android:text="15823680000"
+                android:layout_marginTop="32px"
+                android:textColor="#ffffff"
+                android:layout_below="@+id/frag_mine_header"
+                android:textSize="@dimen/textview_size"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        
+        <TextView
+                android:layout_below="@+id/frag_mine_count"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"
+                android:background="@drawable/sp_bt_bg_green"
+                android:text="已认证"
+                android:paddingLeft="24px"
+                android:layout_marginTop="24px"
+                android:paddingBottom="1px"
+                android:paddingTop="1px"
+                android:paddingRight="24px"
+                android:textSize="@dimen/textview_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
     
     <LinearLayout
             android:orientation="vertical"
@@ -19,6 +54,7 @@
             android:layout_height="wrap_content">
         
         <RelativeLayout
+                android:id="@+id/rl_progress"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/item_layout_margin_left"
@@ -37,7 +73,7 @@
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
                     android:text="放款进度"
-                    android:textColor="#696969"
+                    android:textColor="@color/text_color_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             
@@ -77,7 +113,7 @@
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
                     android:text="我的贷款"
-                    android:textColor="#696969"
+                    android:textColor="@color/text_color_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             
@@ -117,7 +153,7 @@
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
                     android:text="客服"
-                    android:textColor="#696969"
+                    android:textColor="@color/text_color_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             
@@ -138,6 +174,7 @@
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
+                android:id="@+id/bank_manage"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/item_layout_margin_left"
@@ -156,7 +193,7 @@
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
                     android:text="银行卡管理"
-                    android:textColor="#696969"
+                    android:textColor="@color/text_color_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             
@@ -195,7 +232,7 @@
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
                     android:text="帮助中心"
-                    android:textColor="#696969"
+                    android:textColor="@color/text_color_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             
@@ -217,7 +254,7 @@
     </LinearLayout>
     
     <Button
-            android:id="@+id/act_bt_login"
+            android:id="@+id/act_bt_outlogin"
             android:textColor="@color/white"
             android:text="退出登录"
             android:layout_alignParentBottom="true"

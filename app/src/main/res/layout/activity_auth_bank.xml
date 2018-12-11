@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.annis.dk.ui.authentication.bank.AuthBankActivity">
+    
+    <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_1"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/et_text_size"
+                    android:text="姓名"
+                    android:textColor="@color/text_color_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <EditText
+                    android:layout_width="500px"
+                    android:background="@null"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="end|center_vertical"
+                    android:textSize="@dimen/et_text_size"
+                    android:hint="姓名"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="match_parent"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_1"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/et_text_size"
+                    android:text="身份证"
+                    android:textColor="@color/text_color_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <EditText
+                    android:layout_width="500px"
+                    android:background="@null"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="end|center_vertical"
+                    android:textSize="@dimen/et_text_size"
+                    android:hint="身份证"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="match_parent"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_1"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/et_text_size"
+                    android:text="储存卡"
+                    android:textColor="@color/text_color_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <EditText
+                    android:layout_width="500px"
+                    android:background="@null"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="end|center_vertical"
+                    android:textSize="@dimen/et_text_size"
+                    android:hint="储存卡"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="match_parent"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+        
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_layout_margin_left"
+                android:layout_height="@dimen/item_layout_h">
+            
+            <TextView
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/item_img_1"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/et_text_size"
+                    android:text="预留手机号"
+                    android:textColor="@color/text_color_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <EditText
+                    android:layout_width="500px"
+                    android:background="@null"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="end|center_vertical"
+                    android:textSize="@dimen/et_text_size"
+                    android:hint="预留手机号"
+                    android:layout_marginRight="@dimen/item_layout_margin_left"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="match_parent"/>
+        
+        </RelativeLayout>
+        
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d7d7d7"/>
+    </LinearLayout>
+    
+    <Button
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/act_bt_outlogin"
+            android:textColor="@color/white"
+            android:text="提 交"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/bt_margin_window_bottom"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:background="@drawable/sp_bt_bg_primary_c"
+            android:textSize="@dimen/bt_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_h"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

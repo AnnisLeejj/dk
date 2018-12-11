@@ -1,4 +1,4 @@
-package com.annis.dk.main.mine
+package com.annis.dk.ui.mine
 
 import com.annis.dk.base.DKPresenter
 
