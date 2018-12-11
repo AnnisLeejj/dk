@@ -85,7 +85,7 @@ class MineFragment : MVPFragment<MinePersenter>(), MineView {
         }
         //银行卡管理
         bank_manage.setOnClickListener {
-            
+
         }
     }
 }
