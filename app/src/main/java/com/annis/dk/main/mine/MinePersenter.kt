@@ -1,6 +1,6 @@
 package com.annis.dk.main.mine
 
-import com.annis.baselib.base.mvp.MvpPersenter
+import com.annis.dk.base.DKPresenter
 
-class MinePersenter(view: MineView?) : MvpPersenter<MineView>(view) {
+class MinePersenter(view: MineView?) : DKPresenter<MineView>(view) {
 }

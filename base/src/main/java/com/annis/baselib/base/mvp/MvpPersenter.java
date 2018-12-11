@@ -31,8 +31,6 @@ public class MvpPersenter<V extends BaseView> implements BasePersenter<V> {
         } else if (view instanceof Fragment) {
             mContext = ((Fragment) view).getActivity();
         }
-
-
         mRefView = new WeakReference<>(view);
         mRefView.get();
     }

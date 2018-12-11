@@ -1,6 +1,6 @@
 package com.annis.dk.main.renzheng
 
-import com.annis.baselib.base.mvp.MvpPersenter
+import com.annis.dk.base.DKPresenter
 
-class RenzhengPersenter(view: RenzhengView?) : MvpPersenter<RenzhengView>(view) {
+class RenzhengPersenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
 }

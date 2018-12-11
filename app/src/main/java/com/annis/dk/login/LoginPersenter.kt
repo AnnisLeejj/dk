@@ -1,12 +1,18 @@
 package com.annis.dk.login
 
-import com.annis.baselib.base.mvp.MvpPersenter
+import com.annis.dk.base.DKPresenter
 
 /**
  * @author Lee
  * @date 2018/12/10 12:31
  * @Description
  */
-class LoginPersenter(view: LoginView?) : MvpPersenter<LoginView>(view) {
+class LoginPersenter(view: LoginView?) : DKPresenter<LoginView>(view) {
+    fun getCode(phone: String) {
+        httpApi
+    }
 
+    fun login(phone: String, psw: String) {
+        httpApi
+    }
 }
