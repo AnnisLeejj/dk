@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="et_hint_color">#cccccc</color>
+    <color name="et_hint_color">#cccccd</color>
     <color name="text_color_gray">#cccccc</color>
 </resources>

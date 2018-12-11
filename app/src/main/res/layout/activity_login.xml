@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.annis.dk.login.LoginActivity">
+    
     <ImageView
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="184px"
@@ -14,6 +15,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:background="@drawable/logo"
             android:layout_height="360px"/>
+    
     <EditText
             android:id="@+id/act_et_tel"
             android:lines="1"
@@ -26,6 +28,7 @@
             android:hint="登录手机号"
             android:textSize="@dimen/et_text_size"
             android:layout_height="192px"/>
+    
     <View
             android:id="@+id/act_tel_line"
             app:layout_constraintBottom_toTopOf="@+id/act_et_code"
@@ -58,6 +61,7 @@
             app:layout_constraintTop_toTopOf="@+id/act_et_code"
             app:layout_constraintBottom_toBottomOf="@+id/act_et_code"
             android:textSize="@dimen/et_text_size"/>
+    
     <View
             android:id="@+id/act_code_line"
             app:layout_constraintBottom_toTopOf="@+id/act_bt_login"
@@ -76,5 +80,6 @@
             android:layout_marginRight="50px"
             android:background="@drawable/sp_bt_bg_primary_c"
             android:textSize="@dimen/bt_text_size"
-            android:layout_width="match_parent" android:layout_height="@dimen/button_h"/>
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_h"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
