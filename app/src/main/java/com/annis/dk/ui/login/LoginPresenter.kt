@@ -7,7 +7,7 @@ import com.annis.dk.base.DKPresenter
  * @date 2018/12/10 12:31
  * @Description
  */
-class LoginPersenter(view: LoginView?) : DKPresenter<LoginView>(view) {
+class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
     fun getCode(phone: String) {
         httpApi
     }

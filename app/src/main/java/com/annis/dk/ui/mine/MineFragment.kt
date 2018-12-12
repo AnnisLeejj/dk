@@ -4,25 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.annis.baselib.base.mvp.MVPFragment
-import com.annis.baselib.utils.ImageUtil
 import com.annis.baselib.utils.picasso.PicassoUtil
-import com.annis.baselib.utils.utils_haoma.ImageUtils
 import com.annis.dk.R
+import com.annis.dk.ui.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.login.LoginActivity
+import com.annis.dk.ui.mine.bankmanage.BankManageActivity
+import com.annis.dk.ui.mine.mineLoans.MyLoansActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
 import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
-import com.squareup.picasso.Downloader
 import kotlinx.android.synthetic.main.fragment_mine.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MineFragment : MVPFragment<MinePersenter>(), MineView {
-    override fun getPersenter(): MinePersenter {
-        return MinePersenter(this)
+class MineFragment : MVPFragment<MinePresenter>(), MineView {
+    override fun getPersenter(): MinePresenter {
+        return MinePresenter(this)
     }
 
     override fun getLayoutID(): Int {
@@ -43,8 +41,6 @@ class MineFragment : MVPFragment<MinePersenter>(), MineView {
     override fun initData() {
     }
 
-
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -57,7 +53,6 @@ class MineFragment : MVPFragment<MinePersenter>(), MineView {
     }
 
     companion object {
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             MineFragment().apply {
@@ -74,7 +69,6 @@ class MineFragment : MVPFragment<MinePersenter>(), MineView {
             startActivity(LoginActivity::class.java)
             activity!!.finish()
         }
-
         rl_progress.setOnClickListener {
             when (applyProgress) {
                 0 -> startActivity(WaitingActivity::class.java)
@@ -94,8 +88,26 @@ class MineFragment : MVPFragment<MinePersenter>(), MineView {
                 }
             }
         }
+        //我的贷款
+        mine_loan.setOnClickListener {
+            var intent = Intent(activity, MyLoansActivity::class.java)
+            intent.putExtra("edu", "50000")//额度
+            intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
+            intent.putExtra("weixin", "castle0905")//微信号
+            intent.putExtra("phone", "15600001111")//手机号
+            startActivity(intent)
+        }
+        //客服
+        kefu.setOnClickListener {
+            //这是紧急联系人
+            startActivity(EmergencyContactActivity::class.java)
+        }
         //银行卡管理
         bank_manage.setOnClickListener {
+            startActivity(BankManageActivity::class.java)
+        }
+        //帮助中心
+        help_center.setOnClickListener {
 
         }
     }

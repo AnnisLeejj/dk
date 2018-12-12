@@ -95,6 +95,7 @@
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
+                android:id="@+id/mine_loan"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/item_layout_margin_left"
@@ -135,6 +136,7 @@
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
+                android:id="@+id/kefu"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/item_layout_margin_left"
@@ -214,6 +216,7 @@
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
+                android:id="@+id/help_center"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/item_layout_margin_left"

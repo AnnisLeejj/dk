@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable;
 
 import java.lang.ref.WeakReference;
 
-public class MvpPersenter<V extends BaseView> implements BasePersenter<V> {
+public class MvpPresenter<V extends BaseView> implements BasePersenter<V> {
     protected Activity mContext;
 
     //    private V view;
@@ -16,7 +16,7 @@ public class MvpPersenter<V extends BaseView> implements BasePersenter<V> {
     private WeakReference<V> mRefView;
 
     //2、通过手动的方式直接释放  activity销毁时直接回收
-    public MvpPersenter(V view) {
+    public MvpPresenter(V view) {
         attach(view);
     }
 

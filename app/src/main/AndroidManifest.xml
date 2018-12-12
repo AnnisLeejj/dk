@@ -11,6 +11,14 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.emergency_contact.EmergencyContactActivity">
+        </activity>
+        <activity android:name=".ui.mine.bankmanage.BankManageActivity">
+        </activity>
+        <activity android:name=".ui.mine.mineLoans.MyLoansActivity">
+        </activity>
+        <activity android:name=".ui.mine.mineLoans.MineLoansActivity">
+        </activity>
         <activity android:name=".ui.mine.progress.SuccessActivity">
         </activity>
         <activity android:name=".ui.mine.progress.FailedActivity">
@@ -24,10 +32,6 @@
         <activity android:name=".ui.authentication.bank.AuthBankActivity">
         </activity>
         <activity android:name=".ui.authentication.alipay.AuthAlipayActivity">
-        </activity>
-        <activity
-                android:name=".ui.main.Main2Activity"
-                android:label="@string/title_activity_main2">
         </activity>
         <activity android:name=".ui.MainActivity">
         </activity>

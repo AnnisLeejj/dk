@@ -8,14 +8,14 @@ import com.annis.dk.R
 import com.annis.dk.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : MVPActivty<LoginPersenter>(), LoginView {
+class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
 
     override fun getMyTitle(): TitleBean? {
         return null
     }
 
-    override fun getPersenter(): LoginPersenter {
-        return LoginPersenter(this)
+    override fun getPersenter(): LoginPresenter {
+        return LoginPresenter(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

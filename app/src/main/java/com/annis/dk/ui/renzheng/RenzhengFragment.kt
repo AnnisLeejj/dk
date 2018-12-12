@@ -13,9 +13,9 @@ import kotlinx.android.synthetic.main.fragment_renzheng.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class RenzhengFragment : MVPFragment<RenzhengPersenter>(), RenzhengView {
-    override fun getPersenter(): RenzhengPersenter {
-        return RenzhengPersenter(this)
+class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
+    override fun getPersenter(): RenzhengPresenter {
+        return RenzhengPresenter(this)
     }
 
     override fun getLayoutID(): Int {

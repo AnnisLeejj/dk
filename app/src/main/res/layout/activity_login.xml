@@ -27,7 +27,7 @@
             android:layout_marginLeft="56px"
             android:hint="登录手机号"
             android:textSize="@dimen/et_text_size"
-            android:layout_height="192px"/>
+            android:layout_height="@dimen/item_layout_h"/>
     
     <View
             android:id="@+id/act_tel_line"
@@ -47,7 +47,7 @@
             android:layout_marginLeft="56px"
             android:hint="输入手机验证码"
             android:textSize="@dimen/et_text_size"
-            android:layout_height="192px"/>
+            android:layout_height="@dimen/item_layout_h"/>
     
     <Button
             android:id="@+id/act_bt_getcode"

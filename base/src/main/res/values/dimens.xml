@@ -4,7 +4,9 @@
     <dimen name="sreen_h">1920px</dimen>
 
     <dimen name="base_act_title_height">128px</dimen>
-    <dimen name="title_text_size">52px</dimen>
+    <dimen name="title_text_size">54px</dimen>
+    <dimen name="text_size_normal">44px</dimen>
+    
     <dimen name="text_size">16sp</dimen>
     
     <dimen name="bt_radius">5dp</dimen>
