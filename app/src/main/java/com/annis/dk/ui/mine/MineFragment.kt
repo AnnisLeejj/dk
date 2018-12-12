@@ -4,11 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.annis.baselib.base.mvp.MVPFragment
+import com.annis.baselib.utils.ImageUtil
+import com.annis.baselib.utils.picasso.PicassoUtil
+import com.annis.baselib.utils.utils_haoma.ImageUtils
 import com.annis.dk.R
 import com.annis.dk.ui.login.LoginActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
 import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
+import com.squareup.picasso.Downloader
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,7 +30,14 @@ class MineFragment : MVPFragment<MinePersenter>(), MineView {
     }
 
     override fun initView(view: View?) {
+        var url = "http://img1.touxiang.cn/uploads/20130820/20-024619_267.jpg"
+        var count = "158232681500"
+        //account
+        frag_mine_count.text = count
+        //加载头像
+        PicassoUtil.loadImageCircle(activity, url, R.drawable.touxiang, frag_mine_header)
         click()
+
     }
 
     override fun initData() {

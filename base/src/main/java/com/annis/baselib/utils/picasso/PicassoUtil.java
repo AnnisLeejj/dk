@@ -1,8 +1,11 @@
 package com.annis.baselib.utils.picasso;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.ImageView;
+import com.annis.baselib.utils.picasso.transform.CircleTransform;
+import com.annis.baselib.utils.picasso.transform.CropSquareTransformation;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -25,7 +28,7 @@ public class PicassoUtil {
         } else if (url.startsWith("/")) {
             File file = new File(url);
             if (file.exists()) {
-                Picasso.get( ).load(new File(url))
+                Picasso.get().load(new File(url))
 //                        .transform(new ScaleTransformation())
                         .into(imageView);
             }
@@ -44,6 +47,12 @@ public class PicassoUtil {
         if (TextUtils.isEmpty(url) || !url.contains("://")) {
             Picasso.get().load(defaultImg).transform(new CircleTransform()).into(imageView);
         } else {
+//            Picasso picasso = new Picasso.Builder(context)
+//                    .downloader(new OkHttp3Downloader(context))//设置disk缓存
+//                    .defaultBitmapConfig(Bitmap.Config.RGB_565) // 设置全局的图片样式
+//                    .loggingEnabled(true)       //log
+//                    .build();
+//            Picasso.setSingletonInstance(picasso); // 设置Picasso单例
             Picasso.get().load(url).placeholder(defaultImg).transform(new CircleTransform()).into(imageView);
         }
     }

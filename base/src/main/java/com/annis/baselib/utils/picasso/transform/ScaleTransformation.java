@@ -1,4 +1,4 @@
-package com.annis.baselib.utils.picasso;
+package com.annis.baselib.utils.picasso.transform;
 
 import android.graphics.Bitmap;
 import com.squareup.picasso.Transformation;
