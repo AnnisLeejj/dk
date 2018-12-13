@@ -10,17 +10,17 @@
     <ImageView
             android:id="@+id/waiting_img"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="70px"
+            android:layout_marginTop="35dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:src="@drawable/pass_icon"
-            android:layout_width="132px"
-            android:layout_height="132px"/>
+            android:layout_width="66dp"
+            android:layout_height="66dp"/>
     
     <TextView
             android:id="@+id/waiting_text"
             android:textColor="#00c30e"
-            android:layout_marginTop="44px"
+            android:layout_marginTop="22dp"
             android:textSize="@dimen/text_size_normal"
             android:text="您的申请已通过 !"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -32,7 +32,7 @@
     <TextView
             android:id="@+id/success_edu_hint"
             android:textSize="@dimen/title_text_size"
-            android:layout_marginTop="72px"
+            android:layout_marginTop="36dp"
             app:layout_constraintTop_toBottomOf="@+id/waiting_text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -42,7 +42,7 @@
     
     <TextView
             android:id="@+id/success_edu_tv"
-            android:textSize="164px"
+            android:textSize="82dp"
             android:textColor="@color/colorPrimary"
             android:background="@null"
             app:layout_constraintTop_toBottomOf="@+id/success_edu_hint"
@@ -58,17 +58,17 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/success_edu_tv"
             android:text="还款日:自借款日7天"
-            android:textSize="48px"
-            android:layout_width="560px"
+            android:textSize="24dp"
+            android:layout_width="280dp"
             android:textColor="#ffffff"
             android:background="@drawable/shape_or"
             android:gravity="center"
-            android:layout_height="88px"/>
+            android:layout_height="44dp"/>
     
     <TextView
             android:id="@+id/fuwufei"
             android:textColor="@color/colorPrimary"
-            android:layout_marginTop="44px"
+            android:layout_marginTop="22dp"
             android:textSize="@dimen/text_size_normal"
             android:text="会员服务费:55元"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -80,7 +80,7 @@
     <TextView
             android:id="@+id/act_success_remark"
             android:textColor="@color/text_color_black"
-            android:layout_marginTop="48px"
+            android:layout_marginTop="24dp"
             android:layout_marginLeft="@dimen/margin_window"
             android:layout_marginRight="@dimen/margin_window"
             android:textSize="@dimen/text_size_normal"
@@ -103,25 +103,25 @@
                 android:layout_marginLeft="@dimen/margin_window"
                 android:src="@drawable/weixin"
                 android:layout_centerVertical="true"
-                android:layout_width="82px"
-                android:layout_height="82px"/>
+                android:layout_width="41dp"
+                android:layout_height="41dp"/>
         
         <TextView
                 android:id="@+id/tvWeixin"
                 android:layout_toRightOf="@+id/icon_weixin"
-                android:textSize="38px"
+                android:textSize="19dp"
                 android:text="castle0905"
-                android:layout_marginLeft="35px"
+                android:layout_marginLeft="18dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         
         <Button
                 android:id="@+id/act_bt_copy"
-                android:layout_width="280px"
-                android:layout_height="108px"
+                android:layout_width="140dp"
+                android:layout_height="54dp"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginRight="64px"
+                android:layout_marginRight="32dp"
                 android:background="@drawable/sp_bt_get_code"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -141,25 +141,25 @@
                 android:layout_marginLeft="@dimen/margin_window"
                 android:src="@drawable/phone"
                 android:layout_centerVertical="true"
-                android:layout_width="82px"
-                android:layout_height="82px"/>
+                android:layout_width="41dp"
+                android:layout_height="41dp"/>
         
         <TextView
                 android:id="@+id/tvPhone"
                 android:layout_toRightOf="@+id/icon_phone"
-                android:textSize="38px"
+                android:textSize="19dp"
                 android:text="castle0905"
-                android:layout_marginLeft="35px"
+                android:layout_marginLeft="18dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         
         <Button
                 android:id="@+id/act_bt_call"
-                android:layout_width="280px"
-                android:layout_height="108px"
+                android:layout_width="140dp"
+                android:layout_height="54dp"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginRight="64px"
+                android:layout_marginRight="32dp"
                 android:background="@drawable/sp_bt_get_code"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -172,9 +172,9 @@
             android:textColor="@color/white"
             android:text="支付"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="59px"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="@dimen/bt_margin_window_side"
+            android:layout_marginRight="@dimen/bt_margin_window_side"
             android:background="@drawable/sp_bt_bg_primary_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"

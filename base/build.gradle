@@ -26,10 +26,9 @@ android {
     productFlavors {
         //线上
         xs {
-//            applicationIdSuffix ""
-            buildConfigField "String", "IP", '"http://39.108.76.161"'
-            buildConfigField "String", "USER_PORT", '"8051"'
-            buildConfigField "String", "PILE_PORT", '"8052"'
+//          applicationIdSuffix ""
+            buildConfigField "String", "IP", '"http://43.229.152.127/"'
+            buildConfigField "int", "AutoWidth", '1080'
             buildConfigField "String", "AUTHORITIES", "\"${rootProject.ext.android.applicationId}.fileprovider\""
             manifestPlaceholders = [
                     authorities: "${rootProject.ext.android.applicationId}.fileprovider",
@@ -40,9 +39,9 @@ android {
         //测试
         cs {
 //            applicationIdSuffix ".cs"
-            buildConfigField "String", "IP", '"http://120.78.170.2"'
-            buildConfigField "String", "USER_PORT", '"8051"'
-            buildConfigField "String", "PILE_PORT", '"8052"'
+
+            buildConfigField "String", "IP", '"http://43.229.152.127/"'
+            buildConfigField "int", "AutoWidth", '1080'
             buildConfigField "String", "AUTHORITIES", "\"${rootProject.ext.android.applicationId}.cs.fileprovider\""
             manifestPlaceholders = [
                     authorities: "${rootProject.ext.android.applicationId}.cs.fileprovider",
@@ -53,9 +52,8 @@ android {
         //开发
         kf {
 //            applicationIdSuffix ".kf"
-            buildConfigField "String", "IP", '"http://10.192.34.12"'
-            buildConfigField "String", "USER_PORT", '"8051"'
-            buildConfigField "String", "PILE_PORT", '"8052"'
+            buildConfigField "String", "IP", '"http://43.229.152.127/"'
+            buildConfigField "int", "AutoWidth", '1080'
             buildConfigField "String", "AUTHORITIES", "\"${rootProject.ext.android.applicationId}.kf.fileprovider\""
             manifestPlaceholders = [
                     authorities: "${rootProject.ext.android.applicationId}.kf.fileprovider",

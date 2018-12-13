@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:src="@drawable/banner2"
             android:scaleType="fitXY"
-            android:layout_height="405px"/>
+            android:layout_height="202dp"/>
     
     <LinearLayout
             android:orientation="vertical"
@@ -33,7 +33,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_1"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -55,20 +55,20 @@
             
             <ImageView
                     android:id="@+id/item_img_1_status"
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:id="@+id/act_tel_line"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -86,7 +86,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_2"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -108,19 +108,19 @@
             
             <ImageView
                     android:id="@+id/item_img_2_status"
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -138,7 +138,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_3"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -160,19 +160,19 @@
             
             <ImageView
                     android:id="@+id/item_img_3_status"
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -190,7 +190,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_4"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -212,19 +212,19 @@
             
             <ImageView
                     android:id="@+id/item_img_4_status"
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
     </LinearLayout>
     
@@ -233,9 +233,9 @@
             android:textColor="@color/white"
             android:text="提交贷款申请"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="188px"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
+            android:layout_marginBottom="94dp"
+            android:layout_marginLeft="@dimen/bt_margin_window_side"
+            android:layout_marginRight="@dimen/bt_margin_window_side"
             android:background="@drawable/sp_bt_bg_gray_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"

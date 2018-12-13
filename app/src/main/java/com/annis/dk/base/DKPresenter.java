@@ -19,7 +19,7 @@ public class DKPresenter<V extends BaseView> extends MvpPresenter<V> {
 
     public HttpApi getHttpApi() {
         if (httpApi == null) {
-            httpApi = HttpProvider.getRetrofit(BuildConfig.IP + BuildConfig.USER_PORT).create(HttpApi.class);
+            httpApi = HttpProvider.getRetrofit(BuildConfig.IP).create(HttpApi.class);
         }
         return httpApi;
     }

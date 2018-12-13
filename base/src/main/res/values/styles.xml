@@ -10,17 +10,17 @@
     </style>
 
     <style name="ButtonBG_Sure">
-        <item name="android:layout_marginRight">50px</item>
-        <item name="android:layout_marginLeft">50px</item>
-        <item name="android:textSize">56px</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:textSize">56dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/sp_bt_bg_primary_c</item>
     </style>
 
     <style name="ButtonBG_Deny">
-        <item name="android:layout_marginRight">50px</item>
-        <item name="android:layout_marginLeft">50px</item>
-        <item name="android:textSize">56px</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:textSize">56dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/sp_bt_bg_primary_c</item>
     </style>

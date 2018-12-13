@@ -73,4 +73,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     //自适应布局
     api 'me.jessyan:autosize:1.1.0'
+    //Excle
+    api 'net.sourceforge.jexcelapi:jxl:2.6.12'
 }

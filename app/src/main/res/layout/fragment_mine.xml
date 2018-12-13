@@ -10,20 +10,20 @@
             android:layout_width="match_parent"
             android:background="@drawable/banner"
             android:scaleType="fitXY"
-            android:layout_height="500px">
+            android:layout_height="250dp">
         
         <ImageView
                 android:id="@+id/frag_mine_header"
                 android:src="@drawable/touxiang"
-                android:layout_marginTop="80px"
-                android:layout_width="200px"
+                android:layout_marginTop="40dp"
+                android:layout_width="100dp"
                 android:layout_centerHorizontal="true"
-                android:layout_height="200px"/>
+                android:layout_height="100dp"/>
         
         <TextView
                 android:id="@+id/frag_mine_count"
                 android:text="15823680000"
-                android:layout_marginTop="32px"
+                android:layout_marginTop="16dp"
                 android:textColor="#ffffff"
                 android:layout_below="@+id/frag_mine_header"
                 android:textSize="@dimen/textview_size"
@@ -37,11 +37,11 @@
                 android:textColor="#ffffff"
                 android:background="@drawable/sp_bt_bg_green"
                 android:text="已认证"
-                android:paddingLeft="24px"
-                android:layout_marginTop="24px"
-                android:paddingBottom="1px"
-                android:paddingTop="1px"
-                android:paddingRight="24px"
+                android:paddingLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:paddingBottom="@dimen/line_height"
+                android:paddingTop="@dimen/line_height"
+                android:paddingRight="12dp"
                 android:textSize="@dimen/textview_size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -68,7 +68,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_1"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -78,20 +78,20 @@
                     android:layout_height="wrap_content"/>
             
             <ImageView
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:id="@+id/act_tel_line"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -109,7 +109,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_2"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -120,19 +120,19 @@
             
             
             <ImageView
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -150,7 +150,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_3"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -160,19 +160,19 @@
                     android:layout_height="wrap_content"/>
             
             <ImageView
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -190,7 +190,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_4"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -200,19 +200,19 @@
                     android:layout_height="wrap_content"/>
             
             <ImageView
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -230,7 +230,7 @@
                     android:layout_height="@dimen/hint_img_size"/>
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_5"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/bt_text_size"
@@ -240,19 +240,19 @@
                     android:layout_height="wrap_content"/>
             
             <ImageView
-                    android:layout_width="51px"
+                    android:layout_width="26dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/a"
-                    android:layout_height="58px"/>
+                    android:layout_height="29dp"/>
         
         </RelativeLayout>
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
     </LinearLayout>
     
@@ -261,9 +261,9 @@
             android:textColor="@color/white"
             android:text="退出登录"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="50px"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="@dimen/bt_margin_window_side"
+            android:layout_marginRight="@dimen/bt_margin_window_side"
             android:background="@drawable/sp_bt_bg_primary_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"

@@ -9,21 +9,21 @@
     
     <RelativeLayout
             android:id="@+id/info_container"
-            android:layout_margin="80px"
+            android:layout_margin="40dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="0dp"
             android:background="@drawable/mycard"
-            android:layout_height="540px">
+            android:layout_height="270dp">
         
         <TextView
                 android:id="@+id/tv_card_name"
                 android:text="李爱国"
                 android:layout_marginLeft="@dimen/margin_window"
-                android:textSize="74px"
+                android:textSize="37dp"
                 android:textColor="#ffffff"
-                android:layout_marginTop="170px"
+                android:layout_marginTop="85dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         
@@ -32,9 +32,9 @@
                 android:layout_below="@+id/tv_card_name"
                 android:text="储蓄卡号"
                 android:layout_marginLeft="@dimen/margin_window"
-                android:textSize="42px"
+                android:textSize="21dp"
                 android:textColor="#ffffff"
-                android:layout_marginTop="65px"
+                android:layout_marginTop="33dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         
@@ -45,7 +45,7 @@
                 android:layout_marginLeft="@dimen/margin_window"
                 android:textSize="@dimen/title_text_size"
                 android:textColor="#ffffff"
-                android:layout_marginTop="40px"
+                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -53,11 +53,11 @@
     <Button
             android:id="@+id/act_bt_change"
             android:textColor="@color/white"
-            android:layout_marginTop="88px"
+            android:layout_marginTop="44dp"
             android:text="更换卡片"
             app:layout_constraintTop_toBottomOf="@+id/info_container"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
+            android:layout_marginLeft="@dimen/bt_margin_window_side"
+            android:layout_marginRight="@dimen/bt_margin_window_side"
             android:background="@drawable/sp_bt_bg_primary_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"

@@ -20,7 +20,7 @@
                 android:layout_height="@dimen/item_layout_h">
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_1"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/et_text_size"
@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
-                    android:layout_width="500px"
+                    android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
@@ -45,7 +45,7 @@
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -55,7 +55,7 @@
                 android:layout_height="@dimen/item_layout_h">
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_1"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/et_text_size"
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
-                    android:layout_width="500px"
+                    android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
@@ -80,7 +80,7 @@
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -90,7 +90,7 @@
                 android:layout_height="@dimen/item_layout_h">
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_1"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/et_text_size"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
-                    android:layout_width="500px"
+                    android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
@@ -115,7 +115,7 @@
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
         
         <RelativeLayout
@@ -125,7 +125,7 @@
                 android:layout_height="@dimen/item_layout_h">
             
             <TextView
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/item_img_1"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/et_text_size"
@@ -135,7 +135,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
-                    android:layout_width="500px"
+                    android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
@@ -150,7 +150,7 @@
         
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/line_height"
                 android:background="#d7d7d7"/>
     </LinearLayout>
     
@@ -161,8 +161,8 @@
             android:text="提 交"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/bt_margin_window_bottom"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
+            android:layout_marginLeft="@dimen/bt_margin_window_side"
+            android:layout_marginRight="@dimen/bt_margin_window_side"
             android:background="@drawable/sp_bt_bg_primary_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"

@@ -10,18 +10,18 @@
     <ImageView
             android:id="@+id/waiting_img"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="172px"
+            android:layout_marginTop="86dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:src="@drawable/shenheing_icon"
-            android:layout_width="194px"
-            android:layout_height="228px"/>
+            android:layout_width="97dp"
+            android:layout_height="114dp"/>
     
     <TextView
             android:id="@+id/waiting_text"
             android:textColor="@color/text_color_black"
-            android:layout_marginTop="120px"
-            android:textSize="66px"
+            android:layout_marginTop="60dp"
+            android:textSize="33dp"
             android:text="您的申请正在审核中..."
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -31,7 +31,7 @@
     
     <TextView
             android:textColor="@color/text_color_black_light"
-            android:layout_marginTop="32px"
+            android:layout_marginTop="16dp"
             android:textSize="@dimen/title_text_size"
             android:text="请耐心等待"
             app:layout_constraintLeft_toLeftOf="parent"

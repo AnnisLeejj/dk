@@ -21,12 +21,12 @@
             <TextView
                     android:text="紧急联系人1∶ "
                     android:background="#f4f4f4"
-                    android:textSize="34px"
+                    android:textSize="17dp"
                     android:textColor="@color/text_color_black"
                     android:paddingLeft="@dimen/text_size_normal"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="90px"/>
+                    android:layout_height="45dp"/>
             
             <EditText
                     android:id="@+id/contact_1_name"
@@ -59,11 +59,11 @@
                     android:text="紧急联系人2∶ "
                     android:paddingLeft="@dimen/text_size_normal"
                     android:background="#f4f4f4"
-                    android:textSize="34px"
+                    android:textSize="17dp"
                     android:textColor="@color/text_color_black"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="90px"/>
+                    android:layout_height="45dp"/>
             
             <EditText
                     android:id="@+id/contact_2_name"
@@ -95,12 +95,12 @@
             <TextView
                     android:textColor="@color/text_color_black"
                     android:text="紧急联系人3∶ "
-                    android:textSize="34px"
+                    android:textSize="17dp"
                     android:background="#f4f4f4"
                     android:paddingLeft="@dimen/text_size_normal"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="90px"/>
+                    android:layout_height="45dp"/>
             
             <EditText
                     android:id="@+id/contact_3_name"
@@ -134,11 +134,11 @@
     <Button
             android:id="@+id/act_bt_change"
             android:textColor="@color/white"
-            android:layout_marginTop="88px"
+            android:layout_marginTop="44dp"
             android:text="提 交"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
+            android:layout_marginLeft="@dimen/bt_margin_window_side"
+            android:layout_marginRight="@dimen/bt_margin_window_side"
             android:background="@drawable/sp_bt_bg_primary_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"

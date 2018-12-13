@@ -10,18 +10,18 @@
     <ImageView
             android:id="@+id/waiting_img"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="158px"
+            android:layout_marginTop="79dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:src="@drawable/statte_nopass_icon"
-            android:layout_width="260px"
-            android:layout_height="260px"/>
+            android:layout_width="130dp"
+            android:layout_height="130dp"/>
     
     <TextView
             android:id="@+id/waiting_text"
             android:textColor="#f60000"
-            android:layout_marginTop="120px"
-            android:textSize="66px"
+            android:layout_marginTop="60dp"
+            android:textSize="33dp"
             android:text="您的申请未通过 !"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -32,7 +32,7 @@
     <TextView
             android:id="@+id/act_failed_reason"
             android:textColor="@color/text_color_black"
-            android:layout_marginTop="164px"
+            android:layout_marginTop="82dp"
             android:layout_marginLeft="@dimen/margin_window"
             android:layout_marginRight="@dimen/margin_window"
             android:textSize="@dimen/text_size_normal"

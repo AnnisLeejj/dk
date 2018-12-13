@@ -2,6 +2,7 @@ package com.annis.dk.view
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -39,14 +40,29 @@ class CodeDialog(context: Context) : Dialog(context) {
         /**
          * 设置宽度全屏，要设置在show的后面
          */
-        var layoutParams = window.attributes
-        layoutParams.gravity = Gravity.CENTER
+        val attributes = window!!.attributes
+        attributes.gravity = Gravity.CENTER
+//        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
+        attributes.width = (window!!.windowManager.defaultDisplay.width * 0.9).toInt()
+        window!!.attributes = attributes
+    }
 
-        layoutParams.width = (ScreenUtils.getScreenWidth() * 0.75).toInt()
-        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
 
-//        window.decorView.setPadding(0, 0, 0, 0)
-
-        window.attributes = layoutParams
+    /**
+     * 对View进行量测，布局后截图
+     *
+     * @param view
+     * @return
+     */
+    fun screenshot(view: View): Bitmap {
+        view.measure(
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        )
+        view.layout(0, 0, view.measuredWidth, view.measuredHeight)
+        view.isDrawingCacheEnabled = true
+        view.buildDrawingCache()
+        var bitmap = view.drawingCache
+        return bitmap
     }
 }

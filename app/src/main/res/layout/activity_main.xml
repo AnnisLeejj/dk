@@ -18,7 +18,7 @@
             android:id="@+id/act_tel_line"
             app:layout_constraintBottom_toTopOf="@+id/act_main_bottom"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="0.5dp"
             android:background="#d7d7d7"/>
     
     <LinearLayout
@@ -27,7 +27,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_height="166px">
+            android:layout_height="83dp">
         
         <RelativeLayout
                 android:id="@+id/act_main_rl_renzheng"
@@ -37,11 +37,11 @@
             
             <CheckBox
                     android:id="@+id/act_main_rb_renzheng"
-                    android:layout_width="200px"
+                    android:layout_width="100dp"
                     android:layout_centerInParent="true"
                     android:button="@null"
                     android:background="@drawable/slt_rb_renzheng"
-                    android:layout_height="72px"/>
+                    android:layout_height="36dp"/>
         </RelativeLayout>
         
         <RelativeLayout
@@ -52,13 +52,11 @@
             
             <CheckBox
                     android:id="@+id/act_main_rb_mine"
-                    android:layout_width="200px"
+                    android:layout_width="100dp"
                     android:layout_centerInParent="true"
                     android:button="@null"
                     android:background="@drawable/slt_rb_mine"
-                    android:layout_height="62px"/>
+                    android:layout_height="31dp"/>
         </RelativeLayout>
-    
-    
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
