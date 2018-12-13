@@ -2,8 +2,10 @@ package com.annis.dk.base;
 
 import com.annis.dk.bean.*;
 import io.reactivex.Flowable;
+import okhttp3.MultipartBody;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 /**
@@ -36,7 +38,6 @@ public interface HttpApi {
     isnew=0  申请贷款*/
 
     /*** 短信接口还没写***/
-
 
     /**
      * 接口功能：读取调用接口要用到的key
@@ -219,11 +220,9 @@ public interface HttpApi {
      * System.Net.WebClient myWebClient = new System.Net.WebClient();
      * byte[] byteArray = myWebClient.UploadFile(webUrl, "POST", localFileName);
      *
-     * @param key
+     * @param file
      * @return
      */
     @POST("/UpLoadFiles.aspx")
-    Flowable<ImgResponse> upLoadFiel(@Query("key") String key);
-
-
+    Flowable<ImgResponse> uploadFile(@Part MultipartBody.Part file);
 }
