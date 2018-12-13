@@ -240,4 +240,31 @@
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_h"/>
+    
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="52dp"
+            android:layout_height="wrap_content">
+        
+        <CheckBox
+                android:id="@+id/renzheng_operator_agree"
+                android:layout_width="wrap_content"
+                android:text="  同意"
+                android:button="@drawable/cb_button"
+                android:layout_marginLeft="25dp"
+                android:paddingRight="11dp"
+                android:textSize="19dp"
+                android:textColor="#afafaf"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="19dp"/>
+        
+        <TextView
+                android:layout_toRightOf="@+id/renzheng_operator_agree"
+                android:text="《容易借贷款协议》"
+                android:textSize="19dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
 </RelativeLayout>

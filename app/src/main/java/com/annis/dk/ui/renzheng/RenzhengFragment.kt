@@ -47,6 +47,9 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
             //银行
             startActivity(AuthBankActivity::class.java)
         }
+        renzheng_operator_agree.setOnClickListener {
+            //协议同意
+        }
     }
 
 
