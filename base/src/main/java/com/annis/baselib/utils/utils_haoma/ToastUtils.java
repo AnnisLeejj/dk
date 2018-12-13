@@ -2,6 +2,8 @@ package com.annis.baselib.utils.utils_haoma;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.StringRes;
 
@@ -268,6 +270,7 @@ public class ToastUtils {
         if (isJumpWhenMore) cancelToast();
         if (sToast == null) {
             sToast = Toast.makeText(Utils.getContext(), text, duration);
+            ((TextView) ((LinearLayout) sToast.getView()).getChildAt(0)).setTextSize(22);
         } else {
             sToast.setText(text);
             sToast.setDuration(duration);

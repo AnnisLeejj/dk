@@ -3,15 +3,20 @@ package com.annis.dk.view
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
-import com.annis.baselib.utils.utils_haoma.ScreenUtils
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.util.*
+
 
 class CodeDialog(context: Context) : Dialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,5 +69,84 @@ class CodeDialog(context: Context) : Dialog(context) {
         view.buildDrawingCache()
         var bitmap = view.drawingCache
         return bitmap
+    }
+
+    fun getViewBp(v: View?): Bitmap? {
+        if (null == v) {
+            return null
+        }
+        v.isDrawingCacheEnabled = true
+        v.buildDrawingCache()
+        if (Build.VERSION.SDK_INT >= 11) {
+            v.measure(
+                View.MeasureSpec.makeMeasureSpec(
+                    v.width,
+                    View.MeasureSpec.EXACTLY
+                ), View.MeasureSpec.makeMeasureSpec(
+                    v.height, View.MeasureSpec.EXACTLY
+                )
+            )
+            v.layout(
+                v.x.toInt(), v.y.toInt(),
+                v.x.toInt() + v.measuredWidth,
+                v.y.toInt() + v.measuredHeight
+            )
+        } else {
+            v.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            )
+            v.layout(0, 0, v.measuredWidth, v.measuredHeight)
+        }
+        val b = Bitmap.createBitmap(v.drawingCache, 0, 0, v.measuredWidth, v.measuredHeight)
+
+        v.isDrawingCacheEnabled = false
+        v.destroyDrawingCache()
+        return b
+    }
+
+    private val SD_PATH = "/sdcard/dskqxt/pic/"
+    private val IN_PATH = "/dskqxt/pic/"
+    /**
+     * 保存bitmap到本地
+     *
+     * @param context
+     * @param mBitmap
+     * @return
+     */
+    fun saveBitmap(context: Context, mBitmap: Bitmap): String? {
+        var savePath: String?
+        var filePic: File?
+        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+            savePath = SD_PATH
+        } else {
+            savePath = context.applicationContext.filesDir.absolutePath + IN_PATH
+        }
+        try {
+            filePic = File(savePath + generateFileName() + ".jpg")
+            if (!filePic.exists()) {
+                filePic.getParentFile().mkdirs()
+                filePic.createNewFile()
+            }
+            var fos = FileOutputStream(filePic)
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+            fos.flush()
+            fos.close()
+        } catch (e: IOException) {
+            // TODO Auto-generated catch block
+            e.printStackTrace()
+            return null
+        }
+
+        return filePic.absolutePath
+    }
+
+    /**
+     * 随机生产文件名
+     *
+     * @return
+     */
+    private fun generateFileName(): String {
+        return UUID.randomUUID().toString()
     }
 }

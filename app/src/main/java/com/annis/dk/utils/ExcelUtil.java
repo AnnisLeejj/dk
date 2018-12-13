@@ -1,7 +1,7 @@
 package com.annis.dk.utils;
 
 import android.content.Context;
-import android.widget.Toast;
+import com.annis.baselib.utils.utils_haoma.ToastUtils;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.write.*;
@@ -130,7 +130,7 @@ public class ExcelUtil {
                 }
 
                 writebook.write();
-                Toast.makeText(c, "导出Excel成功", Toast.LENGTH_SHORT).show();
+                ToastUtils.showLongToast("导出Excel成功");
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {

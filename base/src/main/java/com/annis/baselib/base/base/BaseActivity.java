@@ -12,13 +12,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import com.annis.baselib.R;
 import com.annis.baselib.utils.utils_haoma.KeyboardUtils;
+import com.annis.baselib.utils.utils_haoma.ToastUtils;
 
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
@@ -50,6 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化视图
      */
     public abstract void initViewAndListener();
+
     View view;
 
     @Override
@@ -63,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShortToast(msg);
     }
 
     public void startActivity(Class clazz) {
@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startAcitvity(Class clazz, Serializable list) {
+    public void startActivity(Class clazz, Serializable list) {
         Intent intent = new Intent(this, clazz);
         intent.putExtra(LIST, list);
         startActivity(intent);

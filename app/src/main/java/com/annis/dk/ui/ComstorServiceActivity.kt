@@ -1,4 +1,4 @@
-package com.annis.dk.ui.mine.mineLoans
+package com.annis.dk.ui
 
 import android.Manifest
 import android.content.ClipData
@@ -8,28 +8,20 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import com.annis.baselib.base.base.BaseActivity
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
-import com.annis.dk.view.CodeDialog
 import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_my_loans.*
 
-class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
-
-    override fun getPersenter(): MyLoansPresenter {
-        return MyLoansPresenter(this)
-    }
-
+class ComstorServiceActivity : BaseActivity() {
     override fun getMyTitle(): TitleBean {
-        return TitleBean("我的贷款").setBack(true)
+        return TitleBean("客服").setBack(true)
     }
 
     override fun initViewAndListener() {
-        success_edu_tv.text = intent.getStringExtra("edu")//额度
-        act_success_remark.text = intent.getStringExtra("remark")//会员服务费提示
         tvWeixin.text = intent.getStringExtra("weixin")//微信号
         tvPhone.text = intent.getStringExtra("phone")//手机号
         click()
@@ -37,15 +29,10 @@ class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_loans)
+        setContentView(R.layout.activity_service)
     }
 
     fun click() {
-        act_bt_pay.setOnClickListener {
-            //支付
-            persenter.getCode()
-        }
-
         act_bt_call.setOnClickListener {
             //打电话
             call(tvPhone.text.toString())
@@ -61,19 +48,8 @@ class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
             // 把数据集设置（复制）到剪贴板
             clipboard.primaryClip = clipData
             ToastUtils.showLongToast("复制成功")
-
         }
     }
-
-    /**
-     * 显示二维码
-     */
-    override fun showCode() {
-        var codeDialog = CodeDialog(this)
-
-        codeDialog.show()
-    }
-
 
     fun call(tel: String) {
         var permission = RxPermissions(this)

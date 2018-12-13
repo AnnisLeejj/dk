@@ -6,6 +6,7 @@ import android.view.View
 import com.annis.baselib.base.mvp.MVPFragment
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.dk.R
+import com.annis.dk.ui.ComstorServiceActivity
 import com.annis.dk.ui.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.login.LoginActivity
 import com.annis.dk.ui.mine.bankmanage.BankManageActivity
@@ -13,6 +14,7 @@ import com.annis.dk.ui.mine.mineLoans.MyLoansActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
 import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
+import com.annis.dk.utils.DkSPUtils
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 private const val ARG_PARAM1 = "param1"
@@ -67,6 +69,7 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
     fun click() {
         act_bt_outlogin.setOnClickListener {
             startActivity(LoginActivity::class.java)
+            DkSPUtils.saveLogin(false)
             activity!!.finish()
         }
         rl_progress.setOnClickListener {
@@ -99,8 +102,10 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
         }
         //客服
         kefu.setOnClickListener {
-            //这是紧急联系人
-            startActivity(EmergencyContactActivity::class.java)
+            var intent = Intent(activity, ComstorServiceActivity::class.java)
+            intent.putExtra("weixin", "castle0905")//微信号
+            intent.putExtra("phone", "15600001111")//手机号
+            startActivity(intent)
         }
         //银行卡管理
         bank_manage.setOnClickListener {
@@ -108,7 +113,8 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
         }
         //帮助中心
         help_center.setOnClickListener {
-
+            //这是紧急联系人
+            startActivity(EmergencyContactActivity::class.java)
         }
     }
 }
