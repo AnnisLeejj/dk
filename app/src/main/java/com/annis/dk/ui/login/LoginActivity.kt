@@ -30,6 +30,10 @@ class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
     var timer: CountDownTimer? = null
     fun onClick() {
         act_bt_login.setOnClickListener {
+            var tel = act_et_tel.text.toString()
+            var code = act_et_code.text.toString()
+            persenter.login(tel, code);
+
             startActivity(MainActivity::class.java)
             finish()
         }

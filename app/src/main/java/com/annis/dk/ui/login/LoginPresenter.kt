@@ -1,6 +1,8 @@
 package com.annis.dk.ui.login
 
 import com.annis.dk.base.DKPresenter
+import com.annis.dk.base.DkConstast
+import com.annis.dk.utils.DkSPUtils
 
 /**
  * @author Lee
@@ -13,6 +15,18 @@ class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
     }
 
     fun login(phone: String, psw: String) {
-        httpApi
+        addSubscribe(
+            httpApi!!.getUser(phone, DkSPUtils.getKey())
+                .subscribe({ r ->
+                    r ?: let {
+                        view.errorMsg("网络请求失败")
+                    }
+                    r.let {
+                        DkConstast.saveUserEntity(it)
+                    }
+                }, { e ->
+                    view.errorMsg("网络请求失败")
+                })
+        )
     }
 }
