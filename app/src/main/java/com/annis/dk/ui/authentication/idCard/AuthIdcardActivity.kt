@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.annis.baselib.base.base.BaseActivity
 import com.annis.baselib.base.base.TitleBean
 import com.annis.dk.R
+import kotlinx.android.synthetic.main.activity_auth_idcard.*
 
 class AuthIdcardActivity : BaseActivity() {
     override fun getMyTitle(): TitleBean {
@@ -16,5 +17,14 @@ class AuthIdcardActivity : BaseActivity() {
     }
 
     override fun initViewAndListener() {
+        idcard_1_img.setOnClickListener {
+
+        }
+        idcard_2_img.setOnClickListener {
+
+        }
+        idcard_3_img.setOnClickListener {
+        }
     }
+
 }

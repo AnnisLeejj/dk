@@ -18,6 +18,17 @@ class DkSPUtils {
         }
 
         /**
+         * uid
+         */
+        fun saveUID(key: String) {
+            spUtils.putString("uid", key)
+        }
+
+        fun getUID(): String {
+            return spUtils.getString("uid")
+        }
+
+        /**
          * 是否已登录
          */
         fun saveLogin(b: Boolean) {

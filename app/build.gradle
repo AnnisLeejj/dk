@@ -55,6 +55,7 @@ android {
             manifestPlaceholders = [app_name: "${rootProject.ext.android.appName}-开发"]
         }
     }
+
 }
 
 dependencies {

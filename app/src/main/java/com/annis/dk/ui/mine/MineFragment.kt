@@ -21,6 +21,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class MineFragment : MVPFragment<MinePresenter>(), MineView {
+
     override fun getPersenter(): MinePresenter {
         return MinePresenter(this)
     }
@@ -30,7 +31,7 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
     }
 
     override fun initView(view: View?) {
-        var url = "http://img1.touxiang.cn/uploads/20130820/20-024619_267.jpg"
+        var url = URL
         var count = "158232681500"
         //account
         frag_mine_count.text = count
@@ -55,6 +56,7 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
     }
 
     companion object {
+        const val URL = "http://img1.touxiang.cn/uploads/20130820/20-024619_267.jpg"
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             MineFragment().apply {
@@ -114,7 +116,9 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
         //帮助中心
         help_center.setOnClickListener {
             //这是紧急联系人
-            startActivity(EmergencyContactActivity::class.java)
+            var intent = Intent(activity,EmergencyContactActivity::class.java)
+            intent.putExtra("account","15823680000")
+            startActivity(intent)
         }
     }
 }

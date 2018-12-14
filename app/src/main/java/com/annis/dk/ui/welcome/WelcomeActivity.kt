@@ -3,6 +3,7 @@ package com.annis.dk.ui.welcome
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
+import com.annis.dk.BuildConfig
 import com.annis.dk.R
 import com.annis.dk.ui.MainActivity
 import com.annis.dk.ui.login.LoginActivity
@@ -25,9 +26,15 @@ class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
 
     override fun initViewAndListener() {
         persenter.getKey()
-        window.decorView.postDelayed({
-            startNextActvitiy()
-        }, 2500)
+        var time = when (BuildConfig.DEBUG) {
+            true -> 500L
+            false -> 2500L
+        }
+        window.decorView.postDelayed(
+            {
+                startNextActvitiy()
+            }, time
+        )
     }
 
     fun startNextActvitiy() {

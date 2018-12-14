@@ -20,7 +20,7 @@
                     android:layout_width="@dimen/base_act_title_height"
                     android:layout_height="@dimen/base_act_title_height"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/back_icon"/>
+                    android:src="@mipmap/back_icon"/>
             
             <TextView
                     android:id="@+id/left_title"

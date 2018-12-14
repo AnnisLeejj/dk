@@ -128,9 +128,7 @@ public class ExcelUtil {
                     //设置行高
                     sheet.setRowView(j + 1, 350);
                 }
-
                 writebook.write();
-                ToastUtils.showLongToast("导出Excel成功");
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {

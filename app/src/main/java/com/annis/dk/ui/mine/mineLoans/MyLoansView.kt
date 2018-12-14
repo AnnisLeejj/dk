@@ -6,5 +6,5 @@ interface MyLoansView : BaseView {
     /**
      * 显示二维码
      */
-    fun showCode()
+    fun showCode(url: String)
 }

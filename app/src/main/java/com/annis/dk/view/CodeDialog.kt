@@ -1,57 +1,130 @@
 package com.annis.dk.view
 
+import android.Manifest
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
+import android.provider.MediaStore
+import android.provider.Settings
+import android.util.DisplayMetrics
+import android.view.*
 import android.widget.ImageView
+import androidx.fragment.app.DialogFragment
+import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
+import com.google.android.material.snackbar.Snackbar
+import com.tbruyelle.rxpermissions2.RxPermissions
+import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.dialog_code.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
 
-class CodeDialog(context: Context) : Dialog(context) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setCancelable(false)
-//        setView()
+class CodeDialog : DialogFragment() {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)//取消对话框fragment的标题
+
+        return inflater.inflate(R.layout.dialog_code, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        isCancelable = false
         initView()
     }
 
-    var view: View? = null
-    fun initView() {
-        view = LayoutInflater.from(context).inflate(R.layout.dialog_code, null)
-        setContentView(view)
-
-
+    private fun initView() {
         view?.findViewById<ImageView>(R.id.dialog_colse)?.setOnClickListener { dismiss() }
         view?.setOnLongClickListener {
-            ToastUtils.showLongToast("长按截图")
+            checkPermission()
             return@setOnLongClickListener true
+        }
+        PicassoUtil.loadBigImage(activity!!, codeUrl, dialog_iv_code)
+    }
+
+    var subscribe: Disposable? = null
+    fun checkPermission() {
+        subscribe =
+                RxPermissions(activity!!).requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    .subscribe { permission ->
+                        when {
+                            permission.granted -> save()
+                            permission.shouldShowRequestPermissionRationale -> {
+                                ToastUtils.showLongToast("请允许保存截图")
+                            }
+                            else -> {
+                                dismiss()
+                                //永远拒绝
+                                Snackbar.make(view!!, "您已禁止读写，请手动添加权限。", Snackbar.LENGTH_INDEFINITE)
+                                    .setAction("添加") { v1 ->
+                                        //启动到手机的设置页面
+                                        startActivity(Intent(Settings.ACTION_SETTINGS))
+                                    }.show()
+                            }
+                        }
+                    }
+    }
+
+    override fun onDestroy() {
+        subscribe?.dispose()
+        super.onDestroy()
+    }
+
+    fun save() {
+        var bitmap = getViewBp(view)// screenshot(view!!)
+        bitmap?.let { bitmap ->
+            //                val path = saveBitmap(this, context, bitmap)
+//            var filePic = File(activity!!.externalCacheDir, generateFileName() + ".jpg")
+
+            MediaStore.Images.Media.insertImage(
+                activity!!.contentResolver,
+                bitmap, "payCode1", "payCode2"
+            )
+
+            //保存图片后发送广播通知更新数据库
+//        Uri uri = Uri.fromFile(file);
+//        activity!!.sendBroadcast(  Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+            activity!!.sendBroadcast(
+                Intent(
+                    Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                    Uri.parse("file://" + Environment.getExternalStorageDirectory())
+                )
+            )
+
+            ToastUtils.showLongToast("截图已保存")
+            dismiss()
         }
     }
 
+//    override fun show() {
+//        super.show()
+//        /**
+//         * 设置宽度全屏，要设置在show的后面
+//         */
+//        val attributes = window!!.attributes
+//        attributes.gravity = Gravity.CENTER
+////        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
+//        attributes.width = (window!!.windowManager.defaultDisplay.width * 0.9).toInt()
+//        window!!.attributes = attributes
+//    }
 
-    override fun show() {
-        super.show()
-        /**
-         * 设置宽度全屏，要设置在show的后面
-         */
-        val attributes = window!!.attributes
-        attributes.gravity = Gravity.CENTER
-//        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
-        attributes.width = (window!!.windowManager.defaultDisplay.width * 0.9).toInt()
-        window!!.attributes = attributes
+    override fun onStart() {
+        super.onStart()
+        var dialog = dialog
+        if (dialog != null) {
+            var dm = DisplayMetrics()
+            activity!!.windowManager.defaultDisplay.getMetrics(dm)
+            dialog.window.setLayout(((dm.widthPixels * 0.75).toInt()), ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
     }
-
 
     /**
      * 对View进行量测，布局后截图
@@ -71,76 +144,6 @@ class CodeDialog(context: Context) : Dialog(context) {
         return bitmap
     }
 
-    fun getViewBp(v: View?): Bitmap? {
-        if (null == v) {
-            return null
-        }
-        v.isDrawingCacheEnabled = true
-        v.buildDrawingCache()
-        if (Build.VERSION.SDK_INT >= 11) {
-            v.measure(
-                View.MeasureSpec.makeMeasureSpec(
-                    v.width,
-                    View.MeasureSpec.EXACTLY
-                ), View.MeasureSpec.makeMeasureSpec(
-                    v.height, View.MeasureSpec.EXACTLY
-                )
-            )
-            v.layout(
-                v.x.toInt(), v.y.toInt(),
-                v.x.toInt() + v.measuredWidth,
-                v.y.toInt() + v.measuredHeight
-            )
-        } else {
-            v.measure(
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-            )
-            v.layout(0, 0, v.measuredWidth, v.measuredHeight)
-        }
-        val b = Bitmap.createBitmap(v.drawingCache, 0, 0, v.measuredWidth, v.measuredHeight)
-
-        v.isDrawingCacheEnabled = false
-        v.destroyDrawingCache()
-        return b
-    }
-
-    private val SD_PATH = "/sdcard/dskqxt/pic/"
-    private val IN_PATH = "/dskqxt/pic/"
-    /**
-     * 保存bitmap到本地
-     *
-     * @param context
-     * @param mBitmap
-     * @return
-     */
-    fun saveBitmap(context: Context, mBitmap: Bitmap): String? {
-        var savePath: String?
-        var filePic: File?
-        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-            savePath = SD_PATH
-        } else {
-            savePath = context.applicationContext.filesDir.absolutePath + IN_PATH
-        }
-        try {
-            filePic = File(savePath + generateFileName() + ".jpg")
-            if (!filePic.exists()) {
-                filePic.getParentFile().mkdirs()
-                filePic.createNewFile()
-            }
-            var fos = FileOutputStream(filePic)
-            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-            fos.flush()
-            fos.close()
-        } catch (e: IOException) {
-            // TODO Auto-generated catch block
-            e.printStackTrace()
-            return null
-        }
-
-        return filePic.absolutePath
-    }
-
     /**
      * 随机生产文件名
      *
@@ -148,5 +151,80 @@ class CodeDialog(context: Context) : Dialog(context) {
      */
     private fun generateFileName(): String {
         return UUID.randomUUID().toString()
+    }
+
+    var codeUrl: String? = null
+    fun setUrl(url: String) {
+        codeUrl = url
+    }
+
+    companion object {
+        private const val IN_PATH = "/dskqxt/pic/"
+        private fun getViewBp(v: View?): Bitmap? {
+            if (null == v) {
+                return null
+            }
+            v.isDrawingCacheEnabled = true
+            v.buildDrawingCache()
+            if (Build.VERSION.SDK_INT >= 11) {
+                v.measure(
+                    View.MeasureSpec.makeMeasureSpec(
+                        v.width,
+                        View.MeasureSpec.EXACTLY
+                    ), View.MeasureSpec.makeMeasureSpec(
+                        v.height, View.MeasureSpec.EXACTLY
+                    )
+                )
+                v.layout(
+                    v.x.toInt(), v.y.toInt(),
+                    v.x.toInt() + v.measuredWidth,
+                    v.y.toInt() + v.measuredHeight
+                )
+            } else {
+                v.measure(
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+                )
+                v.layout(0, 0, v.measuredWidth, v.measuredHeight)
+            }
+            val b = Bitmap.createBitmap(v.drawingCache, 0, 0, v.measuredWidth, v.measuredHeight)
+
+            v.isDrawingCacheEnabled = false
+            v.destroyDrawingCache()
+            return b
+        }
+
+        /**
+         * 保存bitmap到本地
+         *
+         * @param context
+         * @param mBitmap
+         * @return
+         */
+        private fun saveBitmap(codeDialog: CodeDialog, context: Context, mBitmap: Bitmap): String? {
+            var savePath: File?
+            var filePic: File?
+            if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+                savePath = context.externalCacheDir
+            } else {
+                savePath = context.obbDir
+            }
+            try {
+                filePic = File(savePath, codeDialog.generateFileName() + ".jpg")
+                if (!filePic.exists()) {
+                    filePic.parentFile.mkdirs()
+                    filePic.createNewFile()
+                }
+                var fos = FileOutputStream(filePic)
+                mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                fos.flush()
+                fos.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+                return null
+            } finally {
+            }
+            return filePic?.absolutePath
+        }
     }
 }

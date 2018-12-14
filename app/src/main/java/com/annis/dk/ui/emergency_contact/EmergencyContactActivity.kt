@@ -7,12 +7,27 @@ import android.provider.ContactsContract
 import android.widget.Toast
 import com.annis.baselib.base.base.BaseActivity
 import com.annis.baselib.base.base.TitleBean
+import com.annis.baselib.base.mvp.BaseView
+import com.annis.baselib.base.mvp.MVPActivty
+import com.annis.baselib.base.mvp.MvpPresenter
+import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
+import com.annis.dk.base.DKPresenter
 import com.annis.dk.utils.ExcelUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
+import kotlinx.android.synthetic.main.activity_emergency_contact.*
 import java.io.File
 
-class EmergencyContactActivity : BaseActivity() {
+class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), EmergencyContactView {
+    override fun upSuccess() {
+        showToast("上传成功")
+        finish()
+    }
+
+    override fun getPersenter(): EmergencyContactPresenter {
+        return EmergencyContactPresenter(this)
+    }
+
     override fun getMyTitle(): TitleBean {
         return TitleBean("紧急联系人").setBack(true)
     }
@@ -24,7 +39,19 @@ class EmergencyContactActivity : BaseActivity() {
 
     var account: String? = null
     override fun initViewAndListener() {
+        account = intent.getStringExtra("account")
+        click()
         checkPermision()
+    }
+
+    fun click() {
+        act_bt_change.setOnClickListener {
+            persenter.uploadEmergencyConyact(
+                contact_1_name.text.toString(), contact_1_relation.text.toString(), contact_1_mobel.text.toString(),
+                contact_2_name.text.toString(), contact_2_relation.text.toString(), contact_2_mobel.text.toString(),
+                contact_3_name.text.toString(), contact_3_relation.text.toString(), contact_3_mobel.text.toString()
+            )
+        }
     }
 
     private fun checkPermision() {
@@ -36,7 +63,7 @@ class EmergencyContactActivity : BaseActivity() {
         if (granted) {
             readContacts()
         } else {
-            permissions.requestEach(Manifest.permission.READ_CONTACTS)
+            val subscribe = permissions.requestEach(Manifest.permission.READ_CONTACTS)
                 .subscribe {
                     if (it.granted) {
                         readContacts()
@@ -66,10 +93,9 @@ class EmergencyContactActivity : BaseActivity() {
                         cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                     list.add(displayName + DIVISION + number)
                 }
-                saveToExcle(externalCacheDir, account ?: "", list)
-//                list.size
-                //notify公布
-//                adapter.notifyDataSetChanged()
+                //保存文件
+                var filePath = saveToExcle(externalCacheDir, account ?: "contact", list)
+                getPersenter().uploadContacts(list)
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -81,7 +107,7 @@ class EmergencyContactActivity : BaseActivity() {
     }
 
     val DIVISION = "ec-ec"
-    fun saveToExcle(dir: File, name: String, list: ArrayList<String>) {
+    fun saveToExcle(dir: File, name: String, list: ArrayList<String>): String {
         //文件夹是否已经存在
         if (!dir.exists()) {
             dir.mkdirs()
@@ -95,5 +121,6 @@ class EmergencyContactActivity : BaseActivity() {
                 return arrayListOf(t!!.split(DIVISION)[0], t!!.split(DIVISION)[1])
             }
         })
+        return fileName.absolutePath
     }
 }

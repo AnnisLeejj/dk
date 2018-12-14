@@ -68,16 +68,15 @@ class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
     /**
      * 显示二维码
      */
-    override fun showCode() {
-        var codeDialog = CodeDialog(this)
-
-        codeDialog.show()
+    override fun showCode(url: String) {
+        var codeDialog = CodeDialog()
+        codeDialog.setUrl(url)
+        codeDialog.show(supportFragmentManager, "code")
     }
-
 
     fun call(tel: String) {
         var permission = RxPermissions(this)
-        permission.requestEach(Manifest.permission.CALL_PHONE).subscribe { r ->
+        val subscribe = permission.requestEach(Manifest.permission.CALL_PHONE).subscribe { r ->
             if (r.granted) {
                 callOut(tel)
             } else if (r.shouldShowRequestPermissionRationale) {
@@ -91,7 +90,6 @@ class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
                     }.show()
             }
         }
-
     }
 
     fun callOut(tel: String) {

@@ -49,6 +49,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/text_color_gray"
                     android:textSize="@dimen/bt_text_size"
+                    android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@+id/item_img_1_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -102,6 +103,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/text_color_gray"
                     android:textSize="@dimen/bt_text_size"
+                    android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@+id/item_img_2_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -151,6 +153,7 @@
             <TextView
                     android:id="@+id/item_tv_3_status"
                     android:text="未认证"
+                    android:layout_marginRight="10dp"
                     android:layout_centerVertical="true"
                     android:textColor="@color/text_color_gray"
                     android:textSize="@dimen/bt_text_size"
@@ -206,6 +209,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/text_color_gray"
                     android:textSize="@dimen/bt_text_size"
+                    android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@+id/item_img_4_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -242,6 +246,7 @@
             android:layout_height="@dimen/button_h"/>
     
     <RelativeLayout
+            android:id="@+id/frag_renzheng_rlPactContainer"
             android:layout_width="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="52dp"

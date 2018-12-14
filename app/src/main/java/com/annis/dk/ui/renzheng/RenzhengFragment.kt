@@ -2,6 +2,7 @@ package com.annis.dk.ui.renzheng
 
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import com.annis.baselib.base.mvp.MVPFragment
 import com.annis.dk.R
 import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
@@ -23,37 +24,92 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
     }
 
     override fun initView(view: View?) {
-        click()
+        frag_renzheng_rlPactContainer.visibility = View.GONE
     }
 
     override fun initData() {
 
+        /*******个性化********/
+        initAuth(false, false, false, false)
     }
 
-    fun click() {
-        renzheng_id.setOnClickListener {
-            //身份证
-            startActivity(AuthIdcardActivity::class.java)
+    fun initAuth(havID: Boolean, havOperator: Boolean, havAlipay: Boolean, havBank: Boolean) {
+        if (havID) {
+            item_tv_1_status.text = "已认证"
+            item_tv_1_status.setTextColor(resources.getColor(R.color.colorPrimary))
+            item_img_1_status.setImageResource(R.drawable.renzheng_icon)
+        } else {
+            renzheng_id.setOnClickListener {
+                //身份证
+                startActivity(AuthIdcardActivity::class.java)
+            }
         }
-        renzheng_operator.setOnClickListener {
-            //运营商
-            startActivity(AuthoperatorActivity::class.java)
+        if (havOperator) {
+            item_tv_2_status.text = "已认证"
+            item_tv_2_status.setTextColor(resources.getColor(R.color.colorPrimary))
+            item_img_2_status.setImageResource(R.drawable.renzheng_icon)
+        } else {
+            renzheng_operator.setOnClickListener {
+                //运营商
+                startActivity(AuthoperatorActivity::class.java)
+            }
         }
-        renzheng_alipay.setOnClickListener {
-            //支付宝
-            startActivity(AuthAlipayActivity::class.java)
+        if (havAlipay) {
+            item_tv_3_status.text = "已认证"
+            item_tv_3_status.setTextColor(resources.getColor(R.color.colorPrimary))
+            item_img_3_status.setImageResource(R.drawable.renzheng_icon)
+        } else {
+            renzheng_alipay.setOnClickListener {
+                //支付宝
+                startActivity(AuthAlipayActivity::class.java)
+            }
         }
-        renzheng_bank.setOnClickListener {
-            //银行
-            startActivity(AuthBankActivity::class.java)
+        if (havBank) {
+            item_tv_4_status.text = "已认证"
+            item_tv_4_status.setTextColor(resources.getColor(R.color.colorPrimary))
+            item_img_4_status.setImageResource(R.drawable.renzheng_icon)
+        } else {
+            renzheng_bank.setOnClickListener {
+                //银行
+                startActivity(AuthBankActivity::class.java)
+            }
         }
+        //全部都有了可以显示了
+        if (havID && havOperator && havAlipay && havBank) {
+            act_bt_login.isEnabled = true
+            showPact()
+            act_bt_login.setOnClickListener {
+                //提交贷款申请
+
+            }
+        } else {
+            act_bt_login.isEnabled = false
+        }
+    }
+
+    /**
+     * 显示协议勾选
+     */
+    fun showPact() {
+
+        frag_renzheng_rlPactContainer.visibility = View.VISIBLE
+        //协议同意
         renzheng_operator_agree.setOnClickListener {
-            //协议同意
+            (it as CheckBox).isChecked.let {
+                when (it) {
+                    true -> {
+                        act_bt_login.isEnabled = true
+                        act_bt_login.setBackgroundResource(R.drawable.sp_bt_bg_primary_c)
+                    }
+                    false -> {
+                        act_bt_login.isEnabled = false
+                        act_bt_login.setBackgroundResource(R.drawable.sp_bt_bg_gray_c)
+                    }
+                }
+            }
         }
     }
 
-
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -66,7 +122,6 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
     }
 
     companion object {
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             RenzhengFragment().apply {
