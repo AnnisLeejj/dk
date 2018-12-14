@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import com.annis.baselib.utils.LogUtils;
 import com.annis.baselib.utils.utils_haoma.Utils;
+import com.luck.picture.lib.PictureSelectorActivity;
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.external.ExternalAdaptInfo;
@@ -81,7 +82,7 @@ public class APP extends Application {
         /**
          * {@link ExternalAdaptManager} 是一个管理外部三方库的适配信息和状态的管理类, 详细介绍请看 {@link ExternalAdaptManager} 的类注释
          */
-     //   AutoSizeConfig.getInstance().getExternalAdaptManager()
+        AutoSizeConfig.getInstance().getExternalAdaptManager()
 
                 //加入的 Activity 将会放弃屏幕适配, 一般用于三方库的 Activity, 详情请看方法注释
                 //如果不想放弃三方库页面的适配, 请用 addExternalAdaptInfoOfActivity 方法, 建议对三方库页面进行适配, 让自己的 App 更完美一点
@@ -96,6 +97,6 @@ public class APP extends Application {
                 //即使在不改三方库源码的情况下也可以完美适配三方库的页面, 这就是 AndroidAutoSize 的优势
                 //但前提是三方库页面的布局使用的是 dp 和 sp, 如果布局全部使用的 px, 那 AndroidAutoSize 也将无能为力
                 //经过测试 DefaultErrorActivity 的设计图宽度在 380dp - 400dp 显示效果都是比较舒服的
-               // .addExternalAdaptInfoOfActivity(DefaultErrorActivity.class, new ExternalAdaptInfo(true, 400));
+                .addExternalAdaptInfoOfActivity(PictureSelectorActivity.class, new ExternalAdaptInfo(true, 400));
     }
 }

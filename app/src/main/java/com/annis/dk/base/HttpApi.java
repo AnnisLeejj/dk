@@ -3,10 +3,7 @@ package com.annis.dk.base;
 import com.annis.dk.bean.*;
 import io.reactivex.Flowable;
 import okhttp3.MultipartBody;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 /**
  * @author Lee
@@ -223,6 +220,10 @@ public interface HttpApi {
      * @param file
      * @return
      */
+    @Multipart
     @POST("/UpLoadFiles.aspx")
     Flowable<ImgResponse> uploadFile(@Part MultipartBody.Part file);
+
+
+
 }

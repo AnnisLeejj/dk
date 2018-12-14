@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import androidx.loader.content.CursorLoader;
+import com.annis.baselib.BuildConfig;
 import com.annis.baselib.utils.utils_haoma.FileUtils;
 import com.annis.baselib.utils.utils_haoma.Utils;
 
@@ -23,7 +24,7 @@ import static com.annis.baselib.utils.utils_haoma.SDCardUtils.getSDCardPath;
 
 public class FileUtilsExt extends FileUtils {
 
-    private static final String BASE_PATH = "/com.cmct.pile.app";// 项目跟目录
+    private static final String BASE_PATH = "/" + BuildConfig.APPLICATION_ID;// 项目跟目录
     private static final String TAKE_PHOTO = "/getphoto/";//拍照存放地址
 
     public static File getAppCachePath() {
