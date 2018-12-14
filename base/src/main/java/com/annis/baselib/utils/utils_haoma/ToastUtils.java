@@ -270,7 +270,7 @@ public class ToastUtils {
         if (isJumpWhenMore) cancelToast();
         if (sToast == null) {
             sToast = Toast.makeText(Utils.getContext(), text, duration);
-            ((TextView) ((LinearLayout) sToast.getView()).getChildAt(0)).setTextSize(22);
+            ((TextView) ((LinearLayout) sToast.getView()).getChildAt(0)).setTextSize(18);
         } else {
             sToast.setText(text);
             sToast.setDuration(duration);

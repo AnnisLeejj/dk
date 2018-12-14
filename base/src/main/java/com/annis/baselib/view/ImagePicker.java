@@ -26,7 +26,6 @@ import com.annis.baselib.view.model.ImageEntity;
 import com.bm.library.PhotoView;
 import com.google.android.material.snackbar.Snackbar;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-import com.werb.pickphotoview.PickPhotoView;
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
@@ -135,18 +134,7 @@ public class ImagePicker extends BaseFragment implements View.OnTouchListener {
 
     private void tokePhoto() {
         photoPath = FileUtilsExt.getPhotoPath() + TimeUtils.date2String(new Date(), "yyyyMMddHHmmss") + ".png";
-        new PickPhotoView.Builder(getActivity())
-                .setPickPhotoSize(1)                  // select image size
-                .setClickSelectable(true)             // click one image immediately close and return image
-                .setShowCamera(true)                  // is show camera
-                .setSpanCount(3)                      // span count
-                .setLightStatusBar(true)              // lightStatusBar used in Android M or higher
-                .setStatusBarColor(R.color.white)     // statusBar color
-                .setToolbarColor(R.color.white)       // toolbar color
-                .setToolbarTextColor(R.color.black)   // toolbar text color
-                // .setSelectIconColor(R.color.pink)     // select icon color
-                .setShowGif(false)                    // is show gif
-                .start();
+
     }
 
     /**

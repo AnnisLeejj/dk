@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
 
@@ -22,6 +22,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    androidExtensions {
+        experimental = true
     }
     productFlavors {
         //线上
@@ -70,6 +73,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    api 'com.android.support:recyclerview-v7:28.0.0'
+    api 'com.android.support:design:28.0.0'
+
     //Androidx
     //底部导航栏
     api 'com.google.android.material:material:1.0.0'
@@ -79,7 +86,7 @@ dependencies {
     api 'me.jessyan:autosize:1.1.0'
 //    api 'cat.ereza:customactivityoncrash:2.2.0'
     //rv
-    api 'androidx.recyclerview:recyclerview:1.0.0'
+//    api 'androidx.recyclerview:recyclerview:1.0.0'
     //NETWORK
     api "com.squareup.okhttp3:okhttp:3.11.0"
     api "com.squareup.okhttp3:logging-interceptor:3.11.0"
@@ -95,10 +102,11 @@ dependencies {
     api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5'
     //图片展示
     api "com.squareup.picasso:picasso:2.71828"
+    api 'com.github.bumptech.glide:glide:4.5.0'
     //图片预览
     api 'com.bm.photoview:library:1.4.1'
     //图片选择
-    api('com.werb.pickphotoview:pickphotoview:0.4.6', {
-        exclude group: 'com.google.code.gson'
-    })
+//    api('com.werb.pickphotoview:pickphotoview:0.4.6', {
+//        exclude group: 'com.google.code.gson'
+//    })
 }

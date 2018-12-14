@@ -9,7 +9,7 @@ class DkSPUtils {
         /**
          * key
          */
-        fun saveKey(key: String) {
+        fun saveKey(key: String?) {
             spUtils.putString("key", key)
         }
 
@@ -18,10 +18,21 @@ class DkSPUtils {
         }
 
         /**
+         * user json
+         */
+        fun saveUser(key: String?) {
+            spUtils.putString("user", key)
+        }
+
+        fun getUser(): String? {
+            return spUtils.getString("user")
+        }
+
+        /**
          * uid
          */
-        fun saveUID(key: String) {
-            spUtils.putString("uid", key)
+        fun saveUID(uid: String?) {
+            spUtils.putString("uid", uid)
         }
 
         fun getUID(): String {

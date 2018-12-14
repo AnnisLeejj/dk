@@ -9,6 +9,10 @@ import com.annis.dk.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
+    override fun loginSuccess() {
+        startActivity(MainActivity::class.java)
+        finish()
+    }
 
     override fun getMyTitle(): TitleBean? {
         return null
@@ -30,8 +34,7 @@ class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
     var timer: CountDownTimer? = null
     fun onClick() {
         act_bt_login.setOnClickListener {
-            startActivity(MainActivity::class.java)
-            finish()
+            persenter.login(act_et_tel.text.toString(), act_et_code.text.toString())
         }
 
         act_bt_getcode.setOnClickListener {

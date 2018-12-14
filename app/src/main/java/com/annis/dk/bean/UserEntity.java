@@ -15,7 +15,7 @@ public class UserEntity {
     isChecBankCard int 是否认证银行卡（0:未认证 1:已认证）
     userHead string 用户头像地址
     limit int 用户额度（分三档 1 2 3 默认1）*/
-    private int id;
+    private String id;
     private long phone;
     private int isChecIdentity;
     private int isChecOperator;
@@ -24,11 +24,11 @@ public class UserEntity {
     private String userHead;
     private int limit;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

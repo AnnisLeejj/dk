@@ -6,6 +6,7 @@ import android.view.View
 import com.annis.baselib.base.mvp.MVPFragment
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.dk.R
+import com.annis.dk.base.DKConstant
 import com.annis.dk.ui.ComstorServiceActivity
 import com.annis.dk.ui.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.login.LoginActivity
@@ -14,7 +15,6 @@ import com.annis.dk.ui.mine.mineLoans.MyLoansActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
 import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
-import com.annis.dk.utils.DkSPUtils
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 private const val ARG_PARAM1 = "param1"
@@ -70,8 +70,8 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
     var applyProgress = 2
     fun click() {
         act_bt_outlogin.setOnClickListener {
+            DKConstant.clear()
             startActivity(LoginActivity::class.java)
-            DkSPUtils.saveLogin(false)
             activity!!.finish()
         }
         rl_progress.setOnClickListener {
@@ -116,8 +116,8 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
         //帮助中心
         help_center.setOnClickListener {
             //这是紧急联系人
-            var intent = Intent(activity,EmergencyContactActivity::class.java)
-            intent.putExtra("account","15823680000")
+            var intent = Intent(activity, EmergencyContactActivity::class.java)
+            intent.putExtra("account", "15823680000")
             startActivity(intent)
         }
     }

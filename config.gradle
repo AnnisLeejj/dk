@@ -4,7 +4,7 @@ ext {
     android = [ //开发环境
                 applicationId    : "${applicationId}",
 
-                appName          : 'dk',
+                appName          : '容易借',
                 versionName      : '1.0.01',
                 versionCode      : 2,
 

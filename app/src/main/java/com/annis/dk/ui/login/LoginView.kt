@@ -8,4 +8,5 @@ import com.annis.baselib.base.mvp.BaseView
  * @Description
  */
 interface LoginView : BaseView {
+    fun loginSuccess()
 }
