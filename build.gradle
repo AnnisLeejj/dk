@@ -20,11 +20,18 @@ allprojects {
     repositories {
         //加入下面这句
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        google()
         jcenter()
+        maven { url 'https://jitpack.io' }
+        google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+//packagingOptions {
+//    exclude 'META-INF/rxjava.properties'
+//}
+

@@ -23,6 +23,7 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import com.annis.baselib.utils.DownloadUtil;
 import com.annis.baselib.utils.LogUtils;
+import com.annis.baselib.utils.utils_haoma.ToastUtils;
 
 import java.io.File;
 
@@ -43,7 +44,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     public abstract void initData();
 
     public void showToast(String msg) {
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShortToast(msg);
     }
 
     public void startActivity(Class clazz) {

@@ -80,7 +80,6 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
             showPact()
             act_bt_login.setOnClickListener {
                 //提交贷款申请
-
             }
         } else {
             act_bt_login.isEnabled = false
