@@ -20,6 +20,17 @@ class DkSPUtils {
         /**
          * user json
          */
+        fun saveWebsite(key: String?) {
+            spUtils.putString("website", key)
+        }
+
+        fun getWebsite(): String? {
+            return spUtils.getString("website")
+        }
+
+        /**
+         * user json
+         */
         fun saveUser(key: String?) {
             spUtils.putString("user", key)
         }

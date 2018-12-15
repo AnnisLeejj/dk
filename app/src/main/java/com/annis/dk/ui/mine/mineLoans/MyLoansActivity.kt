@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_my_loans.*
 
 class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
 
-    override fun getPersenter(): MyLoansPresenter {
+    override fun getPresenter(): MyLoansPresenter {
         return MyLoansPresenter(this)
     }
 
@@ -43,7 +43,7 @@ class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
     fun click() {
         act_bt_pay.setOnClickListener {
             //支付
-            persenter.getCode()
+            presenter.getCode()
         }
 
         act_bt_call.setOnClickListener {

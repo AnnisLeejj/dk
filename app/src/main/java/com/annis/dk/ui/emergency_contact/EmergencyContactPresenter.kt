@@ -60,7 +60,7 @@ class EmergencyContactPresenter(view: EmergencyContactView?) : DKPresenter<Emerg
         }
 
         addSubscribe(
-            httpApi!!.saveOperator(
+            getHttpApi()!!.saveOperator(
                 DkSPUtils.getUID(), DkSPUtils.getKey(),
                 toString, toString1, toString2,
                 toString3, toString4, toString5,

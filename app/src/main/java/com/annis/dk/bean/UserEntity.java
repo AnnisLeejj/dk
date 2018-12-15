@@ -7,22 +7,32 @@ package com.annis.dk.bean;
  */
 public class UserEntity {
 
-/*    /id int 用户编号 (返回ID为0时新增数据失败)
-    phone string 账号
-    isChecIdentity int 是否认证身份证（0:未认证 1:已认证）
-    isChecOperator int 是否认证运营商(固定为1)
-    isChecAlipay int 是否认证支付宝（0:未认证 1:已认证）
-    isChecBankCard int 是否认证银行卡（0:未认证 1:已认证）
-    userHead string 用户头像地址
-    limit int 用户额度（分三档 1 2 3 默认1）*/
+    /*  id int 用户编号 (返回ID为0时新增数据失败)
+        phone string 账号
+        isChecIdentity int 是否认证身份证（0:未认证 1:已认证）
+        isChecOperator int 是否认证运营商(固定为1)
+        isChecAlipay int 是否认证支付宝（0:未认证 1:已认证）
+        isChecBankCard int 是否认证银行卡（0:未认证 1:已认证）
+        userHead string 用户头像地址
+        limit int 用户额度（分三档 1 2 3 默认1）*/
     private String id;
-    private long phone;
+    private String phone;
     private int isChecIdentity;
     private int isChecOperator;
     private int isChecAlipay;
     private int isChecBankCard;
     private String userHead;
     private int limit;
+
+
+    /**
+     * 已经全部认证
+     *
+     * @return
+     */
+    public boolean authAll() {
+        return isChecIdentity == 1 && isChecOperator == 1 && isChecAlipay == 1 && isChecBankCard == 1;
+    }
 
     public String getId() {
         return id;
@@ -32,11 +42,11 @@ public class UserEntity {
         this.id = id;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -87,4 +97,6 @@ public class UserEntity {
     public void setLimit(int limit) {
         this.limit = limit;
     }
+
+
 }

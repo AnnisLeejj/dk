@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.CheckBox
 import com.annis.baselib.base.mvp.MVPFragment
 import com.annis.dk.R
+import com.annis.dk.base.DKConstant
+import com.annis.dk.bean.UserEntity
 import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
@@ -27,10 +29,13 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
         frag_renzheng_rlPactContainer.visibility = View.GONE
     }
 
+    var userEntity: UserEntity? = null
     override fun initData() {
-
+        userEntity = DKConstant.getUserEntity()
         /*******个性化********/
-        initAuth(false, false, false, false)
+        userEntity?.let {
+            initAuth(it.isChecIdentity == 1, it.isChecOperator == 1, it.isChecAlipay == 1, it.isChecBankCard == 1)
+        }
     }
 
     fun initAuth(havID: Boolean, havOperator: Boolean, havAlipay: Boolean, havBank: Boolean) {

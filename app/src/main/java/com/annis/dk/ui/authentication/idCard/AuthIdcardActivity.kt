@@ -21,7 +21,32 @@ import java.io.File
 
 
 class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
-    override fun getPersenter(): AuthenPresenter {
+    override fun uploadSuccess() {
+        showToast("提交成功")
+        finish()
+    }
+
+    /**
+     * 文件上传成功后保存的地址
+     */
+    var netImg1: String? = null
+    var netImg2: String? = null
+    var netImg3: String? = null
+    override fun fileUploadSuccess(img: String?, currentImg: Int) {
+        when (currentImg) {
+            1 -> {
+                netImg1 = img
+            }
+            2 -> {
+                netImg2 = img
+            }
+            3 -> {
+                netImg3 = img
+            }
+        }
+    }
+
+    override fun getPresenter(): AuthenPresenter {
         return AuthenPresenter(this)
     }
 
@@ -50,37 +75,32 @@ class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
             openPicker(3)
         }
         act_bt_login.setOnClickListener {
-            photoPath1 ?: let {
+            localImg1 ?: let {
                 showToast("请添加身份证人像面")
                 return@setOnClickListener
             }
-            photoPath2 ?: let {
+            localImg2 ?: let {
                 showToast("请添加身份证国徽面")
-//                return@setOnClickListener
-            }
-            photoPath3 ?: let {
-                showToast("请添加手持身份证照片")
-//                return@setOnClickListener
-            }
-            var file1 = File(photoPath1)
-//            var file2 = File(photoPath2)
-//            var file3 = File(photoPath3)
-
-            if (!file1.exists()) {
-                showToast("请添加身份证人像面")
                 return@setOnClickListener
             }
-//            if (!file2.exists()) {
-//                showToast("请添加身份证国徽面")
-//                return@setOnClickListener
-//            }
-//            if (!file3.exists()) {
-//                showToast("请添加手持身份证照片")
-//                return@setOnClickListener
-//            }
-//            persenter.loadIdcard(file1, file2, file3)
-            persenter.loadIdcard(file1, file1, file1)
+            localImg3 ?: let {
+                showToast("请添加手持身份证照片")
+                return@setOnClickListener
+            }
 
+            netImg1 ?: let {
+                showToast("正在上传身份证人像面")
+                return@setOnClickListener
+            }
+            netImg2 ?: let {
+                showToast("正在上传身份证国徽面")
+                return@setOnClickListener
+            }
+            netImg3 ?: let {
+                showToast("正在上传手持身份证照片")
+                return@setOnClickListener
+            }
+            presenter.loadIdcard(netImg1!!, netImg2!!, netImg3!!)
         }
     }
 
@@ -149,7 +169,7 @@ class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
             .videoMinSecond(10)// 显示多少秒以内的视频or音频也可适用 int
             .recordVideoSecond(60)//视频秒数录制 默认60s int
             .isDragFrame(false)// 是否可拖动裁剪框(固定)
-            .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
+            .forResult(PictureConfig.CHOOSE_REQUEST)//结果回调onActivityResult code
     }
 
     /**
@@ -157,7 +177,7 @@ class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
      *
      * @param data
      */
-    protected override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
@@ -180,22 +200,25 @@ class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
     }
 
 
-    var photoPath1: String? = null
-    var photoPath2: String? = null
-    var photoPath3: String? = null
+    var localImg1: String? = null
+    var localImg2: String? = null
+    var localImg3: String? = null
     fun showImg(path: String) {
         when (currentImg) {
             1 -> {
-                photoPath1 = path
-                PicassoUtil.loadBigImage(this@AuthIdcardActivity, photoPath1, idcard_1_img)
+                localImg1 = path
+                PicassoUtil.loadBigImage(this@AuthIdcardActivity, localImg1, idcard_1_img)
+                presenter.loadFile(File(localImg1), 1)
             }
             2 -> {
-                photoPath2 = path
-                PicassoUtil.loadBigImage(this@AuthIdcardActivity, photoPath2, idcard_2_img)
+                localImg2 = path
+                PicassoUtil.loadBigImage(this@AuthIdcardActivity, localImg2, idcard_2_img)
+                presenter.loadFile(File(localImg2), 2)
             }
             3 -> {
-                photoPath3 = path
-                PicassoUtil.loadBigImage(this@AuthIdcardActivity, photoPath3, idcard_3_img)
+                localImg3 = path
+                PicassoUtil.loadBigImage(this@AuthIdcardActivity, localImg3, idcard_3_img)
+                presenter.loadFile(File(localImg3), 3)
             }
         }
     }

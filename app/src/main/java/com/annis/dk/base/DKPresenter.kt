@@ -26,9 +26,18 @@ open class DKPresenter<V : BaseView?>(view: V?) : MvpPresenter<V>(view) {
         addSubscribe(getHttpApi()?.key?.compose(RxUtil.rxSchedulerHelper())?.subscribe {
             it.key.let { it ->
                 DkSPUtils.saveKey(it)
+                getWebsite(it)
             }
         })
     }
 
-
+    fun getWebsite(key: String) {
+        addSubscribe(
+            getHttpApi()!!.getWebsite(key).compose(RxUtil.rxSchedulerHelper()).subscribe { r ->
+                r?.let {
+                    DKConstant.saveWebsite(it)
+                }
+            }
+        )
+    }
 }

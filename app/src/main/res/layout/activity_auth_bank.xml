@@ -30,6 +30,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
+                    android:id="@+id/act_auth_bank_etName"
                     android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"
@@ -40,7 +41,6 @@
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:layout_height="match_parent"/>
-        
         </RelativeLayout>
         
         <View
@@ -65,6 +65,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
+                    android:id="@+id/act_auth_bank_etID"
                     android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"
@@ -100,6 +101,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
+                    android:id="@+id/act_auth_bank_etCard"
                     android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"
@@ -135,6 +137,7 @@
                     android:layout_height="wrap_content"/>
             
             <EditText
+                    android:id="@+id/act_auth_bank_etMobel"
                     android:layout_width="250dp"
                     android:background="@null"
                     android:layout_centerVertical="true"

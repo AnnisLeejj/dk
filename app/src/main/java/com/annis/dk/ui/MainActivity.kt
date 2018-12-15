@@ -16,7 +16,7 @@ class MainActivity : MVPActivty<MvpPresenter<BaseView>>(), BaseView {
         return null
     }
 
-    override fun getPersenter(): MvpPresenter<BaseView> {
+    override fun getPresenter(): MvpPresenter<BaseView> {
         return MvpPresenter(this)
     }
 

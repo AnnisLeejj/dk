@@ -18,7 +18,7 @@ class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
         return null
     }
 
-    override fun getPersenter(): LoginPresenter {
+    override fun getPresenter(): LoginPresenter {
         return LoginPresenter(this)
     }
 
@@ -34,7 +34,7 @@ class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
     var timer: CountDownTimer? = null
     fun onClick() {
         act_bt_login.setOnClickListener {
-            persenter.login(act_et_tel.text.toString(), act_et_code.text.toString())
+            presenter.login(act_et_tel.text.toString(), act_et_code.text.toString())
         }
 
         act_bt_getcode.setOnClickListener {
@@ -52,7 +52,6 @@ class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
                     act_bt_getcode.setBackgroundResource(R.drawable.sp_bt_get_code)
                     act_bt_getcode.setTextColor(resources.getColor(R.color.colorPrimary))
                     act_bt_getcode.text = "发送验证码"
-
                 }
             }.start()
         }

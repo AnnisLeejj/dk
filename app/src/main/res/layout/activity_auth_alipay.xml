@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:background="@null"
             android:paddingLeft="@dimen/margin_window"
-            android:hint="请输入服务密码"
+            android:hint="支付宝密码"
             android:textSize="@dimen/et_text_size"
             android:maxLength="16"
             android:layout_height="@dimen/item_layout_h"/>
@@ -51,6 +51,7 @@
     
     <TextView
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
             android:text="上传截图"
             android:textSize="@dimen/bt_text_size"
@@ -67,16 +68,17 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:src="@drawable/upload_button"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="152dp"
-            android:layout_height="152dp"/>
-    
+            android:layout_width="255dp"
+            android:layout_height="182dp"/>
+    <!--android:layout_width="152dp"-->
+    <!--android:layout_height="152dp"-->
     <TextView
             android:id="@+id/auth_alipay_img_hint"
             android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:text="上传芝麻信用页面截图"
-            android:textSize="@dimen/bt_hinttext_size"
+            android:textSize="@dimen/bt_text_size"
             app:layout_constraintTop_toBottomOf="@+id/auth_alipay_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -87,8 +89,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/auth_alipay_img_hint"
-            android:layout_width="381dp"
-            android:layout_height="274dp"/>
+            android:layout_width="346dp"
+            android:layout_height="249dp"/>
     <!--卡片实际大小-->
     <!--android:layout_width="381dp"-->
     <!--android:layout_height="250dp"/-->

@@ -3,10 +3,13 @@ package com.annis.dk.ui.mine
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.annis.baselib.BuildConfig
 import com.annis.baselib.base.mvp.MVPFragment
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
+import com.annis.dk.bean.UserEntity
+import com.annis.dk.bean.WebSite
 import com.annis.dk.ui.ComstorServiceActivity
 import com.annis.dk.ui.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.login.LoginActivity
@@ -31,17 +34,40 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
     }
 
     override fun initView(view: View?) {
-        var url = URL
-        var count = "158232681500"
-        //account
-        frag_mine_count.text = count
-        //加载头像
-        PicassoUtil.loadImageCircle(activity, url, R.drawable.touxiang, frag_mine_header)
         click()
-
     }
 
+    /**
+     * 根据数据初始化界面
+     */
+    var userEntity: UserEntity? = null
+    var webSite: WebSite? = null
+
     override fun initData() {
+        userEntity = DKConstant.getUserEntity()
+        webSite = DKConstant.getWebsite()
+        
+        userEntity?.let {
+            //account
+            frag_mine_count.text = it.phone
+            //加载头像
+            it.userHead?.let { it ->
+                PicassoUtil.loadImageCircle(
+                    activity,
+                    BuildConfig.IP + it,
+                    R.drawable.touxiang,
+                    frag_mine_header
+                )
+            }
+            //认证状态
+            if (it.authAll()) {
+                mine_auth_status.text = "已认证"
+                mine_auth_status.setBackgroundResource(R.drawable.sp_bt_bg_green)
+            } else {
+                mine_auth_status.text = "未认证"
+                mine_auth_status.setBackgroundResource(R.drawable.sp_bt_bg_gray_c)
+            }
+        }
     }
 
     private var param1: String? = null
@@ -55,8 +81,8 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
         }
     }
 
+
     companion object {
-        const val URL = "http://img1.touxiang.cn/uploads/20130820/20-024619_267.jpg"
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             MineFragment().apply {
@@ -87,8 +113,10 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
                     intent.putExtra("edu", "50000")//额度
                     intent.putExtra("fuwufei", "会员服务费:55元")//服务费
                     intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
-                    intent.putExtra("weixin", "castle0905")//微信号
-                    intent.putExtra("phone", "15600001111")//手机号
+                    webSite?.let {
+                        intent.putExtra("weixin", it.csWeChat)//微信号
+                        intent.putExtra("phone", it.csTelephone)//手机号
+                    }
                     startActivity(intent)
                 }
             }
@@ -98,15 +126,19 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
             var intent = Intent(activity, MyLoansActivity::class.java)
             intent.putExtra("edu", "50000")//额度
             intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
-            intent.putExtra("weixin", "castle0905")//微信号
-            intent.putExtra("phone", "15600001111")//手机号
+            webSite?.let {
+                intent.putExtra("weixin", it.csWeChat)//微信号
+                intent.putExtra("phone", it.csTelephone)//手机号
+            }
             startActivity(intent)
         }
         //客服
         kefu.setOnClickListener {
             var intent = Intent(activity, ComstorServiceActivity::class.java)
-            intent.putExtra("weixin", "castle0905")//微信号
-            intent.putExtra("phone", "15600001111")//手机号
+            webSite?.let {
+                intent.putExtra("weixin", it.csWeChat)//微信号
+                intent.putExtra("phone", it.csTelephone)//手机号
+            }
             startActivity(intent)
         }
         //银行卡管理

@@ -10,7 +10,7 @@ import com.annis.dk.ui.login.LoginActivity
 import com.annis.dk.utils.DkSPUtils
 
 class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
-    override fun getPersenter(): WelcomePresenter {
+    override fun getPresenter(): WelcomePresenter {
         return WelcomePresenter(this)
     }
 
@@ -25,7 +25,7 @@ class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
     }
 
     override fun initViewAndListener() {
-        persenter.getKey()
+        presenter.getKey()
         var time = when (BuildConfig.DEBUG) {
             true -> 500L
             false -> 2500L

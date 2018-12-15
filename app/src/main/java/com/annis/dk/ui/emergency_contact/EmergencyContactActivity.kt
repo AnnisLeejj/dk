@@ -5,14 +5,9 @@ import android.database.Cursor
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.Toast
-import com.annis.baselib.base.base.BaseActivity
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.BaseView
 import com.annis.baselib.base.mvp.MVPActivty
-import com.annis.baselib.base.mvp.MvpPresenter
-import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
-import com.annis.dk.base.DKPresenter
 import com.annis.dk.utils.ExcelUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_emergency_contact.*
@@ -24,7 +19,7 @@ class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), Emerge
         finish()
     }
 
-    override fun getPersenter(): EmergencyContactPresenter {
+    override fun getPresenter(): EmergencyContactPresenter {
         return EmergencyContactPresenter(this)
     }
 
@@ -46,7 +41,7 @@ class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), Emerge
 
     fun click() {
         act_bt_change.setOnClickListener {
-            persenter.uploadEmergencyConyact(
+            presenter.uploadEmergencyConyact(
                 contact_1_name.text.toString(), contact_1_relation.text.toString(), contact_1_mobel.text.toString(),
                 contact_2_name.text.toString(), contact_2_relation.text.toString(), contact_2_mobel.text.toString(),
                 contact_3_name.text.toString(), contact_3_relation.text.toString(), contact_3_mobel.text.toString()
@@ -95,7 +90,7 @@ class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), Emerge
                 }
                 //保存文件
                 var filePath = saveToExcle(externalCacheDir, account ?: "contact", list)
-                getPersenter().uploadContacts(list)
+                getPresenter().uploadContacts(list)
             }
         } catch (e: Exception) {
             e.printStackTrace()

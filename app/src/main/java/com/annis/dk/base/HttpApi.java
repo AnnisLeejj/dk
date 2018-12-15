@@ -45,6 +45,17 @@ public interface HttpApi {
     Flowable<KeyEntity> getKey();
 
     /**
+     * 12.读取网站信息
+     * 接口功能：读取网站信息
+     *
+     * @param key
+     * @return
+     */
+    @GET("/API.asmx/GetWebsite")
+    Flowable<WebSite> getWebsite(@Query("key") String key);
+
+
+    /**
      * 用户登录接口
      * 接口功能：取得登录用户基础信息
      *
@@ -78,8 +89,8 @@ public interface HttpApi {
      * @return
      */
     @GET("/API.asmx/SaveIDCard")
-    Flowable<IsSave> saveIDCard(@Query("uid") String uid, @Query("positive") String positive
-            , @Query("back") String back, @Query("hold") String hold, @Query("key") String key);
+    Flowable<IsSave> saveIDCard(@Query("uid") String uid, @Query("key") String key,
+                                @Query("positive") String positive, @Query("back") String back, @Query("hold") String hold);
 
     /**
      * 4.读取运营商认证信息
@@ -197,16 +208,6 @@ public interface HttpApi {
     Flowable<IsSave> saveLoan(@Query("uid") String uid, @Query("key") String key);
 
     /**
-     * 12.读取网站信息
-     * 接口功能：读取网站信息
-     *
-     * @param key
-     * @return
-     */
-    @GET("/API.asmx/GetWebsite")
-    Flowable<WebSite> GetWebsite(@Query("key") String key);
-
-    /**
      * 图片上传
      * 说明：
      * 提交方式我不知道java怎么写我这边做的测试是用winform做的。
@@ -223,7 +224,4 @@ public interface HttpApi {
     @Multipart
     @POST("/UpLoadFiles.aspx")
     Flowable<ImgResponse> uploadFile(@Part MultipartBody.Part file);
-
-
-
 }

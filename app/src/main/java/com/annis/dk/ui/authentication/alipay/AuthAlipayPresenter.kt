@@ -1,5 +1,6 @@
-package com.annis.dk.ui.authentication
+package com.annis.dk.ui.authentication.alipay
 
+import com.annis.baselib.base.mvp.BaseView
 import com.annis.baselib.base.rx.RxUtil
 import com.annis.dk.base.DKPresenter
 import com.annis.dk.utils.DkSPUtils
@@ -8,29 +9,43 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 
-class AuthenPresenter(view: AuthenView?) : DKPresenter<AuthenView>(view) {
+/**
+ * @author Lee
+ * @date 2018/12/15 16:46
+ * @Description
+ */
+interface AuthAlipayView : BaseView {
     /**
-     * 上传身份证
+     * 文件上传成功
      */
-    fun loadIdcard(file1: String, file2: String, file3: String) {
+    fun fileUploadSuccess(img: String?)
+
+    /**
+     * 提交成功
+     */
+    fun uploadAuthSuccess()
+}
+
+class AuthAlipayPresenter(view: AuthAlipayView?) : DKPresenter<AuthAlipayView>(view) {
+
+    fun uploadAuth(account: String, psw: String, img: String) {
         addSubscribe(
-            getHttpApi()!!.saveIDCard(DkSPUtils.getUID(), DkSPUtils.getKey(), file1, file2, file3).compose(
-                RxUtil.rxSchedulerHelper()
-            ).subscribe({
-                it.isSave.let { it ->
-                    if (it == 0) {
-                        view.uploadSuccess()
+            getHttpApi()!!.saveAlipay(
+                DkSPUtils.getUID(), DkSPUtils.getKey(), account, psw, img
+            )
+                .compose(RxUtil.rxSchedulerHelper()).subscribe({ r ->
+                    if (r.isSave == 0) {
+                        view.uploadAuthSuccess()
                     } else {
                         view.errorMsg("提交失败")
                     }
-                }
-            }, {
-                view.errorMsg("网络请求失败")
-            })
+                }, { e ->
+                    view.errorMsg("提交失败")
+                })
         )
     }
 
-    fun loadFile(file: File, currentImg: Int) {
+    fun loadFile(file: File) {
         val body = RequestBody.create(MediaType.parse("image/png"), file)
         val part = MultipartBody.Part.createFormData("file", file.name, body)
         addSubscribe(
@@ -38,7 +53,7 @@ class AuthenPresenter(view: AuthenView?) : DKPresenter<AuthenView>(view) {
                 .compose(RxUtil.rxSchedulerHelper())
                 .subscribe({ r ->
                     if (r.state == "200") {
-                        view.fileUploadSuccess(r.img, currentImg)
+                        view.fileUploadSuccess(r.img)
                     } else {
                         view.errorMsg("图片上传失败")
                     }
@@ -47,4 +62,5 @@ class AuthenPresenter(view: AuthenView?) : DKPresenter<AuthenView>(view) {
                 })
         )
     }
+
 }

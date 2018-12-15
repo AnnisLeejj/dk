@@ -10,6 +10,11 @@ public class WebSite {
     CSTelephone string 客服电话
     CSWeChat string 客服微信
     receiptAddress string 收款二维码地址
+
+
+    用户支付时根据额度选择的三种地址
+    额度在用户表里面的mlimit(1,2,3档)
+    服务费的二维码
     feeAddress1 string 费用支付二维码1地址
     feeAddress2 string 费用支付二维码2地址
     feeAddress3 string 费用支付二维码3地址
@@ -36,7 +41,7 @@ public class WebSite {
     private String feeAddress2;
     private String feeAddress3;
     private String website;
-    private int mykey;
+    private String mykey;
 
     public String getCSTelephone() {
         return CSTelephone;
@@ -94,11 +99,11 @@ public class WebSite {
         this.website = website;
     }
 
-    public int getMykey() {
+    public String getMykey() {
         return mykey;
     }
 
-    public void setMykey(int mykey) {
+    public void setMykey(String mykey) {
         this.mykey = mykey;
     }
 }

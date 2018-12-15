@@ -1,6 +1,7 @@
 package com.annis.dk.base
 
 import com.annis.dk.bean.UserEntity
+import com.annis.dk.bean.WebSite
 import com.annis.dk.utils.DkSPUtils
 import com.google.gson.Gson
 
@@ -26,6 +27,17 @@ class DKConstant {
             return Gson().fromJson(userJson, UserEntity::class.java)
         }
 
+        fun saveWebsite(webSite: WebSite) {
+            DkSPUtils.saveWebsite(Gson().toJson(webSite))
+        }
+
+        fun getWebsite(): WebSite {
+            var webSiteJson = DkSPUtils.getWebsite()
+            webSiteJson ?: let {
+                return@let null
+            }
+            return Gson().fromJson(webSiteJson, WebSite::class.java)
+        }
 
     }
 }

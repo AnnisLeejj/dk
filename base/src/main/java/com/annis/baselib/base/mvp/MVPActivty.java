@@ -8,21 +8,21 @@ import com.annis.baselib.base.base.AutoSizeActvitiy;
 import com.annis.baselib.utils.LogUtils;
 
 public abstract class MVPActivty<P extends BasePersenter> extends AutoSizeActvitiy implements BaseView {
-    public P persenter;
+    public P presenter;
 
-    public abstract P getPersenter();
+    public abstract P getPresenter();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        persenter = getPersenter();
-        LogUtils.w("persenter", persenter == null ? "persenter null" : persenter.toString());
+        presenter = getPresenter();
+        LogUtils.w("presenter", presenter == null ? "presenter null" : presenter.toString());
     }
 
     @Override
     protected void onDestroy() {
         dismissWaitting();
-        persenter.detach();
+        presenter.detach();
         super.onDestroy();
     }
 
@@ -72,7 +72,7 @@ public abstract class MVPActivty<P extends BasePersenter> extends AutoSizeActvit
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setMessage(msg);
             progressDialog.setCancelable(true);//false不能取消显示，true可以取消显示
-            progressDialog.setOnDismissListener(dialog -> persenter.unSubscribe());
+            progressDialog.setOnDismissListener(dialog -> presenter.unSubscribe());
         }
         if (progressDialog.isShowing()) return;
         progressDialog.show();

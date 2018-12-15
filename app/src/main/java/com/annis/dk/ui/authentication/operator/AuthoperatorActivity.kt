@@ -3,12 +3,16 @@ package com.annis.dk.ui.authentication.operator
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.CheckBox
-import com.annis.baselib.base.base.BaseActivity
 import com.annis.baselib.base.base.TitleBean
+import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
 import kotlinx.android.synthetic.main.activity_authoperator.*
 
-class AuthoperatorActivity : BaseActivity() {
+class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorView {
+    override fun getPresenter(): AuthoperatorPresenter {
+        return AuthoperatorPresenter(this)
+    }
+
     override fun getMyTitle(): TitleBean {
         return TitleBean("手机认证").setBack(true)
     }
@@ -19,24 +23,20 @@ class AuthoperatorActivity : BaseActivity() {
     }
 
     override fun initViewAndListener() {
-        act_bt_login.isEnabled = false
         click()
     }
 
     var timer: CountDownTimer? = null
     fun click() {
+        act_bt_login.setOnClickListener {
+            act_et_tel.text.toString()
+            act_et_tel_psw.text.toString()
+            act_et_code.text.toString()
+
+        }
 
         renzheng_operator_agree.setOnClickListener {
-            (it as CheckBox).isChecked.let { it ->
-                act_bt_login.isEnabled = it
-                act_bt_login.setBackgroundResource(
-                    when (it) {
-                        true -> R.drawable.sp_bt_bg_primary_c
-                        false -> R.drawable.sp_bt_bg_gray_c
-                    }
-                )
-            }
-
+            setAgree((it as CheckBox).isChecked)
         }
 
         act_bt_getcode.setOnClickListener {
@@ -58,6 +58,16 @@ class AuthoperatorActivity : BaseActivity() {
                 }
             }.start()
         }
+    }
+
+    fun setAgree(isChecked: Boolean) {
+        act_bt_login.isEnabled = isChecked
+        act_bt_login.setBackgroundResource(
+            when (isChecked) {
+                true -> R.drawable.sp_bt_bg_primary_c
+                false -> R.drawable.sp_bt_bg_gray_c
+            }
+        )
     }
 
     override fun onDestroy() {
