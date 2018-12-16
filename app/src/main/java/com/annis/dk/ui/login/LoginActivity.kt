@@ -9,6 +9,8 @@ import com.annis.dk.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
+
+
     override fun loginSuccess() {
         startActivity(MainActivity::class.java)
         finish()
@@ -38,6 +40,13 @@ class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
         }
 
         act_bt_getcode.setOnClickListener {
+            var phone = act_et_tel.text.toString()
+            if (phone.length < 11) {
+                errorMsg("手机号不正确")
+                return@setOnClickListener
+            }
+            presenter.getCode(phone)
+
             //开始倒计时
             timer = object : CountDownTimer(60000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {

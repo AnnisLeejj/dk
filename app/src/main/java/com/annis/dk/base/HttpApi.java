@@ -5,6 +5,8 @@ import io.reactivex.Flowable;
 import okhttp3.MultipartBody;
 import retrofit2.http.*;
 
+import java.util.HashMap;
+
 /**
  * @author Lee
  * @date 2018/12/11 18:49
@@ -35,6 +37,14 @@ public interface HttpApi {
     isnew=0  申请贷款*/
 
     /*** 短信接口还没写***/
+
+    /**
+     * 接口功能：获取验证码
+     *
+     * @return
+     */
+    @GET("/API.asmx/SendSMS")
+    Flowable<CodeEntity> sendSMS(@Query("phone") String phone, @Query("key") String key);
 
     /**
      * 接口功能：读取调用接口要用到的key
@@ -124,9 +134,22 @@ public interface HttpApi {
     @GET("/API.asmx/SaveOperator")
     Flowable<IsSave> saveOperator(@Query("uid") String uid, @Query("key") String key,
                                   @Query("name1") String name1, @Query("contacts1") String contacts1, @Query("phone1") String phone1,
-                                  @Query("name2") String name2, @Query("contacts1") String contacts2, @Query("phone1") String phone2,
-                                  @Query("name3") String name3, @Query("contacts1") String contacts3, @Query("phone1") String phone3
+                                  @Query("name2") String name2, @Query("contacts2") String contacts2, @Query("phone2") String phone2,
+                                  @Query("name3") String name3, @Query("contacts3") String contacts3, @Query("phone3") String phone3
     );
+
+    /**
+     * 5.保存运营商信息
+     * 接口功能：保存用户运营商信息
+     * <p>
+     *
+     * @return
+     */
+    @POST("/UploadDic.aspx")
+    Flowable<IsSave> uploadDic(@Body HashMap<String, String> map);
+
+    @POST("/UploadDic1.aspx")
+    Flowable<IsSave> uploadDic1(@Query("content") String map);
 
     /**
      * 读取支付宝认证信息
@@ -209,7 +232,7 @@ public interface HttpApi {
 
     /**
      * 图片上传
-     * 说明：
+     * 说明：/API.asmx/GetUser
      * 提交方式我不知道java怎么写我这边做的测试是用winform做的。
      * 我把代码写上你看有可能参考一下
      * webUrl = "http://43.229.152.127/UpLoadFiles.aspx"

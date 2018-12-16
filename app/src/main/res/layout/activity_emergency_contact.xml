@@ -21,6 +21,7 @@
             <TextView
                     android:text="紧急联系人1∶ "
                     android:background="#f4f4f4"
+                    android:singleLine="true"
                     android:textSize="17dp"
                     android:textColor="@color/text_color_black"
                     android:paddingLeft="@dimen/text_size_normal"
@@ -34,6 +35,8 @@
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
                     android:paddingLeft="@dimen/margin_window"
+                    android:lines="1"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_layout_h"/>
             
@@ -43,12 +46,17 @@
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
                     android:paddingLeft="@dimen/margin_window"
+                    android:lines="1"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_layout_h"/>
             
             <EditText
                     android:id="@+id/contact_1_mobel"
                     android:hint="电话号码"
+                    android:lines="1"
+                    android:inputType="number"
+                    android:singleLine="true"
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
                     android:paddingLeft="@dimen/margin_window"
@@ -60,6 +68,7 @@
                     android:paddingLeft="@dimen/text_size_normal"
                     android:background="#f4f4f4"
                     android:textSize="17dp"
+                    android:singleLine="true"
                     android:textColor="@color/text_color_black"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
@@ -67,10 +76,12 @@
             
             <EditText
                     android:id="@+id/contact_2_name"
+                    android:lines="1"
                     android:hint="姓名"
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
                     android:paddingLeft="@dimen/margin_window"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_layout_h"/>
             
@@ -79,6 +90,8 @@
                     android:hint="关系"
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
+                    android:singleLine="true"
+                    android:lines="1"
                     android:paddingLeft="@dimen/margin_window"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_layout_h"/>
@@ -88,7 +101,10 @@
                     android:hint="电话号码"
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
+                    android:singleLine="true"
+                    android:lines="1"
                     android:paddingLeft="@dimen/margin_window"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_layout_h"/>
             
@@ -96,6 +112,8 @@
                     android:textColor="@color/text_color_black"
                     android:text="紧急联系人3∶ "
                     android:textSize="17dp"
+                    android:singleLine="true"
+                    android:lines="1"
                     android:background="#f4f4f4"
                     android:paddingLeft="@dimen/text_size_normal"
                     android:gravity="center_vertical"
@@ -108,6 +126,8 @@
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
                     android:paddingLeft="@dimen/margin_window"
+                    android:singleLine="true"
+                    android:lines="1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_layout_h"/>
             
@@ -117,12 +137,17 @@
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
                     android:paddingLeft="@dimen/margin_window"
+                    android:singleLine="true"
+                    android:lines="1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_layout_h"/>
             
             <EditText
                     android:id="@+id/contact_3_mobel"
                     android:hint="电话号码"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:inputType="number"
                     android:background="@drawable/shape_bottom_line"
                     android:textSize="@dimen/et_text_size"
                     android:paddingLeft="@dimen/margin_window"

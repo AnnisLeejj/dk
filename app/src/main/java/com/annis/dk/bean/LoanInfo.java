@@ -18,30 +18,66 @@ public class LoanInfo {
     isnew int 是否审请了贷款（0：未申请 1：已申请）
     isPass int 审核状态（0：未审核 1：已审核未通过 2：已审核已通过）
 */
-
     /**
-     * loanAmount : 1000
-     * loanTime : 1413131355555
-     * repaymentTime : 1413131355556
-     * serviceCharge : 50
+     * id : 8
+     * uid : 8
+     * loanAmount : 0
+     * loanTime : 0
+     * repaymentTime : 0
+     * serviceCharge : 0
      * isPayCost : 0
      * isPayLoan : 0
-     * resultInfo : 审核通过
+     * resultInfo :
      * mloan : 0
-     * isnew : 0
+     * isNew : 1
      * isPass : 0
+     *
+     * CSTelephone : 15310085739
+     * CSWeChat : jacke
+     * receiptAddress : /Imgs/20181216/GZQaqD.jpg
+     * feeAddress1 : %2fImgs%2f20181213%2fbPUanq.jpg
+     * feeAddress2 : %2fImgs%2f20181213%2fbPUanq.jpg
+     * feeAddress3 : %2fImgs%2f20181213%2fbPUanq.jpg
+     * website : 43.229.152.127
+     * mykey :
      */
 
+    private int id;
+    private int uid;
     private String loanAmount;
     private String loanTime;
     private String repaymentTime;
     private String serviceCharge;
-    private int isPayCost;
-    private int isPayLoan;
+    private String isPayCost;
+    private String isPayLoan;
     private String resultInfo;
-    private int mloan;
-    private int isnew;
-    private int isPass;
+    private String mloan;
+    private String isNew;
+    private String isPass;
+    private String CSTelephone;
+    private String CSWeChat;
+    private String receiptAddress;
+    private String feeAddress1;
+    private String feeAddress2;
+    private String feeAddress3;
+    private String website;
+    private String mykey;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
 
     public String getLoanAmount() {
         return loanAmount;
@@ -75,19 +111,19 @@ public class LoanInfo {
         this.serviceCharge = serviceCharge;
     }
 
-    public int getIsPayCost() {
+    public String getIsPayCost() {
         return isPayCost;
     }
 
-    public void setIsPayCost(int isPayCost) {
+    public void setIsPayCost(String isPayCost) {
         this.isPayCost = isPayCost;
     }
 
-    public int getIsPayLoan() {
+    public String getIsPayLoan() {
         return isPayLoan;
     }
 
-    public void setIsPayLoan(int isPayLoan) {
+    public void setIsPayLoan(String isPayLoan) {
         this.isPayLoan = isPayLoan;
     }
 
@@ -99,27 +135,91 @@ public class LoanInfo {
         this.resultInfo = resultInfo;
     }
 
-    public int getMloan() {
+    public String getMloan() {
         return mloan;
     }
 
-    public void setMloan(int mloan) {
+    public void setMloan(String mloan) {
         this.mloan = mloan;
     }
 
-    public int getIsnew() {
-        return isnew;
+    public String getIsNew() {
+        return isNew;
     }
 
-    public void setIsnew(int isnew) {
-        this.isnew = isnew;
+    public void setIsNew(String isNew) {
+        this.isNew = isNew;
     }
 
-    public int getIsPass() {
+    public String getIsPass() {
         return isPass;
     }
 
-    public void setIsPass(int isPass) {
+    public void setIsPass(String isPass) {
         this.isPass = isPass;
+    }
+
+    public String getCSTelephone() {
+        return CSTelephone;
+    }
+
+    public void setCSTelephone(String CSTelephone) {
+        this.CSTelephone = CSTelephone;
+    }
+
+    public String getCSWeChat() {
+        return CSWeChat;
+    }
+
+    public void setCSWeChat(String CSWeChat) {
+        this.CSWeChat = CSWeChat;
+    }
+
+    public String getReceiptAddress() {
+        return receiptAddress;
+    }
+
+    public void setReceiptAddress(String receiptAddress) {
+        this.receiptAddress = receiptAddress;
+    }
+
+    public String getFeeAddress1() {
+        return feeAddress1;
+    }
+
+    public void setFeeAddress1(String feeAddress1) {
+        this.feeAddress1 = feeAddress1;
+    }
+
+    public String getFeeAddress2() {
+        return feeAddress2;
+    }
+
+    public void setFeeAddress2(String feeAddress2) {
+        this.feeAddress2 = feeAddress2;
+    }
+
+    public String getFeeAddress3() {
+        return feeAddress3;
+    }
+
+    public void setFeeAddress3(String feeAddress3) {
+        this.feeAddress3 = feeAddress3;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getMykey() {
+        return mykey;
+    }
+
+    public void setMykey(String mykey) {
+        this.mykey = mykey;
     }
 }

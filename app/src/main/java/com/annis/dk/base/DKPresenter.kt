@@ -26,18 +26,75 @@ open class DKPresenter<V : BaseView?>(view: V?) : MvpPresenter<V>(view) {
         addSubscribe(getHttpApi()?.key?.compose(RxUtil.rxSchedulerHelper())?.subscribe {
             it.key.let { it ->
                 DkSPUtils.saveKey(it)
-                getWebsite(it)
+                getWebsite()
             }
         })
     }
 
-    fun getWebsite(key: String) {
+    fun updateAllInfo() {
+        getWebsite()
+        updateMyLoans()
+        updateBankCard()
+    }
+
+    /**
+     * 网站信息
+     */
+    fun getWebsite() {
         addSubscribe(
-            getHttpApi()!!.getWebsite(key).compose(RxUtil.rxSchedulerHelper()).subscribe { r ->
+            getHttpApi()!!.getWebsite(DkSPUtils.getKey()).compose(RxUtil.rxSchedulerHelper()).subscribe { r ->
                 r?.let {
                     DKConstant.saveWebsite(it)
                 }
             }
+        )
+    }
+
+    /**
+     * 贷款信息
+     */
+    fun updateMyLoans() {
+        addSubscribe(
+            getHttpApi()!!.getLoan(DkSPUtils.getUID(), DkSPUtils.getKey())
+                .compose(RxUtil.rxSchedulerHelper())
+                .subscribe({
+                    it?.let {
+                        DKConstant.saveLoan(it)
+                    }
+                }, {})
+        )
+    }
+
+    /**
+     * 更新银行卡信息
+     */
+    fun updateBankCard() {
+        addSubscribe(
+            getHttpApi()!!.getBank(DkSPUtils.getUID(), DkSPUtils.getKey())
+                .compose(RxUtil.rxSchedulerHelper())
+                .subscribe({
+                    it?.let {
+                        DKConstant.saveBankCard(it)
+                    }
+                }, {})
+        )
+    }
+
+    fun getCode(phone: String) {
+        addSubscribe(
+            getHttpApi()!!.sendSMS(phone, DkSPUtils.getKey())
+                .compose(RxUtil.rxSchedulerHelper())
+                .subscribe({
+                    it?.let {
+                        if (it.state == 0) {
+                            DkSPUtils.saveLastCode(it.key)
+                        } else {
+                            view?.let {
+                                it!!.errorMsg("获取验证码失败")
+                            }
+                        }
+                    }
+                }, {})
         )
     }
 }

@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
+import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.utils.ExcelUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_emergency_contact.*
@@ -15,6 +16,7 @@ import java.io.File
 
 class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), EmergencyContactView {
     override fun upSuccess() {
+        startActivity(AuthoperatorActivity::class.java)
         showToast("上传成功")
         finish()
     }
@@ -36,68 +38,28 @@ class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), Emerge
     override fun initViewAndListener() {
         account = intent.getStringExtra("account")
         click()
-        checkPermision()
+
     }
 
     fun click() {
         act_bt_change.setOnClickListener {
+            var name1 = contact_1_name.text.toString()
+            var relation1 = contact_1_relation.text.toString()
+            var mobel1 = contact_1_mobel.text.toString()
+
+            var name2 = contact_2_name.text.toString()
+            var relation2 = contact_2_relation.text.toString()
+            var mobel2 = contact_2_mobel.text.toString()
+
+            var name3 = contact_3_name.text.toString()
+            var relation3 = contact_3_relation.text.toString()
+            var mobel3 = contact_3_mobel.text.toString()
+
             presenter.uploadEmergencyConyact(
-                contact_1_name.text.toString(), contact_1_relation.text.toString(), contact_1_mobel.text.toString(),
-                contact_2_name.text.toString(), contact_2_relation.text.toString(), contact_2_mobel.text.toString(),
-                contact_3_name.text.toString(), contact_3_relation.text.toString(), contact_3_mobel.text.toString()
+                name1, relation1, mobel1,
+                name2, relation2, mobel2,
+                name3, relation3, mobel3
             )
-        }
-    }
-
-    private fun checkPermision() {
-        //没有权限时，调用requestPermission方法，弹出权限申请对话框 ，回调OnRequestPermissionRelust函数
-
-        var permissions = RxPermissions(this)
-
-        val granted = permissions.isGranted(Manifest.permission.READ_CONTACTS)
-        if (granted) {
-            readContacts()
-        } else {
-            val subscribe = permissions.requestEach(Manifest.permission.READ_CONTACTS)
-                .subscribe {
-                    if (it.granted) {
-                        readContacts()
-                    } else if (it.shouldShowRequestPermissionRationale) {
-                        // Denied permission without ask never again
-                        Toast.makeText(this, "请同意申请", Toast.LENGTH_SHORT).show()
-                        checkPermision()
-                    } else {
-
-                    }
-                }
-        }
-    }
-
-    var list: ArrayList<String> = arrayListOf()
-    var FileDir: String? = null
-    private fun readContacts() {
-        var cursor: Cursor? = null
-        try {
-            //cursor指针 query询问 contract协议 kinds种类
-            cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
-            if (cursor != null) {
-                while (cursor!!.moveToNext()) {
-                    val displayName =
-                        cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
-                    val number =
-                        cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                    list.add(displayName + DIVISION + number)
-                }
-                //保存文件
-                var filePath = saveToExcle(externalCacheDir, account ?: "contact", list)
-                getPresenter().uploadContacts(list)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            if (cursor != null) {
-                cursor!!.close()
-            }
         }
     }
 

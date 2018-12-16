@@ -12,6 +12,8 @@ import com.annis.baselib.base.base.BaseActivity
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
+import com.annis.dk.base.DKConstant
+import com.annis.dk.view.CodeDialog
 import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_success.*
@@ -35,17 +37,37 @@ class SuccessActivity : BaseActivity() {
         setContentView(R.layout.activity_success)
     }
 
+    /**
+     * 显示二维码
+     */
+    fun showCode(url: String, serviceCharge: String) {
+        var codeDialog = CodeDialog()
+        codeDialog.setInfo(url, serviceCharge)
+        codeDialog.show(supportFragmentManager, "code")
+    }
+
     fun click() {
-        act_bt_call.setOnClickListener {
-            //打电话
-
-        }
-        act_bt_copy.setOnClickListener {
-            //复制微信
-
-        }
         act_bt_pay.setOnClickListener {
             //支付
+            var loan = DKConstant.getLoan() ?: let {
+                showToast("没有查到贷款信息")
+                return@setOnClickListener
+            }
+
+            //支付
+            var user = DKConstant.getUserEntity() ?: let {
+                showToast("没有查到用户信息")
+                return@setOnClickListener
+            }
+            var url = when (user.limit) {
+                1 -> loan.feeAddress1
+                2 -> loan.feeAddress2
+                3 -> loan.feeAddress3
+                else -> null
+            }
+            url?.let {
+                showCode(it, loan.serviceCharge)
+            }
         }
 
         act_bt_call.setOnClickListener {

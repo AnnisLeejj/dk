@@ -6,9 +6,10 @@ import com.annis.dk.base.DKConstant
 
 class MyLoansPresenter(view: MyLoansView?) : MvpPresenter<MyLoansView>(view) {
     fun getCode() {
-        var codePath = DKConstant.getWebsite().receiptAddress
+        var codePath = DKConstant.getLoan()
+
         codePath?.let {
-            view.showCode(BuildConfig.IP + codePath)
+            view.showCode(BuildConfig.IP + it.receiptAddress, it.loanAmount)
         }
         codePath ?: let {
             view.errorMsg("加载二维码失败,请联系客服")

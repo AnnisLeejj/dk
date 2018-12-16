@@ -2,7 +2,9 @@ package com.annis.dk.ui.authentication.bank
 
 import com.annis.baselib.base.mvp.BaseView
 import com.annis.baselib.base.rx.RxUtil
+import com.annis.dk.base.DKConstant
 import com.annis.dk.base.DKPresenter
+import com.annis.dk.bean.BankInfo
 import com.annis.dk.utils.DkSPUtils
 
 /**
@@ -12,6 +14,7 @@ import com.annis.dk.utils.DkSPUtils
  */
 interface AuthBankView : BaseView {
     fun uploadSuccess()
+    fun updateBankCard(it: BankInfo)
 }
 
 class AuthBankPresenter(view: AuthBankView?) : DKPresenter<AuthBankView>(view) {
@@ -28,6 +31,22 @@ class AuthBankPresenter(view: AuthBankView?) : DKPresenter<AuthBankView>(view) {
                 }, {
                     view.errorMsg("请求失败")
                 })
+        )
+    }
+
+    /**
+     * 更新银行卡信息
+     */
+    fun updateBankCard1() {
+        addSubscribe(
+            getHttpApi()!!.getBank(DkSPUtils.getUID(), DkSPUtils.getKey())
+                .compose(RxUtil.rxSchedulerHelper())
+                .subscribe({
+                    it?.let {
+                        DKConstant.saveBankCard(it)
+                        view.updateBankCard(it)
+                    }
+                }, {})
         )
     }
 }

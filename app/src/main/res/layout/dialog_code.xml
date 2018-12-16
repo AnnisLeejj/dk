@@ -29,6 +29,7 @@
             android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/dialog_code_hint"
+            android:src="@mipmap/erweima"
             android:layout_width="193dp"
             android:layout_height="193dp"/>
     
@@ -39,7 +40,7 @@
             android:textColor="@color/colorPrimary"
             android:layout_below="@+id/dialog_iv_code"
             android:layout_centerHorizontal="true"
-            android:text="支付5000元"
+            android:text="支付*00元"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     

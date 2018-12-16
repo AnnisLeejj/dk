@@ -265,6 +265,7 @@
                 tools:layout_editor_absoluteX="19dp"/>
         
         <TextView
+                android:id="@+id/agreementLoan"
                 android:layout_toRightOf="@+id/renzheng_operator_agree"
                 android:text="《容易借贷款协议》"
                 android:textSize="19dp"

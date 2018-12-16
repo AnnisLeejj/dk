@@ -1,7 +1,6 @@
 package com.annis.dk.view
 
 import android.Manifest
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -12,9 +11,13 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.DisplayMetrics
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import android.widget.ImageView
 import androidx.fragment.app.DialogFragment
+import com.annis.baselib.BuildConfig
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
@@ -47,6 +50,15 @@ class CodeDialog : DialogFragment() {
             checkPermission()
             return@setOnLongClickListener true
         }
+
+        dialog_tv_money.text = "支付${money}元"
+
+        codeUrl?.contains("http").let {
+            if (it != true) {
+                codeUrl = "${BuildConfig.IP}$codeUrl"
+            }
+        }
+
         PicassoUtil.loadBigImage(activity!!, codeUrl, dialog_iv_code)
     }
 
@@ -154,8 +166,10 @@ class CodeDialog : DialogFragment() {
     }
 
     var codeUrl: String? = null
-    fun setUrl(url: String) {
+    var money: String? = null
+    fun setInfo(url: String, money: String) {
         codeUrl = url
+        this.money = money
     }
 
     companion object {

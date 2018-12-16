@@ -1,6 +1,7 @@
 package com.annis.dk.ui.emergency_contact
 
 import android.text.TextUtils
+import com.annis.baselib.base.rx.RxUtil
 import com.annis.dk.base.DKPresenter
 import com.annis.dk.utils.DkSPUtils
 
@@ -10,12 +11,6 @@ import com.annis.dk.utils.DkSPUtils
  * @Description
  */
 class EmergencyContactPresenter(view: EmergencyContactView?) : DKPresenter<EmergencyContactView>(view) {
-    /**
-     * 上传所有的联系人
-     */
-    fun uploadContacts(list: ArrayList<String>) {
-
-    }
 
     fun uploadEmergencyConyact(
         toString: String, toString1: String, toString2: String,
@@ -65,17 +60,18 @@ class EmergencyContactPresenter(view: EmergencyContactView?) : DKPresenter<Emerg
                 toString, toString1, toString2,
                 toString3, toString4, toString5,
                 toString6, toString7, toString8
-            ).subscribe({
-                it.let { isSave ->
-                    if (isSave.isSave == 0) {
-                        view.upSuccess()
-                    } else {
-                        view.errorMsg("请求失败,请重试")
+            ).compose(RxUtil.rxSchedulerHelper())
+                .subscribe({
+                    it.let { isSave ->
+                        if (isSave.isSave == 0) {
+                            view.upSuccess()
+                        } else {
+                            view.errorMsg("请求失败,请重试")
+                        }
                     }
-                }
-            }, {
-                view.errorMsg("请求失败,请重试")
-            })
+                }, {
+                    view.errorMsg("请求失败,请重试")
+                })
         )
     }
 }

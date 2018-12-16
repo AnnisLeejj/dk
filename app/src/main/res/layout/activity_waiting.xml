@@ -14,8 +14,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:src="@drawable/shenheing_icon"
-            android:layout_width="97dp"
-            android:layout_height="114dp"/>
+            android:layout_width="182dp"
+            android:layout_height="141dp"/>
     
     <TextView
             android:id="@+id/waiting_text"

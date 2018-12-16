@@ -68,9 +68,9 @@ class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
     /**
      * 显示二维码
      */
-    override fun showCode(url: String) {
+    override fun showCode(url: String, money: String) {
         var codeDialog = CodeDialog()
-        codeDialog.setUrl(url)
+        codeDialog.setInfo(url, money)
         codeDialog.show(supportFragmentManager, "code")
     }
 

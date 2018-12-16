@@ -11,9 +11,8 @@ import com.annis.dk.utils.DkSPUtils
  * @Description
  */
 class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
-    fun getCode(phone: String) {
-        getHttpApi()!!
-    }
+
+
 
     fun login(phone: String, code: String) {
         if (phone.isEmpty()) {
@@ -22,6 +21,11 @@ class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
         }
         if (code.isEmpty()) {
             view.errorMsg("请输入验证码")
+            return
+        }
+        var mCode = DkSPUtils.getLastCode()
+        if (code != mCode) {
+            view.errorMsg("验证码不正确")
             return
         }
         addSubscribe(

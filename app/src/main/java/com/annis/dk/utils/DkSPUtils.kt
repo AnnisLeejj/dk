@@ -60,5 +60,38 @@ class DkSPUtils {
         fun getLogin(): Boolean {
             return spUtils.getBoolean("login", false)
         }
+
+        /**
+         * Loan
+         */
+        fun saveLoan(toJson: String?) {
+            spUtils.putString("loan", toJson)
+        }
+
+        fun getLoan(): String? {
+            return spUtils.getString("loan")
+        }
+
+        /**
+         * 银行卡
+         */
+        fun saveBankCard(bank: String?) {
+            spUtils.putString("bank", bank)
+        }
+
+        fun getBankCard(): String? {
+            return spUtils.getString("bank")
+        }
+
+        /**
+         * 短信验证码
+         */
+        fun saveLastCode(key: String?) {
+            spUtils.putString("LastCode", key)
+        }
+
+        fun getLastCode(): String? {
+            return spUtils.getString("LastCode")
+        }
     }
 }

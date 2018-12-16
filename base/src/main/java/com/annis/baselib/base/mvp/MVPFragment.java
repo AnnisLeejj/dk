@@ -7,14 +7,14 @@ import androidx.appcompat.app.AlertDialog;
 import com.annis.baselib.base.base.BaseFragment;
 
 public abstract class MVPFragment<P extends BasePersenter> extends BaseFragment implements BaseView {
-    P persenter;
+    P presenter;
 
-    public abstract P getPersenter();
+    public abstract P getPresenter();
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        persenter = getPersenter();
+        presenter = getPresenter();
     }
 
     @Override
@@ -34,7 +34,7 @@ public abstract class MVPFragment<P extends BasePersenter> extends BaseFragment 
         showWaitting("正在加载...");
     }
     /**
-     * 显示等待对话框,
+     *                                                                                                                                                                    显示等待对话框,
      */
     @Override
     public void showWaitting(String msg) {
@@ -43,7 +43,7 @@ public abstract class MVPFragment<P extends BasePersenter> extends BaseFragment 
             progressDialog.setIndeterminate(false);//循环滚动
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setCancelable(true);//false不能取消显示，true可以取消显示
-            progressDialog.setOnDismissListener(dialog -> persenter.unSubscribe());
+            progressDialog.setOnDismissListener(dialog -> presenter.unSubscribe());
         }
         progressDialog.setMessage(msg);
         progressDialog.show();
@@ -78,7 +78,7 @@ public abstract class MVPFragment<P extends BasePersenter> extends BaseFragment 
     public void onDestroyView() {
         super.onDestroyView();
         dismissWaitting();
-        persenter.detach();
+        presenter.detach();
         super.onDestroy();
     }
 }
