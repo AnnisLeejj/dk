@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.annis.dk.R
+import java.util.*
 
 /**
  * @author Lee
@@ -17,6 +17,15 @@ import com.annis.dk.R
  * @Description
  */
 class NotificationDialog : DialogFragment() {
+    interface Dismiss {
+        fun finish()
+    }
+
+    fun setDismissListener(dismiss: Dismiss) {
+        mDismiss = dismiss
+    }
+
+    var mDismiss: Dismiss? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)//取消对话框fragment的标题
         return inflater.inflate(R.layout.dialog_notification, container, false)
@@ -28,16 +37,31 @@ class NotificationDialog : DialogFragment() {
         initView()
     }
 
+    var timer: Timer? = null
+
     var mMessage: String? = null
     var tvTitle: TextView? = null
-    var btOk: Button? = null
     private fun initView() {
         tvTitle = view?.findViewById<TextView>(R.id.dialog_noti_tvMessage)
-        btOk = view?.findViewById<Button>(R.id.dialog_nitif_ok)
         mMessage?.let {
             tvTitle?.text = mMessage
         }
-        btOk?.setOnClickListener { dismiss() }
+        timer = Timer()
+
+        var timerTask = object : TimerTask() {
+            override fun run() {
+                dismiss()
+                mDismiss?.finish()
+            }
+        }
+        timer?.schedule(timerTask, 3500)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (timer != null) {
+            timer?.cancel()
+        }
     }
 
     fun setMessage(message: String) {

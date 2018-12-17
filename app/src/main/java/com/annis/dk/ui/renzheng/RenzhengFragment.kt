@@ -11,12 +11,11 @@ import com.annis.dk.bean.UserEntity
 import com.annis.dk.ui.TextActivity
 import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
-import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
 import com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity
+import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
 import com.annis.dk.utils.DkSPUtils
 import com.annis.dk.view.NotificationDialog
 import kotlinx.android.synthetic.main.fragment_renzheng.*
-import java.lang.RuntimeException
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -36,7 +35,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
     }
 
     override fun initView(view: View?) {
-        frag_renzheng_rlPactContainer.visibility = View.GONE
+//        frag_renzheng_rlPactContainer.visibility = View.GONE
     }
 
     var userEntity: UserEntity? = null
@@ -102,8 +101,12 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
     fun checkBox(checked: Boolean) {
         when (checked) {
             true -> {
-                act_bt_login.isEnabled = true
-                act_bt_login.setBackgroundResource(R.drawable.sp_bt_bg_primary_c)
+                userEntity?.let {
+                    if (it.isChecIdentity == 1 && it.isChecOperator == 1 && it.isChecAlipay == 1 && it.isChecBankCard == 1) {
+                        act_bt_login.isEnabled = true
+                        act_bt_login.setBackgroundResource(R.drawable.sp_bt_bg_primary_c)
+                    }
+                }
             }
             false -> {
                 act_bt_login.isEnabled = false
@@ -114,12 +117,15 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
 
     fun initByUserEntity(userEntity: UserEntity?) {
         userEntity?.let {
+            //it.isChecIdentity = 0
             initAuth(it.isChecIdentity, it.isChecOperator, it.isChecAlipay, it.isChecBankCard)
 //            initAuth(0, 0, 2, 2)
         }
+        showPact()
     }
 
     fun initAuth(havID: Int, havOperator: Int, havAlipay: Int, havBank: Int) {
+
         when (havID) {
             1 -> {
                 item_tv_1_status.text = "已认证"
@@ -219,7 +225,6 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
             act_bt_login.isEnabled = true
             renzheng_operator_agree.isChecked = true
             checkBox(true)
-            showPact()
         } else {
             act_bt_login.isEnabled = false
         }

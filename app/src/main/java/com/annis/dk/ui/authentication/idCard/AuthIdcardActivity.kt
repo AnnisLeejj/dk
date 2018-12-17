@@ -9,6 +9,7 @@ import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.dk.R
+import com.annis.dk.view.NotificationDialog
 import com.google.android.material.snackbar.Snackbar
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
@@ -20,9 +21,18 @@ import java.io.File
 
 class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
     override fun uploadSuccess() {
-//        showToast("提交成功")
-//        finish()
-        
+        showToast("提交成功")
+
+        var dialog = NotificationDialog()
+        dialog.setDismissListener(object : NotificationDialog.Dismiss {
+            override fun finish() {
+                this@AuthIdcardActivity.finish()
+            }
+
+        })
+        dialog.setMessage("身份证正在系统扫描中，等待系统认证中...")
+        dialog.show(supportFragmentManager, "notify")
+
     }
 
     /**
@@ -143,14 +153,14 @@ class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
             .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
             .sizeMultiplier(0.5f)// glide 加载图片大小 0~1之间 如设置 .glideOverride()无效
             .setOutputCameraPath("/CustomPath")// 自定义拍照保存路径,可不填
-            .enableCrop(true)// 是否裁剪 true or false
+            //.enableCrop(true)// 是否裁剪 true or false
 //            .compress(true)// 是否压缩 true or false
             //.glideOverride()// int glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
             .withAspectRatio(16, 10)// int 裁剪比例 如16:9 3:2 3:4 1:1 可自定义
             // .hideBottomControls()// 是否显示uCrop工具栏，默认不显示 true or false
             .isGif(false)// 是否显示gif图片 true or false
 //            .compressSavePath(getPath(current))//压缩图片保存地址
-            .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
+            // .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
 //            .circleDimmedLayer()// 是否圆形裁剪 true or false
             .showCropFrame(true)// 是否显示裁剪矩形边框 圆形裁剪时建议设为false   true or false
             .showCropGrid(true)// 是否显示裁剪矩形网格 圆形裁剪时建议设为false    true or false
