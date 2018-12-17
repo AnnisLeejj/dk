@@ -103,7 +103,8 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
 
     fun initByUserEntity(userEntity: UserEntity?) {
         userEntity?.let {
-            initAuth(it.isChecIdentity == 1, it.isChecOperator == 1, it.isChecAlipay == 1, it.isChecBankCard == 1)
+//            initAuth(it.isChecIdentity == 1, it.isChecOperator == 1, it.isChecAlipay == 1, it.isChecBankCard == 1)
+            initAuth(false, false, false, false)
         }
     }
 

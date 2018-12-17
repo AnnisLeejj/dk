@@ -199,7 +199,7 @@ public interface HttpApi {
      * key 必选 string MD5加密字符串
      * bankcard string 银行卡用户名称(对应银行卡名称)
      * idnumber bigint 身份证号
-     * savingscard string 储蓄卡号
+     * savingscard string 银行卡号
      * phone string 预留手机号
      *
      * @return

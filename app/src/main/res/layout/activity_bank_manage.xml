@@ -30,7 +30,7 @@
         <TextView
                 android:id="@+id/tv_card_account_hint"
                 android:layout_below="@+id/tv_card_name"
-                android:text="储蓄卡号"
+                android:text="银行卡号"
                 android:layout_marginLeft="@dimen/margin_window"
                 android:textSize="21dp"
                 android:textColor="#ffffff"

@@ -2,10 +2,11 @@ package com.annis.baselib.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import androidx.multidex.MultiDex;
 import com.annis.baselib.utils.LogUtils;
 import com.annis.baselib.utils.utils_haoma.Utils;
 import com.luck.picture.lib.PictureSelectorActivity;
-import com.tencent.bugly.crashreport.CrashReport;
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.external.ExternalAdaptInfo;
@@ -24,7 +25,14 @@ public class APP extends Application {
         //布局自适应
         autoSize();
         //Bugly
-        CrashReport.initCrashReport(getApplicationContext(), "c27e6aa010", false);
+       // CrashReport.initCrashReport(getApplicationContext(), "c27e6aa010", false);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        // 将MultiDex注入到项目中
+        MultiDex.install(this);
     }
 
     private void autoSize() {
@@ -33,11 +41,9 @@ public class APP extends Application {
          * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
          */
         AutoSizeConfig.getInstance()
-
                 //是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
                 //如果没有这个需求建议不开启
                 .setCustomFragment(true)
-
                 //屏幕适配监听器
                 .setOnAdaptListener(new onAdaptListener() {
                     @Override

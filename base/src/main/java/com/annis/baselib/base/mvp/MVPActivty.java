@@ -2,10 +2,12 @@ package com.annis.baselib.base.mvp;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import com.annis.baselib.base.base.AutoSizeActvitiy;
 import com.annis.baselib.utils.LogUtils;
+import com.annis.baselib.view.MyProgressDialog;
 
 public abstract class MVPActivty<P extends BasePersenter> extends AutoSizeActvitiy implements BaseView {
     public P presenter;
@@ -52,6 +54,7 @@ public abstract class MVPActivty<P extends BasePersenter> extends AutoSizeActvit
      * 显示等待对话框
      */
     ProgressDialog progressDialog;
+    MyProgressDialog loading;
 
     /**
      * 显示等待对话框,并显示默认 提示内容
@@ -66,16 +69,27 @@ public abstract class MVPActivty<P extends BasePersenter> extends AutoSizeActvit
      */
     @Override
     public void showWaitting(String msg) {
-        if (progressDialog == null) {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setIndeterminate(false);//循环滚动
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setMessage(msg);
-            progressDialog.setCancelable(true);//false不能取消显示，true可以取消显示
-            progressDialog.setOnDismissListener(dialog -> presenter.unSubscribe());
+        if (loading == null) {
+            loading = new MyProgressDialog(this);
+            loading.setIndeterminate(false);//循环滚动
+            loading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            loading.setMessage(msg);
+            loading.setCancelable(true);//false不能取消显示，true可以取消显示
+            loading.setOnDismissListener(dialog -> presenter.unSubscribe());
         }
-        if (progressDialog.isShowing()) return;
-        progressDialog.show();
+        if (loading.isShowing()) return;
+        loading.show();
+
+//        if (progressDialog == null) {
+//            progressDialog = new ProgressDialog(this);
+//            progressDialog.setIndeterminate(false);//循环滚动
+//            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//            progressDialog.setMessage(msg);
+//            progressDialog.setCancelable(true);//false不能取消显示，true可以取消显示
+//            progressDialog.setOnDismissListener(dialog -> presenter.unSubscribe());
+//        }
+//        if (progressDialog.isShowing()) return;
+//        progressDialog.show();
     }
 
     /**
@@ -83,6 +97,7 @@ public abstract class MVPActivty<P extends BasePersenter> extends AutoSizeActvit
      */
     @Override
     public void dismissWaitting() {
-        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+//        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+        if (loading != null && loading.isShowing()) loading.dismiss();
     }
 }
