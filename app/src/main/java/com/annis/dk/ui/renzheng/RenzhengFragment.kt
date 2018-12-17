@@ -57,7 +57,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
 
     fun checkControl() {
         var ControlCode = DkSPUtils.getControlCode()
-        if (ControlCode == DKConstant.errorCode) {
+        if (DKConstant.errorCode == ControlCode) {
             throw RuntimeException("系统错误")
         }
     }

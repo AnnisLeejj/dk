@@ -28,13 +28,13 @@ android {
         debug {
             keyAlias rootProject.ext.sign.keyAlias
             keyPassword rootProject.ext.sign.keyPassword
-            storeFile file(rootProject.ext.sign.storeFile)
+            storeFile file(sign.storeFileRelease)
             storePassword rootProject.ext.sign.storePassword
         }
         release {
             keyAlias rootProject.ext.sign.keyAlias
             keyPassword rootProject.ext.sign.keyPassword
-            storeFile file(rootProject.ext.sign.storeFile)
+            storeFile file(rootProject.ext.sign.storeFileRelease)
             storePassword rootProject.ext.sign.storePassword
         }
     }
@@ -56,8 +56,13 @@ android {
         }
     }
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':base')

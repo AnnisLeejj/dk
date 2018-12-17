@@ -24,6 +24,7 @@ ext {
             keyAlias     : 'dk',
             keyPassword  : 'dk123456',
             storeFile    : '../key.store/dk.jks',
+            storeFileRelease    : '../key.store/dkR.jks',
             storePassword: 'dk123456',
     ]
 }

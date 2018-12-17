@@ -5,6 +5,7 @@ import android.app.Application;
 import com.annis.baselib.utils.LogUtils;
 import com.annis.baselib.utils.utils_haoma.Utils;
 import com.luck.picture.lib.PictureSelectorActivity;
+import com.tencent.bugly.crashreport.CrashReport;
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.external.ExternalAdaptInfo;
@@ -22,7 +23,8 @@ public class APP extends Application {
         Utils.init(this);
         //布局自适应
         autoSize();
-
+        //Bugly
+        CrashReport.initCrashReport(getApplicationContext(), "c27e6aa010", false);
     }
 
     private void autoSize() {
