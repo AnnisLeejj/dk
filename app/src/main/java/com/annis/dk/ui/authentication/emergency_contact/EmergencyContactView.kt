@@ -1,4 +1,4 @@
-package com.annis.dk.ui.emergency_contact
+package com.annis.dk.ui.authentication.emergency_contact
 
 import com.annis.baselib.base.mvp.BaseView
 

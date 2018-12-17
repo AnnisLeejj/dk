@@ -12,7 +12,8 @@ import com.annis.dk.ui.TextActivity
 import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
-import com.annis.dk.ui.emergency_contact.EmergencyContactActivity
+import com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity
+import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.utils.DkSPUtils
 import kotlinx.android.synthetic.main.fragment_renzheng.*
 import java.lang.RuntimeException
@@ -103,7 +104,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
     fun initByUserEntity(userEntity: UserEntity?) {
         userEntity?.let {
             initAuth(it.isChecIdentity, it.isChecOperator, it.isChecAlipay, it.isChecBankCard)
-//            initAuth(0, 1, 2, 2)
+//            initAuth(0, 0, 2, 2)
         }
     }
 
@@ -119,7 +120,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_1_status.text = "认证中"
                 item_img_1_status.visibility = View.INVISIBLE
             }
-            else -> {
+            0 -> {
                 item_img_1_status.visibility = View.VISIBLE
                 item_tv_1_status.text = "未认证"
                 item_tv_1_status.setTextColor(resources.getColor(R.color.text_color_gray))
@@ -140,8 +141,11 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
             2 -> {
                 item_tv_2_status.text = "认证中"
                 item_img_2_status.visibility = View.INVISIBLE
+//                renzheng_operator.setOnClickListener {
+//                    startActivity(AuthoperatorActivity::class.java)
+//                }
             }
-            else -> {
+            0 -> {
                 item_img_2_status.visibility = View.VISIBLE
                 item_tv_2_status.text = "未认证"
                 item_tv_2_status.setTextColor(resources.getColor(R.color.text_color_gray))
@@ -169,7 +173,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_3_status.text = "认证中"
                 item_img_3_status.visibility = View.INVISIBLE
             }
-            else -> {
+            0 -> {
                 item_img_3_status.visibility = View.VISIBLE
                 item_tv_3_status.text = "未认证"
                 item_tv_3_status.setTextColor(resources.getColor(R.color.text_color_gray))
@@ -191,7 +195,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_4_status.text = "认证中"
                 item_img_4_status.visibility = View.INVISIBLE
             }
-            else -> {
+            0 -> {
                 item_img_4_status.visibility = View.VISIBLE
                 renzheng_bank.setOnClickListener {
                     //银行

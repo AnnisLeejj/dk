@@ -19,7 +19,7 @@
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
-                android:name=".ui.emergency_contact.EmergencyContactActivity"
+                android:name="com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
