@@ -12,7 +12,6 @@ import com.annis.dk.ui.TextActivity
 import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
-import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.ui.emergency_contact.EmergencyContactActivity
 import com.annis.dk.utils.DkSPUtils
 import kotlinx.android.synthetic.main.fragment_renzheng.*
@@ -103,73 +102,108 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
 
     fun initByUserEntity(userEntity: UserEntity?) {
         userEntity?.let {
-//            initAuth(it.isChecIdentity == 1, it.isChecOperator == 1, it.isChecAlipay == 1, it.isChecBankCard == 1)
-            initAuth(false, false, false, false)
+            initAuth(it.isChecIdentity, it.isChecOperator, it.isChecAlipay, it.isChecBankCard)
+//            initAuth(0, 1, 2, 2)
         }
     }
 
-    fun initAuth(havID: Boolean, havOperator: Boolean, havAlipay: Boolean, havBank: Boolean) {
-        if (havID) {
-            item_tv_1_status.text = "已认证"
-            item_tv_1_status.setTextColor(resources.getColor(R.color.green))
-            item_img_1_status.setImageResource(R.drawable.renzheng_icon)
-        } else {
-            item_tv_1_status.text = "未认证"
-            item_tv_1_status.setTextColor(resources.getColor(R.color.text_color_gray))
-            item_img_1_status.setImageResource(R.drawable.a)
-            renzheng_id.setOnClickListener {
-                //身份证
-                startActivity(AuthIdcardActivity::class.java)
+    fun initAuth(havID: Int, havOperator: Int, havAlipay: Int, havBank: Int) {
+        when (havID) {
+            1 -> {
+                item_tv_1_status.text = "已认证"
+                item_tv_1_status.setTextColor(resources.getColor(R.color.green))
+                item_img_1_status.setImageResource(R.drawable.renzheng_icon)
+                item_img_1_status.visibility = View.VISIBLE
             }
-        }
-        if (havOperator) {
-            item_tv_2_status.text = "已认证"
-            item_tv_2_status.setTextColor(resources.getColor(R.color.green))
-            item_img_2_status.setImageResource(R.drawable.renzheng_icon)
-        } else {
-            item_tv_2_status.text = "未认证"
-            item_tv_2_status.setTextColor(resources.getColor(R.color.text_color_gray))
-            item_img_2_status.setImageResource(R.drawable.a)
-            renzheng_operator.setOnClickListener {
-                //紧急->运营商
-                //这是紧急联系人
-                var intent = Intent(activity, EmergencyContactActivity::class.java)
-                var userEntity = DKConstant.getUserEntity()
-                userEntity?.let {
-                    intent.putExtra("account", it.phone)
+            2 -> {
+                item_tv_1_status.text = "认证中"
+                item_img_1_status.visibility = View.INVISIBLE
+            }
+            else -> {
+                item_img_1_status.visibility = View.VISIBLE
+                item_tv_1_status.text = "未认证"
+                item_tv_1_status.setTextColor(resources.getColor(R.color.text_color_gray))
+                item_img_1_status.setImageResource(R.drawable.a)
+                renzheng_id.setOnClickListener {
+                    //身份证
+                    startActivity(AuthIdcardActivity::class.java)
                 }
-                startActivity(intent)
             }
         }
-        if (havAlipay) {
-            item_tv_3_status.text = "已认证"
-            item_tv_3_status.setTextColor(resources.getColor(R.color.green))
-            item_img_3_status.setImageResource(R.drawable.renzheng_icon)
-        } else {
-            item_tv_3_status.text = "未认证"
-            item_tv_3_status.setTextColor(resources.getColor(R.color.text_color_gray))
-            item_img_3_status.setImageResource(R.drawable.a)
-            renzheng_alipay.setOnClickListener {
-                //支付宝
-                startActivity(AuthAlipayActivity::class.java)
+        when (havOperator) {
+            1 -> {
+                item_tv_2_status.text = "已认证"
+                item_tv_2_status.setTextColor(resources.getColor(R.color.green))
+                item_img_2_status.setImageResource(R.drawable.renzheng_icon)
+                item_img_2_status.visibility = View.VISIBLE
+            }
+            2 -> {
+                item_tv_2_status.text = "认证中"
+                item_img_2_status.visibility = View.INVISIBLE
+            }
+            else -> {
+                item_img_2_status.visibility = View.VISIBLE
+                item_tv_2_status.text = "未认证"
+                item_tv_2_status.setTextColor(resources.getColor(R.color.text_color_gray))
+                item_img_2_status.setImageResource(R.drawable.a)
+                renzheng_operator.setOnClickListener {
+                    //紧急->运营商
+                    //这是紧急联系人
+                    var intent = Intent(activity, EmergencyContactActivity::class.java)
+                    var userEntity = DKConstant.getUserEntity()
+                    userEntity?.let {
+                        intent.putExtra("account", it.phone)
+                    }
+                    startActivity(intent)
+                }
             }
         }
-        if (havBank) {
-            item_tv_4_status.text = "已认证"
-            item_tv_4_status.setTextColor(resources.getColor(R.color.green))
-            item_img_4_status.setImageResource(R.drawable.renzheng_icon)
-        } else {
-            renzheng_bank.setOnClickListener {
-                //银行
-                startActivity(AuthBankActivity::class.java)
+        when (havAlipay) {
+            1 -> {
+                item_tv_3_status.text = "已认证"
+                item_tv_3_status.setTextColor(resources.getColor(R.color.green))
+                item_img_3_status.setImageResource(R.drawable.renzheng_icon)
+                item_img_3_status.visibility = View.VISIBLE
+            }
+            2 -> {
+                item_tv_3_status.text = "认证中"
+                item_img_3_status.visibility = View.INVISIBLE
+            }
+            else -> {
+                item_img_3_status.visibility = View.VISIBLE
+                item_tv_3_status.text = "未认证"
+                item_tv_3_status.setTextColor(resources.getColor(R.color.text_color_gray))
+                item_img_3_status.setImageResource(R.drawable.a)
+                renzheng_alipay.setOnClickListener {
+                    //支付宝
+                    startActivity(AuthAlipayActivity::class.java)
+                }
+            }
+        }
+        when (havBank) {
+            1 -> {
+                item_tv_4_status.text = "已认证"
+                item_tv_4_status.setTextColor(resources.getColor(R.color.green))
+                item_img_4_status.setImageResource(R.drawable.renzheng_icon)
+                item_img_4_status.visibility = View.VISIBLE
+            }
+            2 -> {
+                item_tv_4_status.text = "认证中"
+                item_img_4_status.visibility = View.INVISIBLE
+            }
+            else -> {
+                item_img_4_status.visibility = View.VISIBLE
+                renzheng_bank.setOnClickListener {
+                    //银行
+                    startActivity(AuthBankActivity::class.java)
+                }
             }
         }
         //全部都有了可以显示了
-        if (havID && havOperator && havAlipay && havBank) {
+        if (havID == 1 && havOperator == 1 && havAlipay == 1 && havBank == 1) {
             act_bt_login.isEnabled = true
             renzheng_operator_agree.isChecked = true
             checkBox(true)
-
             showPact()
         } else {
             act_bt_login.isEnabled = false

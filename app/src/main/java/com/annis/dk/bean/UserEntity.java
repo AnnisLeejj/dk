@@ -9,12 +9,14 @@ public class UserEntity {
 
     /*  id int 用户编号 (返回ID为0时新增数据失败)
         phone string 账号
-        isChecIdentity int 是否认证身份证（0:未认证 1:已认证）
-        isChecOperator int 是否认证运营商(固定为1)
-        isChecAlipay int 是否认证支付宝（0:未认证 1:已认证）
-        isChecBankCard int 是否认证银行卡（0:未认证 1:已认证）
+        isChecIdentity int 是否认证身份证（0:未认证 1:已认证 2:认证中）
+        isChecOperator int 是否认证运营商（0:未认证 1:已认证 2:认证中）
+        isChecAlipay int 是否认证支付宝（0:未认证 1:已认证 2:认证中）
+        isChecBankCard int 是否认证银行卡（0:未认证 1:已认证 2:认证中）
         userHead string 用户头像地址
         limit int 用户额度（分三档 1 2 3 默认1）*/
+
+
     private String id;
     private String phone;
     private int isChecIdentity;

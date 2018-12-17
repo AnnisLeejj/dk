@@ -29,7 +29,8 @@ class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
     override fun initViewAndListener() {
         presenter.getKey()
         presenter.getControlCode()
-        var time = when (BuildConfig.DEBUG) {
+        var time = 2500L
+        when (BuildConfig.DEBUG) {
             true -> 500L
             false -> 2500L
         }
@@ -39,6 +40,7 @@ class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
             }, time
         )
     }
+
     fun startNextActvitiy() {
         DkSPUtils.getLogin().let {
             if (it) {

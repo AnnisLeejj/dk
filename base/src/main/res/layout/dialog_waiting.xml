@@ -5,24 +5,23 @@
               android:paddingLeft="20dp"
               android:paddingRight="20dp"
               android:background="@drawable/shape_dialog_bg"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:gravity="center">
     
     <ProgressBar
             android:id="@+id/pb_load"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:indeterminateDrawable="@drawable/progressbar"
             android:layout_centerInParent="true"/>
     
     <TextView
             android:id="@+id/tv_load_dialog"
-            android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/pb_load"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="加载中..."
             android:textColor="#9a9b98"
-            android:textSize="18sp"/>
+            android:textSize="25sp"/>
 </LinearLayout>
