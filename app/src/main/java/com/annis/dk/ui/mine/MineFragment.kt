@@ -134,10 +134,28 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
             activity!!.finish()
         }
         rl_progress.setOnClickListener {
+            userEntity = DKConstant.getUserEntity()
+            userEntity?.let {
+                if (it.isChecIdentity == 1 && it.isChecOperator == 1 && it.isChecAlipay == 1 && it.isChecBankCard == 1) {
+
+                } else {
+                    showToast("请到先提交您的认证信息")
+                    return@setOnClickListener
+                }
+            }
             presenter.updateLoans(1)
         }
         //我的贷款
         mine_loan.setOnClickListener {
+            userEntity = DKConstant.getUserEntity()
+            userEntity?.let {
+                if (it.isChecIdentity == 1 && it.isChecOperator == 1 && it.isChecAlipay == 1 && it.isChecBankCard == 1) {
+
+                } else {
+                    showToast("请到先提交您的认证信息")
+                    return@setOnClickListener
+                }
+            }
             presenter.updateLoans(2)
         }
         //客服
@@ -200,13 +218,10 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
      * 显示我的进度
      */
     override fun showMyProgress(loanInfo: LoanInfo?) {
+
         loanInfo?.let {
             if (it.isNew == "0") {
-                if (it.mloan == "1") {
-                    startActivity(LoanBackActivity::class.java)
-                    return
-                }
-                showToast("您未申请贷款")
+                startActivity(LoanBackActivity::class.java)
                 return
             }
             when (it.isPass) {
