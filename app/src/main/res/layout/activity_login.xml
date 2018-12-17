@@ -82,4 +82,14 @@
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_h"/>
+    
+    <TextView
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="重庆市容易借金融贷款有限公司"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

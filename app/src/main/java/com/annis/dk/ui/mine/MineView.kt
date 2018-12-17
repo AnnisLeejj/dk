@@ -11,4 +11,6 @@ interface MineView : BaseView {
     fun reloadLoan(it: LoanInfo)
 
     fun updateSuccess(it: UserEntity)
+    fun showMyProgress(it: LoanInfo?)
+    fun showMyLoan(it: LoanInfo?)
 }

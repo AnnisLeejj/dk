@@ -29,23 +29,26 @@ interface AuthAlipayView : BaseView {
 class AuthAlipayPresenter(view: AuthAlipayView?) : DKPresenter<AuthAlipayView>(view) {
 
     fun uploadAuth(account: String, psw: String, img: String) {
+        view.showWaitting()
         addSubscribe(
             getHttpApi()!!.saveAlipay(
                 DkSPUtils.getUID(), DkSPUtils.getKey(), account, psw, img
-            )
-                .compose(RxUtil.rxSchedulerHelper()).subscribe({ r ->
-                    if (r.isSave == 0) {
-                        view.uploadAuthSuccess()
-                    } else {
-                        view.errorMsg("提交失败")
-                    }
-                }, { e ->
+            ).compose(RxUtil.rxSchedulerHelper()).subscribe({ r ->
+                if (r.isSave == 0) {
+                    view.uploadAuthSuccess()
+                } else {
                     view.errorMsg("提交失败")
-                })
+                }
+                view.dismissWaitting()
+            }, { e ->
+                view.dismissWaitting()
+                view.errorMsg("提交失败")
+            })
         )
     }
 
     fun loadFile(file: File) {
+        view.showWaitting()
         val body = RequestBody.create(MediaType.parse("image/png"), file)
         val part = MultipartBody.Part.createFormData("file", file.name, body)
         addSubscribe(
@@ -57,8 +60,10 @@ class AuthAlipayPresenter(view: AuthAlipayView?) : DKPresenter<AuthAlipayView>(v
                     } else {
                         view.errorMsg("图片上传失败")
                     }
+                    view.dismissWaitting()
                 }, { e ->
                     view.errorMsg("图片上传失败")
+                    view.dismissWaitting()
                 })
         )
     }

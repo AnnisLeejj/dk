@@ -1,4 +1,4 @@
-package com.annis.dk.ui.authentication
+package com.annis.dk.ui.authentication.idCard
 
 import com.annis.baselib.base.mvp.BaseView
 

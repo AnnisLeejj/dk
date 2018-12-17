@@ -11,10 +11,8 @@ import com.annis.dk.utils.DkSPUtils
  * @Description
  */
 class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
-
-
-
     fun login(phone: String, code: String) {
+        view.showWaitting()
         if (phone.isEmpty()) {
             view.errorMsg("请输入手机号")
             return
@@ -39,7 +37,9 @@ class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
                     r ?: let {
                         view.errorMsg("登录失败")
                     }
+                    view.dismissWaitting()
                 }, { e ->
+                    view.dismissWaitting()
                     view.errorMsg("网络请求失败")
                 })
         )

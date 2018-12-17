@@ -96,7 +96,6 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
         userEntity?.phone?.let {
             presenter.uploadUserEntity(it)
         }
-
     }
 
     fun checkControl() {
@@ -135,56 +134,11 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
             activity!!.finish()
         }
         rl_progress.setOnClickListener {
-            loanInfo?.let {
-                if (it.isNew == "0") {
-                    showToast("您未申请贷款")
-                    return@setOnClickListener
-                }
-                when (it.isPass) {
-                    "0" -> startActivity(WaitingActivity::class.java)
-                    "1" -> {
-                        var intent = Intent(activity, FailedActivity::class.java)
-                        intent.putExtra("reason", "失败原因:${it.resultInfo}")
-                        startActivity(intent)
-                    }
-                    "2" -> {
-                        var intent = Intent(activity, SuccessActivity::class.java)
-                        intent.putExtra("edu", "${it.loanAmount}")//额度
-                        intent.putExtra("fuwufei", "会员服务费:${it.serviceCharge}元")//服务费
-                        intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
-                        webSite?.let {
-                            intent.putExtra("weixin", it.csWeChat)//微信号
-                            intent.putExtra("phone", it.csTelephone)//手机号
-                        }
-                        startActivity(intent)
-                    }
-                }
-            }
+            presenter.updateLoans(1)
         }
         //我的贷款
         mine_loan.setOnClickListener {
-            loanInfo?.let { it ->
-                if (it.isNew == "0") {
-                    showToast("您未申请贷款")
-                    return@setOnClickListener
-                }
-                if (it.mloan == "0") {
-                    showToast("您的贷款未发放")
-                    return@setOnClickListener
-                }
-                var intent = Intent(activity, MyLoansActivity::class.java)
-                intent.putExtra("edu", it.loanAmount)//金额
-                intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
-                webSite?.let {
-                    intent.putExtra("weixin", it.csWeChat)//微信号
-                    intent.putExtra("phone", it.csTelephone)//手机号
-                }
-                startActivity(intent)
-            }
-
-            loanInfo ?: let {
-                showToast("未查询到您的贷款信息")
-            }
+            presenter.updateLoans(2)
         }
         //客服
         kefu.setOnClickListener {
@@ -211,6 +165,65 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
             intent.putExtra("title", "帮助中心")
             intent.putExtra("content", resources.getString(R.string.help))
             startActivity(intent)
+        }
+    }
+
+    /**
+     * 我的贷款
+     */
+    override fun showMyLoan(loanInfo: LoanInfo?) {
+        loanInfo?.let { it ->
+            if (it.isNew == "0") {
+                showToast("您未申请贷款")
+                return
+            }
+            if (it.mloan == "0") {
+                showToast("您的贷款未发放")
+                return
+            }
+            var intent = Intent(activity, MyLoansActivity::class.java)
+            intent.putExtra("edu", it.loanAmount)//金额
+            intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
+            webSite?.let {
+                intent.putExtra("weixin", it.csWeChat)//微信号
+                intent.putExtra("phone", it.csTelephone)//手机号
+            }
+            startActivity(intent)
+        }
+
+        loanInfo ?: let {
+            showToast("未查询到您的贷款信息")
+        }
+    }
+
+    /**
+     * 显示我的进度
+     */
+    override fun showMyProgress(loanInfo: LoanInfo?) {
+        loanInfo?.let {
+            if (it.isNew == "0") {
+                showToast("您未申请贷款")
+                return
+            }
+            when (it.isPass) {
+                "0" -> startActivity(WaitingActivity::class.java)
+                "1" -> {
+                    var intent = Intent(activity, FailedActivity::class.java)
+                    intent.putExtra("reason", "失败原因:${it.resultInfo}")
+                    startActivity(intent)
+                }
+                "2" -> {
+                    var intent = Intent(activity, SuccessActivity::class.java)
+                    intent.putExtra("edu", "${it.loanAmount}")//额度
+                    intent.putExtra("fuwufei", "会员服务费:${it.serviceCharge}元")//服务费
+                    intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
+                    webSite?.let {
+                        intent.putExtra("weixin", it.csWeChat)//微信号
+                        intent.putExtra("phone", it.csTelephone)//手机号
+                    }
+                    startActivity(intent)
+                }
+            }
         }
     }
 }

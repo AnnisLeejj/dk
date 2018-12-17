@@ -16,6 +16,7 @@ class BankManagePresenter(view: BankManageVIew?) : DKPresenter<BankManageVIew>(v
      * 更新银行卡信息
      */
     fun updateBankCard1() {
+        view.showWaitting()
         addSubscribe(
             getHttpApi()!!.getBank(DkSPUtils.getUID(), DkSPUtils.getKey())
                 .compose(RxUtil.rxSchedulerHelper())
@@ -24,7 +25,10 @@ class BankManagePresenter(view: BankManageVIew?) : DKPresenter<BankManageVIew>(v
                         DKConstant.saveBankCard(it)
                         view.updateBankCard(it)
                     }
-                }, {})
+                    view.dismissWaitting()
+                }, {
+                    view.dismissWaitting()
+                })
         )
     }
 }

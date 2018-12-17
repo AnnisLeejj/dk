@@ -17,6 +17,7 @@ class EmergencyContactPresenter(view: EmergencyContactView?) : DKPresenter<Emerg
         toString3: String, toString4: String, toString5: String,
         toString6: String, toString7: String, toString8: String
     ) {
+        view.showWaitting()
         if (TextUtils.isEmpty(toString)) {
             view.errorMsg("请填写紧急联系人1 姓名")
             return
@@ -69,7 +70,9 @@ class EmergencyContactPresenter(view: EmergencyContactView?) : DKPresenter<Emerg
                             view.errorMsg("请求失败,请重试")
                         }
                     }
+                    view.dismissWaitting()
                 }, {
+                    view.dismissWaitting()
                     view.errorMsg("请求失败,请重试")
                 })
         )

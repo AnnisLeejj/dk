@@ -9,8 +9,6 @@ import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.dk.R
-import com.annis.dk.ui.authentication.AuthenPresenter
-import com.annis.dk.ui.authentication.AuthenView
 import com.google.android.material.snackbar.Snackbar
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
@@ -22,8 +20,9 @@ import java.io.File
 
 class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
     override fun uploadSuccess() {
-        showToast("提交成功")
-        finish()
+//        showToast("提交成功")
+//        finish()
+        
     }
 
     /**

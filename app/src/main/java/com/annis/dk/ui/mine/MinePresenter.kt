@@ -7,27 +7,36 @@ import com.annis.dk.utils.DkSPUtils
 
 class MinePresenter(view: MineView?) : DKPresenter<MineView>(view) {
     fun updateAll() {
-        updateLoans()
+        updateLoans(0)
         updateBankCard()
-
-
     }
 
     /**
      * 贷款信息
      */
-    fun updateLoans() {
+    fun updateLoans(flag: Int) {
+        if (flag != 0) {
+            view.showWaitting()
+        }
         addSubscribe(
             getHttpApi()!!.getLoan(DkSPUtils.getUID(), DkSPUtils.getKey())
                 .compose(RxUtil.rxSchedulerHelper())
                 .subscribe({
                     it?.let {
                         DKConstant.saveLoan(it)
-                        view.reloadLoan(it)
+                        when (flag) {
+                            0 -> view.reloadLoan(it)
+                            1 -> view.showMyProgress(it)
+                            2 -> view.showMyLoan(it)
+                        }
                     }
-                }, {})
+                    view.dismissWaitting()
+                }, {
+                    view.dismissWaitting()
+                })
         )
     }
+
     fun uploadUserEntity(phone: String) {
         addSubscribe(
             getHttpApi()!!.getUser(phone, DkSPUtils.getKey())

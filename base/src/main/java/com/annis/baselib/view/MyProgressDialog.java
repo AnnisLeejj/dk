@@ -40,8 +40,8 @@ public class MyProgressDialog extends ProgressDialog {
         WindowManager.LayoutParams attributes = getWindow().getAttributes();
         attributes.gravity = Gravity.CENTER;
 //        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
-        attributes.width = (int) (getWindow().getWindowManager().getDefaultDisplay().getWidth() * 0.5);
-        attributes.height = (int) (getWindow().getWindowManager().getDefaultDisplay().getWidth() * 0.5);
+        attributes.width = (int) (getWindow().getWindowManager().getDefaultDisplay().getWidth() * 0.45);
+        attributes.height = (int) (getWindow().getWindowManager().getDefaultDisplay().getWidth() * 0.45);
         getWindow().setAttributes(attributes);
     }
 

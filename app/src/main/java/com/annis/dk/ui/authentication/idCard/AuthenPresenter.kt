@@ -1,4 +1,4 @@
-package com.annis.dk.ui.authentication
+package com.annis.dk.ui.authentication.idCard
 
 import com.annis.baselib.base.rx.RxUtil
 import com.annis.dk.base.DKPresenter
@@ -25,7 +25,9 @@ class AuthenPresenter(view: AuthenView?) : DKPresenter<AuthenView>(view) {
                         view.errorMsg("提交失败")
                     }
                 }
+                view.dismissWaitting()
             }, {
+                view.dismissWaitting()
                 view.errorMsg("网络请求失败")
             })
         )

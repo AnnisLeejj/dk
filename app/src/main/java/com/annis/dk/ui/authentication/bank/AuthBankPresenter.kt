@@ -19,16 +19,20 @@ interface AuthBankView : BaseView {
 
 class AuthBankPresenter(view: AuthBankView?) : DKPresenter<AuthBankView>(view) {
     fun upload(name: String, id: String, card: String, mobel: String) {
+        view.showWaitting()
         addSubscribe(
             getHttpApi()!!.saveBank(DkSPUtils.getUID(), DkSPUtils.getKey(), name, id, card, mobel)
                 .compose(RxUtil.rxSchedulerHelper())
                 .subscribe({
+                    view.dismissWaitting()
                     if (it.isSave == 0) {
                         view.uploadSuccess()
                     } else {
                         view.errorMsg("请求失败")
                     }
+
                 }, {
+                    view.dismissWaitting()
                     view.errorMsg("请求失败")
                 })
         )
@@ -46,7 +50,9 @@ class AuthBankPresenter(view: AuthBankView?) : DKPresenter<AuthBankView>(view) {
                         DKConstant.saveBankCard(it)
                         view.updateBankCard(it)
                     }
-                }, {})
+                }, {
+
+                })
         )
     }
 }

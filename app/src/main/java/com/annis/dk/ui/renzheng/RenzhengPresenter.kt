@@ -4,6 +4,7 @@ import com.annis.baselib.base.rx.RxUtil
 import com.annis.dk.base.DKConstant
 import com.annis.dk.base.DKPresenter
 import com.annis.dk.utils.DkSPUtils
+import com.annis.dk.view.NotificationDialog
 
 class RenzhengPresenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
     fun uploadUserEntity(phone: String) {
@@ -23,6 +24,9 @@ class RenzhengPresenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
      * 提交贷款申请
      */
     fun saveLoan() {
+        view.showWaitting()
+
+        /***还没有申请***/
         addSubscribe(
             getHttpApi()!!.saveLoan(DkSPUtils.getUID(), DkSPUtils.getKey())
                 .compose(RxUtil.rxSchedulerHelper())
@@ -33,7 +37,10 @@ class RenzhengPresenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
                     } else {
                         view.errorMsg("申请提交失败")
                     }
-                }, {})
+                    view.dismissWaitting()
+                }, {
+                    view.dismissWaitting()
+                })
         )
 
     }

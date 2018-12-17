@@ -13,8 +13,8 @@ import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
 import com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity
-import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.utils.DkSPUtils
+import com.annis.dk.view.NotificationDialog
 import kotlinx.android.synthetic.main.fragment_renzheng.*
 import java.lang.RuntimeException
 
@@ -64,6 +64,17 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
 
     fun click() {
         act_bt_login.setOnClickListener {
+
+            DKConstant.getLoan()?.let {
+                if (it.isNew == "1") {
+                    /***已经申请***/
+                    var notifyDialog = NotificationDialog()
+                    notifyDialog.setMessage("你的贷款申请已提交，管理员正在审核中，去“我的”—“放款进度”进行查看")
+                    notifyDialog.show(childFragmentManager, "notify")
+                    return@setOnClickListener
+                }
+            }
+
             //提交贷款申请
             presenter.saveLoan()
         }
