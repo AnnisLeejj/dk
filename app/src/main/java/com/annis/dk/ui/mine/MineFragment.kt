@@ -19,10 +19,10 @@ import com.annis.dk.ui.mine.mineLoans.MyLoansActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
 import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
+import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
 import com.annis.dk.utils.DkSPUtils
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_mine.*
-import java.lang.RuntimeException
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -202,6 +202,10 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
     override fun showMyProgress(loanInfo: LoanInfo?) {
         loanInfo?.let {
             if (it.isNew == "0") {
+                if (it.mloan == "1") {
+                    startActivity(LoanBackActivity::class.java)
+                    return
+                }
                 showToast("您未申请贷款")
                 return
             }

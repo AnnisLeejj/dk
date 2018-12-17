@@ -5,15 +5,12 @@ import com.annis.baselib.base.base.BaseFragment
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.BaseView
 import com.annis.baselib.base.mvp.MVPActivty
-import com.annis.baselib.base.mvp.MvpPresenter
 import com.annis.dk.R
-import com.annis.dk.base.DKConstant
 import com.annis.dk.base.DKPresenter
 import com.annis.dk.ui.mine.MineFragment
 import com.annis.dk.ui.renzheng.RenzhengFragment
-import com.annis.dk.utils.DkSPUtils
+import com.annis.dk.view.CodeDialog
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.RuntimeException
 
 class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
     override fun getMyTitle(): TitleBean? {
@@ -34,6 +31,17 @@ class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
         bottomInit()
 
         presenter.getControlCode()
+        showCode("http://","2342134");
+    }
+
+
+    /**
+     * 显示二维码
+     */
+    fun showCode(url: String, money: String) {
+        var codeDialog = CodeDialog()
+        codeDialog.setInfo(url, money)
+        codeDialog.show(supportFragmentManager, "code")
     }
 
     /**

@@ -7,11 +7,13 @@
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="${app_name}"
+            android:networkSecurityConfig="@xml/network_security_config"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:networkSecurityConfig="@xml/network_security_config"
             tools:ignore="GoogleAppIndexingWarning"
             tools:replace="android:label,android:icon">
+        <activity android:name=".ui.mine.progress.backed.LoanBackActivity">
+        </activity>
         <activity android:name=".ui.TextActivity">
         </activity>
         <activity
@@ -19,7 +21,7 @@
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
-                android:name="com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity"
+                android:name=".ui.authentication.emergency_contact.EmergencyContactActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
@@ -81,4 +83,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

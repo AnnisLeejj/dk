@@ -13,6 +13,7 @@ import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
+import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.utils.DkSPUtils
 import com.annis.dk.view.NotificationDialog
 import kotlinx.android.synthetic.main.fragment_renzheng.*

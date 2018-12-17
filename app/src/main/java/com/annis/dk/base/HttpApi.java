@@ -149,9 +149,13 @@ public interface HttpApi {
     @POST("/UploadDic.aspx")
     Flowable<IsSave> uploadDic(@Body HashMap<String, String> map);
 
-    @POST("/UploadDic1.aspx")
-    Flowable<IsSave> uploadDic1(@Query("content") String map);
+//    @Multipart
+//    @POST("/UploadDic1.aspx")
+//    Flowable<IsSave> uploadDic1(@Part("content") String map);
 
+    @FormUrlEncoded
+    @POST("/UploadDic1.aspx")
+    Flowable<IsSave> uploadDic1(@Field("content") String order);
     /**
      * 读取支付宝认证信息
      * 接口功能：读取登录用户支付宝认证信息

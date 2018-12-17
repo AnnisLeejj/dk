@@ -96,7 +96,7 @@ class CodeDialog : DialogFragment() {
             //                val path = saveBitmap(this, context, bitmap)
 //            var filePic = File(activity!!.externalCacheDir, generateFileName() + ".jpg")
 
-            MediaStore.Images.Media.insertImage(
+            val image = MediaStore.Images.Media.insertImage(
                 activity!!.contentResolver,
                 bitmap, "payCode1", "payCode2"
             )
@@ -107,13 +107,27 @@ class CodeDialog : DialogFragment() {
             activity!!.sendBroadcast(
                 Intent(
                     Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                    Uri.parse("file://" + Environment.getExternalStorageDirectory())
+                    Uri.parse(image)
                 )
             )
 
             ToastUtils.showLongToast("截图已保存")
             dismiss()
         }
+    }
+
+    /**
+     * 针对系统文夹只需要扫描,不用插入内容提供者,不然会重复
+     *
+     * @param context  上下文
+     * @param filePath 文件路径
+     */
+    private fun scanFile(context: Context, filePath: String) {
+        if (!File(filePath).exists())
+            return
+        var intent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+        intent.data = Uri.fromFile(File(filePath))
+        context.sendBroadcast(intent)
     }
 
 //    override fun show() {

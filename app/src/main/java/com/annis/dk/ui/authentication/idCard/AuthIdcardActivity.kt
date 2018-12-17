@@ -156,7 +156,7 @@ class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
             //.enableCrop(true)// 是否裁剪 true or false
 //            .compress(true)// 是否压缩 true or false
             //.glideOverride()// int glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
-            .withAspectRatio(16, 10)// int 裁剪比例 如16:9 3:2 3:4 1:1 可自定义
+            //.withAspectRatio(16, 10)// int 裁剪比例 如16:9 3:2 3:4 1:1 可自定义
             // .hideBottomControls()// 是否显示uCrop工具栏，默认不显示 true or false
             .isGif(false)// 是否显示gif图片 true or false
 //            .compressSavePath(getPath(current))//压缩图片保存地址
@@ -171,7 +171,7 @@ class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
 //            .minimumCompressSize(100)// 小于100kb的图片不压缩
             .synOrAsy(true)//同步true或异步false 压缩 默认同步
 //            .cropWH()// 裁剪宽高比，设置如果大于图片本身宽高则无效 int
-            .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
+           // .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
             .scaleEnabled(true)// 裁剪是否可放大缩小图片 true or false
 //            .videoQuality()// 视频录制质量 0 or 1 int
             .videoMaxSecond(15)// 显示多少秒以内的视频or音频也可适用 int
