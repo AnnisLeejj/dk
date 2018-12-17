@@ -31,7 +31,7 @@ class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
         bottomInit()
 
         presenter.getControlCode()
-        showCode("http://","2342134");
+       // showCode("http://","2342134");
     }
 
 

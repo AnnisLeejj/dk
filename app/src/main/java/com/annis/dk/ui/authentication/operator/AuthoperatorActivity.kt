@@ -13,6 +13,7 @@ import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
 import com.annis.dk.utils.DkSPUtils
+import com.annis.dk.view.NotificationReadContactDialog
 import com.google.gson.Gson
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_authoperator.*
@@ -37,6 +38,26 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
     }
 
     override fun initViewAndListener() {
+
+        showDialog()
+    }
+
+    fun showDialog() {
+        var dialog = NotificationReadContactDialog()
+        dialog.setDismissListener(object : NotificationReadContactDialog.Dismiss {
+            override fun jujue() {
+                finish()
+            }
+
+            override fun agree() {
+                initView()
+            }
+        })
+        dialog.setMessage("获取您的通讯录")
+        dialog.show(supportFragmentManager, "notify")
+    }
+
+    fun initView() {
         click()
         checkPermision()
         renzheng_operator_agree.isChecked = true
