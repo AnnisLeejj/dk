@@ -14,7 +14,9 @@ import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
 import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.ui.emergency_contact.EmergencyContactActivity
+import com.annis.dk.utils.DkSPUtils
 import kotlinx.android.synthetic.main.fragment_renzheng.*
+import java.lang.RuntimeException
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -47,8 +49,16 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
 
     override fun onResume() {
         super.onResume()
+        checkControl()
         userEntity?.phone?.let {
             presenter.uploadUserEntity(it)
+        }
+    }
+
+    fun checkControl() {
+        var ControlCode = DkSPUtils.getControlCode()
+        if (ControlCode == DKConstant.errorCode) {
+            throw RuntimeException("系统错误")
         }
     }
 

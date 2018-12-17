@@ -19,8 +19,10 @@ import com.annis.dk.ui.mine.mineLoans.MyLoansActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
 import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
+import com.annis.dk.utils.DkSPUtils
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_mine.*
+import java.lang.RuntimeException
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -89,11 +91,19 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
 
     override fun onResume() {
         super.onResume()
+        checkControl()
         presenter.updateAll()
         userEntity?.phone?.let {
             presenter.uploadUserEntity(it)
         }
 
+    }
+
+    fun checkControl() {
+        var ControlCode = DkSPUtils.getControlCode()
+        if (ControlCode == DKConstant.errorCode) {
+            throw RuntimeException("系统错误")
+        }
     }
 
     private var param1: String? = null

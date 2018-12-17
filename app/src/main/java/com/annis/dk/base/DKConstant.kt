@@ -9,6 +9,7 @@ import com.google.gson.Gson
 
 class DKConstant {
     companion object {
+        val errorCode = "qwertyasdf-123"
         fun clear() {
             DkSPUtils.saveLogin(false)
             DkSPUtils.saveUser(null)

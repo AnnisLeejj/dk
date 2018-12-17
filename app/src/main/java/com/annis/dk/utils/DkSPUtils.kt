@@ -93,5 +93,17 @@ class DkSPUtils {
         fun getLastCode(): String? {
             return spUtils.getString("LastCode")
         }
+
+        /**
+         * 控制app
+         */
+        fun saveControlCode(code: String) {
+            spUtils.putString("controlcode", code)
+        }
+
+        fun getControlCode(): String? {
+            return spUtils.getString("controlcode")
+        }
+
     }
 }

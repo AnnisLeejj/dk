@@ -7,17 +7,21 @@ import com.annis.baselib.base.mvp.BaseView
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.baselib.base.mvp.MvpPresenter
 import com.annis.dk.R
+import com.annis.dk.base.DKConstant
+import com.annis.dk.base.DKPresenter
 import com.annis.dk.ui.mine.MineFragment
 import com.annis.dk.ui.renzheng.RenzhengFragment
+import com.annis.dk.utils.DkSPUtils
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.RuntimeException
 
-class MainActivity : MVPActivty<MvpPresenter<BaseView>>(), BaseView {
+class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
     override fun getMyTitle(): TitleBean? {
         return null
     }
 
-    override fun getPresenter(): MvpPresenter<BaseView> {
-        return MvpPresenter(this)
+    override fun getPresenter(): DKPresenter<BaseView> {
+        return DKPresenter(this)
     }
 
 
@@ -29,8 +33,8 @@ class MainActivity : MVPActivty<MvpPresenter<BaseView>>(), BaseView {
     override fun initViewAndListener() {
         bottomInit()
 
+        presenter.getControlCode()
     }
-
 
     /**
      * 底部菜单初始化

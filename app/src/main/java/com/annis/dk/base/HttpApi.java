@@ -13,29 +13,30 @@ import java.util.HashMap;
  * @Description
  */
 public interface HttpApi {
-/*    状态说明
+    /*    状态说明
 
-1.审核中
-            isnew=1  已申请贷款
-            ispass=0 正在审核中
+    1.审核中
+                isnew=1  已申请贷款
+                ispass=0 正在审核中
 
-2.审核未通过（审核未通过）
-    isnew=1  申请贷款
-    ispass=1 审核失败
+    2.审核未通过（审核未通过）
+        isnew=1  申请贷款
+        ispass=1 审核失败
 
-3.审核通过（审核通过支付利息）
-    isnew=1  申请贷款
-    ispass=2 通过审核
-    mloan=0  是否发放贷款
+    3.审核通过（审核通过支付利息）
+        isnew=1  申请贷款
+        ispass=2 通过审核
+        mloan=0  是否发放贷款
 
-4.发放贷款（审核通过已放款）
-    isnew=1  申请贷款
-    ispass=2 通过审核
-    mloan=1  是否发放贷款
+    4.发放贷款（审核通过已放款）
+        isnew=1  申请贷款
+        ispass=2 通过审核
+        mloan=1  是否发放贷款
 
-5.可再次申请贷款（还款成功）
-    isnew=0  申请贷款*/
-
+    5.可再次申请贷款（还款成功）
+        isnew=0  申请贷款*/
+    @GET
+    Flowable<String> getControlCode(@Url String url);
     /*** 短信接口还没写***/
 
     /**
