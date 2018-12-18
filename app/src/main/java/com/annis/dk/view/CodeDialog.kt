@@ -129,25 +129,13 @@ class CodeDialog : DialogFragment() {
         context.sendBroadcast(intent)
     }
 
-//    override fun show() {
-//        super.show()
-//        /**
-//         * 设置宽度全屏，要设置在show的后面
-//         */
-//        val attributes = window!!.attributes
-//        attributes.gravity = Gravity.CENTER
-////        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
-//        attributes.width = (window!!.windowManager.defaultDisplay.width * 0.9).toInt()
-//        window!!.attributes = attributes
-//    }
-
     override fun onStart() {
         super.onStart()
         var dialog = dialog
         if (dialog != null) {
             var dm = DisplayMetrics()
             activity!!.windowManager.defaultDisplay.getMetrics(dm)
-            dialog.window.setLayout(((dm.widthPixels * 0.75).toInt()), ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.window.setLayout(((dm.widthPixels * 0.85).toInt()), ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
 

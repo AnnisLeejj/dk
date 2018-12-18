@@ -18,24 +18,24 @@
             android:id="@+id/dialog_code_hint"
             android:textSize="24dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="71dp"
+            android:layout_marginTop="55dp"
             android:textColor="#a5a5a5"
-            android:text="支付宝/微信支付码"
+            android:text="支付宝收款码"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     
     <ImageView
             android:id="@+id/dialog_iv_code"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/dialog_code_hint"
             android:src="@mipmap/erweima"
-            android:layout_width="193dp"
-            android:layout_height="193dp"/>
+            android:layout_width="300dp"
+            android:layout_height="300dp"/>
     
     <TextView
             android:id="@+id/dialog_tv_money"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="22dp"
             android:textSize="41dp"
             android:textColor="@color/colorPrimary"
             android:layout_below="@+id/dialog_iv_code"
@@ -45,12 +45,24 @@
             android:layout_height="wrap_content"/>
     
     <TextView
-            android:layout_marginTop="56dp"
-            android:textSize="@dimen/text_size_normal"
+            android:id="@+id/dialog_tv_hint"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:textSize="17dp"
             android:layout_below="@+id/dialog_tv_money"
             android:layout_centerHorizontal="true"
+            android:text="1.支付以后如有疑问请在客服中心联系人工客服\n2.请备注姓名与手机号码，否则影响审批进度"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    <TextView
+            android:layout_marginTop="16dp"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_below="@+id/dialog_tv_hint"
+            android:layout_centerHorizontal="true"
             android:text="长按保存二维码至相册"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 </RelativeLayout>

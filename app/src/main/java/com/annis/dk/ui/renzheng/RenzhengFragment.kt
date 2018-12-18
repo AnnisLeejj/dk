@@ -76,7 +76,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 if (it.isNew == "1") {
                     /***已经申请***/
                     var notifyDialog = NotificationDialog()
-                    notifyDialog.setMessage("你的贷款申请已提交，系统人工正在审核中，去“我的”—“放款进度”进行查看")
+                    notifyDialog.setMessage("你的贷款申请已提交，系统人工审核中，去“我的”—“放款进度”进行查看")
                     notifyDialog.show(childFragmentManager, "notify")
                     return@setOnClickListener
                 }
