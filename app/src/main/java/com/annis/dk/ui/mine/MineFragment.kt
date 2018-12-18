@@ -144,7 +144,6 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
                     activity!!.finish()
                 }
             })
-            dialog.setMessage("获取您的通讯录")
             dialog.show(childFragmentManager, "notify")
         }
         rl_progress.setOnClickListener {
