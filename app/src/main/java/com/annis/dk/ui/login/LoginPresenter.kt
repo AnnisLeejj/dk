@@ -12,7 +12,6 @@ import com.annis.dk.utils.DkSPUtils
  */
 class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
     fun login(phone: String, code: String) {
-        view.showWaitting()
         if (phone.isEmpty()) {
             view.errorMsg("请输入手机号")
             return
@@ -21,8 +20,10 @@ class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
             view.errorMsg("请输入验证码")
             return
         }
+        view.showWaitting()
         var mCode = DkSPUtils.getLastCode()
         if (code != mCode) {
+            view.showWaitting()
             view.errorMsg("验证码不正确")
             return
         }
