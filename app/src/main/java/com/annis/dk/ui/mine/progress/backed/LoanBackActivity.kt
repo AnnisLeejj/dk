@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_loan_back.*
 
 class LoanBackActivity : MVPActivty<LoanBaackPrensenter>(), LoanBaackView {
     override fun success() {
+
         finish()
     }
 

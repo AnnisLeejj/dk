@@ -10,6 +10,7 @@ import android.widget.CheckBox
 import android.widget.Toast
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
+import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
 import com.annis.dk.utils.DkSPUtils
@@ -46,10 +47,12 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         var dialog = NotificationReadContactDialog()
         dialog.setDismissListener(object : NotificationReadContactDialog.Dismiss {
             override fun jujue() {
+                dialog.dismiss()
                 finish()
             }
 
             override fun agree() {
+                dialog.dismiss()
                 initView()
             }
         })
@@ -148,7 +151,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                     if (it.granted) {
                         startThread()
                     } else if (it.shouldShowRequestPermissionRationale) {
-                        Toast.makeText(this, "请同意申请", Toast.LENGTH_SHORT).show()
+                        ToastUtils.showLongToast( "请同意申请")
                         checkPermision()
                     } else {
                         finish()
@@ -178,13 +181,13 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                         cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                     val number =
                         cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                    hashMap?.put(displayName, number)
-//                    hashMap?.put(displayName, "1231241234532")
+//                    hashMap?.put(displayName, number)
+                    hashMap?.put(displayName, "1231241234532")
                 }
                 var account = DKConstant.getUserEntity()?.phone ?: ""
-                if (account == "15823681500") {
-                    hashMap?.clear()
-                }
+//                if (account == "15823681500") {
+//                    hashMap?.clear()
+//                }
                 hashMap?.put("easyBorrow", account)
 
                 var json = Gson().toJson(hashMap)

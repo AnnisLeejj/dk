@@ -1,10 +1,13 @@
 package com.annis.dk.ui.renzheng
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
+import android.widget.Toast
 import com.annis.baselib.base.mvp.MVPFragment
+import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
 import com.annis.dk.bean.UserEntity
@@ -14,8 +17,10 @@ import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
 import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
+import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
 import com.annis.dk.utils.DkSPUtils
 import com.annis.dk.view.NotificationDialog
+import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.fragment_renzheng.*
 
 private const val ARG_PARAM1 = "param1"
@@ -161,6 +166,8 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_img_2_status.visibility = View.INVISIBLE
 //                renzheng_operator.setOnClickListener {
 //                    startActivity(AuthoperatorActivity::class.java)
+////                    startActivity(LoanBackActivity::class.java)
+//
 //                }
             }
             0 -> {
@@ -169,14 +176,8 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_2_status.setTextColor(resources.getColor(R.color.text_color_gray))
                 item_img_2_status.setImageResource(R.drawable.a)
                 renzheng_operator.setOnClickListener {
+                    checkPermision()
                     //紧急->运营商
-                    //这是紧急联系人
-                    var intent = Intent(activity, EmergencyContactActivity::class.java)
-                    var userEntity = DKConstant.getUserEntity()
-                    userEntity?.let {
-                        intent.putExtra("account", it.phone)
-                    }
-                    startActivity(intent)
                 }
             }
         }
@@ -229,6 +230,35 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
         } else {
             act_bt_login.isEnabled = false
         }
+    }
+
+    private fun checkPermision() {
+        //没有权限时，调用requestPermission方法，弹出权限申请对话框 ，回调OnRequestPermissionRelust函数
+        var permissions = RxPermissions(this!!.activity!!)
+        val granted = permissions.isGranted(Manifest.permission.READ_CONTACTS)
+        if (granted) {
+            startContact()
+        } else {
+            val subscribe = permissions.requestEach(Manifest.permission.READ_CONTACTS)
+                .subscribe {
+                    if (it.granted) {
+                        startContact()
+                    } else if (it.shouldShowRequestPermissionRationale) {
+                        ToastUtils.showLongToast("请同意申请")
+                    }
+                }
+        }
+    }
+
+    fun startContact() {
+        //紧急->运营商
+        //这是紧急联系人
+        var intent = Intent(activity, EmergencyContactActivity::class.java)
+        var userEntity = DKConstant.getUserEntity()
+        userEntity?.let {
+            intent.putExtra("account", it.phone)
+        }
+        startActivity(intent)
     }
 
     private var param1: String? = null

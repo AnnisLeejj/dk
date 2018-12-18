@@ -21,6 +21,7 @@ import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
 import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
 import com.annis.dk.utils.DkSPUtils
+import com.annis.dk.view.NotificationDialog
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -220,10 +221,22 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
     override fun showMyProgress(loanInfo: LoanInfo?) {
 
         loanInfo?.let {
+            //isnew int 是否审请了贷款（0：未申请 1：已申请）
+            //mloan int 是否已发放贷款(0:未发放 1:已发放)
+//            it.isNew = "1"
+//            it.mloan = "1"
             if (it.isNew == "0") {
                 startActivity(LoanBackActivity::class.java)
                 return
+            } else if (it.isNew == "1") {
+                if (it.mloan == "1") {
+                    var dialog = NotificationDialog()
+                    dialog.setMessage("当前没有贷款需要审核")
+                    dialog.show(childFragmentManager, "123asd")
+                    return
+                }
             }
+
             when (it.isPass) {
                 "0" -> startActivity(WaitingActivity::class.java)
                 "1" -> {

@@ -23,9 +23,7 @@ class LoanBaackPrensenter(view: LoanBaackView?) : DKPresenter<LoanBaackView>(vie
                 .subscribe({ r ->
                     if (r.isSave == 0) {
                         updateAllInfo()
-
                         view.errorMsg("申请提交成功")
-
                         view.success()
                     } else {
                         view.errorMsg("申请提交失败")
