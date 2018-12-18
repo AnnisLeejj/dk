@@ -110,8 +110,7 @@ class CodeDialog : DialogFragment() {
                     Uri.parse(image)
                 )
             )
-
-            ToastUtils.showLongToast("截图已保存")
+            ToastUtils.showLongToast("付款码已经保存至相册")
             dismiss()
         }
     }

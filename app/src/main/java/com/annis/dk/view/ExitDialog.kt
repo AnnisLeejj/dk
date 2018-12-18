@@ -15,7 +15,7 @@ import com.annis.dk.R
  * @date 2018/12/17 18:19
  * @Description
  */
-class NotificationReadContactDialog : DialogFragment() {
+class ExitDialog : DialogFragment() {
     interface Dismiss {
         fun agree()
         fun jujue()
@@ -28,7 +28,7 @@ class NotificationReadContactDialog : DialogFragment() {
     var mDismiss: Dismiss? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)//取消对话框fragment的标题
-        return inflater.inflate(R.layout.dialog_notification_readcontact , container, false)
+        return inflater.inflate(R.layout.dialog_exit, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

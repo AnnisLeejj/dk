@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:background="@drawable/dialog_bg"
+        android:layout_width="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_height="wrap_content">
+    
+    <TextView
+            android:id="@+id/dialog_noti_title"
+            android:layout_marginTop="44dp"
+            android:layout_centerHorizontal="true"
+            android:text="提示"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    <TextView
+            android:id="@+id/dialog_noti_tvMessage"
+            android:layout_marginTop="28dp"
+            android:layout_below="@+id/dialog_noti_title"
+            android:layout_centerHorizontal="true"
+            android:text="确认退出程序?"
+            android:textColor="@color/bar_grey"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_marginBottom="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    <LinearLayout
+            android:layout_below="@+id/dialog_noti_tvMessage"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="25dp"
+            android:layout_height="wrap_content">
+        
+        <Button
+                android:id="@+id/jujue"
+                android:text="返回"
+                android:background="@drawable/sp_bt_bg_agree"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="26dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="0dp"
+                android:layout_height="68dp"/>
+        
+        
+        <Button
+                android:id="@+id/tongyi"
+                android:text="退出"
+                android:background="@drawable/sp_bt_bg_gray_c"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="26dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="0dp"
+                android:layout_height="68dp"/>
+    </LinearLayout>
+</RelativeLayout>

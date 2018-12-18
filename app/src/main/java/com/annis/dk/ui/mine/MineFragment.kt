@@ -21,6 +21,7 @@ import com.annis.dk.ui.mine.progress.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
 import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
 import com.annis.dk.utils.DkSPUtils
+import com.annis.dk.view.ExitDialog
 import com.annis.dk.view.NotificationDialog
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -130,15 +131,26 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
 
     fun click() {
         act_bt_outlogin.setOnClickListener {
-            DKConstant.clear()
-            startActivity(LoginActivity::class.java)
-            activity!!.finish()
+            var dialog = ExitDialog()
+            dialog.setDismissListener(object : ExitDialog.Dismiss {
+                override fun jujue() {
+                    dialog.dismiss()
+                }
+
+                override fun agree() {
+                    dialog.dismiss()
+                    DKConstant.clear()
+                    startActivity(LoginActivity::class.java)
+                    activity!!.finish()
+                }
+            })
+            dialog.setMessage("获取您的通讯录")
+            dialog.show(childFragmentManager, "notify")
         }
         rl_progress.setOnClickListener {
             userEntity = DKConstant.getUserEntity()
             userEntity?.let {
                 if (it.isChecIdentity == 1 && it.isChecOperator == 1 && it.isChecAlipay == 1 && it.isChecBankCard == 1) {
-
                 } else {
                     showToast("请到先提交您的认证信息")
                     return@setOnClickListener

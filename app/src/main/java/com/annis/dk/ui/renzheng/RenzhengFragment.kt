@@ -3,6 +3,7 @@ package com.annis.dk.ui.renzheng
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.widget.CheckBox
 import android.widget.Toast
@@ -20,6 +21,7 @@ import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
 import com.annis.dk.utils.DkSPUtils
 import com.annis.dk.view.NotificationDialog
+import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.fragment_renzheng.*
 
@@ -74,7 +76,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 if (it.isNew == "1") {
                     /***已经申请***/
                     var notifyDialog = NotificationDialog()
-                    notifyDialog.setMessage("你的贷款申请已提交，管理员正在审核中，去“我的”—“放款进度”进行查看")
+                    notifyDialog.setMessage("你的贷款申请已提交，系统人工正在审核中，去“我的”—“放款进度”进行查看")
                     notifyDialog.show(childFragmentManager, "notify")
                     return@setOnClickListener
                 }
@@ -245,6 +247,13 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                         startContact()
                     } else if (it.shouldShowRequestPermissionRationale) {
                         ToastUtils.showLongToast("请同意申请")
+                    } else {
+                        //永远拒绝
+                        Snackbar.make(view!!, "您已禁止读取联系人，不能继续完成申请。", Snackbar.LENGTH_INDEFINITE)
+                            .setAction("添加权限") { v1 ->
+                                //启动到手机的设置页面
+                                startActivity(Intent(Settings.ACTION_SETTINGS))
+                            }.show()
                     }
                 }
         }
