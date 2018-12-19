@@ -51,6 +51,7 @@
     
     <EditText
             android:id="@+id/act_et_code"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/act_et_tel_psw_line"
             android:textColorHint="@color/et_hint_color"
             android:layout_width="match_parent"
@@ -65,6 +66,7 @@
     
     <Button
             android:id="@+id/act_bt_getcode"
+            android:visibility="gone"
             android:layout_width="140dp"
             android:layout_height="54dp"
             android:textColor="@color/colorPrimary"
@@ -135,7 +137,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:text="温馨提示:
 \n1、授权期间将收到运营商的通知短信，这是正常现象，无需担心。
-\n2、服务密码为运营商的业务办理密码，一般为6位数字，神州行号码为8位数字具体可联系运营商官方咨"
+\n2、服务密码为运营商的业务办理密码，一般为6位数字，神州行号码为8位数字具体可联系运营商官方咨询"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

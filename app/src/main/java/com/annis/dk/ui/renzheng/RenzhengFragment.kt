@@ -166,11 +166,11 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
             2 -> {
                 item_tv_2_status.text = "认证中"
                 item_img_2_status.visibility = View.INVISIBLE
-//                renzheng_operator.setOnClickListener {
-//                    startActivity(AuthoperatorActivity::class.java)
-////                    startActivity(LoanBackActivity::class.java)
-//
-//                }
+                renzheng_operator.setOnClickListener {
+                    startActivity(AuthoperatorActivity::class.java)
+//                    startActivity(LoanBackActivity::class.java)
+
+                }
             }
             0 -> {
                 item_img_2_status.visibility = View.VISIBLE

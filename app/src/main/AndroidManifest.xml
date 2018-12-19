@@ -12,6 +12,10 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning"
             tools:replace="android:label,android:icon">
+        <activity android:name=".ui.authentication.operator.ReadBackActivity">
+        </activity>
+        <activity android:name=".ui.authentication.operator.WaittingActivity">
+        </activity>
         <activity android:name=".ui.mine.progress.backed.LoanBackActivity">
         </activity>
         <activity android:name=".ui.TextActivity">
