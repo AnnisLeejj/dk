@@ -66,6 +66,15 @@
             android:gravity="center"
             android:layout_height="44dp"/>
     
+    <ImageView
+            android:src="@drawable/loan_hint"
+            app:layout_constraintTop_toBottomOf="@+id/time_hint"
+            app:layout_constraintBottom_toTopOf="@+id/act_bt_pay"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="525dp"
+            android:layout_height="310dp"/>
+    
     <TextView
             android:id="@+id/act_success_remark"
             android:visibility="gone"

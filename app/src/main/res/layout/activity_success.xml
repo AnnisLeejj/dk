@@ -69,6 +69,7 @@
             android:id="@+id/fuwufei"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="22dp"
+            android:layout_marginBottom="10dp"
             android:textSize="@dimen/text_size_normal"
             android:text="会员服务费:55元"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -76,6 +77,15 @@
             app:layout_constraintTop_toBottomOf="@+id/time_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+    
+    <ImageView
+            android:src="@drawable/loan_hint"
+            app:layout_constraintTop_toBottomOf="@+id/fuwufei"
+            app:layout_constraintBottom_toTopOf="@+id/act_bt_pay"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="525dp"
+            android:layout_height="310dp"/>
     
     <TextView
             android:id="@+id/act_success_remark"

