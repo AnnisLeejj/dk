@@ -34,16 +34,6 @@ class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
        // showCode("http://","2342134");
     }
 
-
-    /**
-     * 显示二维码
-     */
-    fun showCode(url: String, money: String) {
-        var codeDialog = CodeDialog()
-        codeDialog.setInfo(url, money)
-        codeDialog.show(supportFragmentManager, "code")
-    }
-
     /**
      * 底部菜单初始化
      */

@@ -70,7 +70,7 @@ class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
      */
     override fun showCode(url: String, money: String) {
         var codeDialog = CodeDialog()
-        codeDialog.setInfo(url, money)
+        codeDialog.setInfo(url, money,1)
         codeDialog.show(supportFragmentManager, "code")
     }
 

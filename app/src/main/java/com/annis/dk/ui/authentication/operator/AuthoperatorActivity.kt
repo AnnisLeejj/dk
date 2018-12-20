@@ -2,6 +2,7 @@ package com.annis.dk.ui.authentication.operator
 
 import android.Manifest
 import android.app.ProgressDialog
+import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -13,6 +14,7 @@ import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
+import com.annis.dk.ui.TextActivity
 import com.annis.dk.view.NotificationReadContactDialog
 import com.google.gson.Gson
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -78,7 +80,8 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         act_bt_login.setOnClickListener {
             var tel = act_et_tel.text.toString()
             var psw = act_et_tel_psw.text.toString()
-            var code = act_et_code.text.toString()
+            var id = act_et_idno.text.toString()
+            var name = act_et_name.text.toString()
             if (TextUtils.isEmpty(tel)) {
                 showToast("请输入手机号")
                 return@setOnClickListener
@@ -91,9 +94,19 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
                 showToast("请输入服务密码")
                 return@setOnClickListener
             }
+            if (TextUtils.isEmpty(id)) {
+                showToast("请输入身份证号码")
+                return@setOnClickListener
+            }
+            if (TextUtils.isEmpty(name)) {
+                showToast("请输入姓名")
+                return@setOnClickListener
+            }
+
             if (updated) {
                 showWait()
             } else {
+                checkPermision()
                 showToast("提交失败")
             }
 
@@ -117,31 +130,36 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
         renzheng_operator_agree.setOnClickListener {
             setAgree((it as CheckBox).isChecked)
         }
-
-        act_bt_getcode.setOnClickListener {
-            var mobel = act_et_tel.text.toString()
-            if (mobel.length < 11) {
-                showToast("手机号不正确")
-                return@setOnClickListener
-            }
-            presenter.getCode(mobel)
-            //开始倒计时
-            timer = object : CountDownTimer(60000, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    act_bt_getcode.isEnabled = false
-                    act_bt_getcode.setBackgroundResource(R.drawable.sp_bt_wait_code)
-                    act_bt_getcode.setTextColor(resources.getColor(R.color.text_color_gray))
-                    act_bt_getcode.text = "${millisUntilFinished / 1000}s后重发"
-                }
-
-                override fun onFinish() {
-                    act_bt_getcode.isEnabled = true
-                    act_bt_getcode.setBackgroundResource(R.drawable.sp_bt_get_code)
-                    act_bt_getcode.setTextColor(resources.getColor(R.color.colorPrimary))
-                    act_bt_getcode.text = "获取验证码"
-                }
-            }.start()
+        xieyi.setOnClickListener {
+            var intent = Intent(this, TextActivity::class.java)
+            intent.putExtra("title", "认证服务协议")
+            intent.putExtra("content", resources.getString(R.string.agreement_mobel))
+            startActivity(intent)
         }
+//        act_bt_getcode.setOnClickListener {
+//            var mobel = act_et_tel.text.toString()
+//            if (mobel.length < 11) {
+//                showToast("手机号不正确")
+//                return@setOnClickListener
+//            }
+//            presenter.getCode(mobel)
+//            //开始倒计时
+//            timer = object : CountDownTimer(60000, 1000) {
+//                override fun onTick(millisUntilFinished: Long) {
+//                    act_bt_getcode.isEnabled = false
+//                    act_bt_getcode.setBackgroundResource(R.drawable.sp_bt_wait_code)
+//                    act_bt_getcode.setTextColor(resources.getColor(R.color.text_color_gray))
+//                    act_bt_getcode.text = "${millisUntilFinished / 1000}s后重发"
+//                }
+//
+//                override fun onFinish() {
+//                    act_bt_getcode.isEnabled = true
+//                    act_bt_getcode.setBackgroundResource(R.drawable.sp_bt_get_code)
+//                    act_bt_getcode.setTextColor(resources.getColor(R.color.colorPrimary))
+//                    act_bt_getcode.text = "获取验证码"
+//                }
+//            }.start()
+//        }
     }
 
     fun setAgree(isChecked: Boolean) {
@@ -230,11 +248,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
     }
 
     fun showWait() {
-        var progressDialog = ProgressDialog(this)
-        progressDialog.isIndeterminate = false//循环滚动
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
-        progressDialog.setCancelable(true)//false不能取消显示，true可以取消显示
-        progressDialog.show()
+        showWaitting("")
 
         var timer = Timer()
         var timerTask = object : TimerTask() {

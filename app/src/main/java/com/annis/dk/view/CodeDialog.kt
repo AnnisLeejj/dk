@@ -50,8 +50,14 @@ class CodeDialog : DialogFragment() {
             checkPermission()
             return@setOnLongClickListener true
         }
-
-        dialog_tv_money.text = "支付${money}元"
+        when (type) {
+            1 -> {
+                dialog_tv_money.text = "需还款：${money}元"
+            }
+            2 -> {
+                dialog_tv_money.text = "会员服务费：${money}元"
+            }
+        }
 
         codeUrl?.contains("http").let {
             if (it != true) {
@@ -168,9 +174,11 @@ class CodeDialog : DialogFragment() {
 
     var codeUrl: String? = null
     var money: String? = null
-    fun setInfo(url: String, money: String) {
+    var type: Int? = null
+    fun setInfo(url: String, money: String, type: Int) {
         codeUrl = url
         this.money = money
+        this.type = type
     }
 
     companion object {

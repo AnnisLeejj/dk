@@ -42,7 +42,7 @@ class SuccessActivity : BaseActivity() {
      */
     fun showCode(url: String, serviceCharge: String) {
         var codeDialog = CodeDialog()
-        codeDialog.setInfo(url, serviceCharge)
+        codeDialog.setInfo(url, serviceCharge, 2)
         codeDialog.show(supportFragmentManager, "code")
     }
 

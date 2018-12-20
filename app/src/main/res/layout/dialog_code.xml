@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="55dp"
             android:textColor="#a5a5a5"
-            android:text="支付宝收款码"
+            android:text="可添加客服微信在线转账"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     
@@ -45,14 +45,34 @@
             android:layout_height="wrap_content"/>
     
     <TextView
+            android:id="@+id/dialog_tv_emailhint"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/dialog_tv_money"
+            android:text="支付宝账号"
+            android:textSize="17dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    <TextView
+            android:id="@+id/dialog_tv_email"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/dialog_tv_emailhint"
+            android:text="rongyijiejinrong@163.com"
+            android:textSize="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    <TextView
             android:id="@+id/dialog_tv_hint"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:textSize="17dp"
-            android:layout_below="@+id/dialog_tv_money"
+            android:layout_below="@+id/dialog_tv_email"
             android:layout_centerHorizontal="true"
-            android:text="1.支付以后如有疑问请在客服中心联系人工客服\n2.请备注姓名与手机号码，否则影响审批进度"
+            android:text="【方式1】可添加客服微信转账\n【方式2】支付宝转账务必备注借款人姓名和注册手机号码"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     

@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#f0f0f0"
         tools:context="com.annis.dk.ui.authentication.operator.ReadBackActivity">
     
     <LinearLayout
@@ -12,7 +13,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:background="#ffffff"
             android:gravity="center_horizontal"
-            android:paddingBottom="40dp"
+            android:paddingBottom="60dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:orientation="vertical"
@@ -49,7 +50,7 @@
                 android:textColor="#858585"
                 android:layout_marginTop="8.5dp"
                 android:textSize="17dp"
-                android:text="您所输入的内容以提交成功"
+                android:text="您所输入的内容已提交成功"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -57,7 +58,7 @@
     <Button
             android:id="@+id/act_read_back_sure"
             android:background="@drawable/sp_bt_bg_sure"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="28dp"
             app:layout_constraintTop_toBottomOf="@+id/infoconteainer"
             android:layout_marginLeft="@dimen/margin_window"
             android:layout_marginRight="@dimen/margin_window"
@@ -84,6 +85,7 @@
         
         <TextView
                 android:text="信息安全保护中.."
+                android:textSize="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
