@@ -23,5 +23,5 @@
             android:layout_height="wrap_content"
             android:text="加载中..."
             android:textColor="#9a9b98"
-            android:textSize="25sp"/>
+            android:textSize="20dp"/>
 </LinearLayout>

@@ -13,7 +13,7 @@ class AuthenPresenter(view: AuthenView?) : DKPresenter<AuthenView>(view) {
      * 上传身份证
      */
     fun loadIdcard(file1: String, file2: String, file3: String) {
-        view.showWaitting("正在提交...")
+        view.showWaitting("正在提交.")
         addSubscribe(
             getHttpApi()!!.saveIDCard(DkSPUtils.getUID(), DkSPUtils.getKey(), file1, file2, file3).compose(
                 RxUtil.rxSchedulerHelper()
@@ -34,7 +34,7 @@ class AuthenPresenter(view: AuthenView?) : DKPresenter<AuthenView>(view) {
     }
 
     fun loadFile(file: File, currentImg: Int) {
-        view.showWaitting("正在上传...")
+        view.showWaitting("正在上传.")
         val body = RequestBody.create(MediaType.parse("image/png"), file)
         val part = MultipartBody.Part.createFormData("file", file.name, body)
         addSubscribe(

@@ -78,10 +78,10 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
     var timer: CountDownTimer? = null
     fun click() {
         act_bt_login.setOnClickListener {
-            var tel = act_et_tel.text.toString()
-            var psw = act_et_tel_psw.text.toString()
-            var id = act_et_idno.text.toString()
-            var name = act_et_name.text.toString()
+            val tel = act_et_tel.text.toString()
+            val psw = act_et_tel_psw.text.toString()
+            val id = act_et_idno.text.toString()
+            val name = act_et_name.text.toString()
             if (TextUtils.isEmpty(tel)) {
                 showToast("请输入手机号")
                 return@setOnClickListener
@@ -250,8 +250,8 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
     fun showWait() {
         showWaitting("")
 
-        var timer = Timer()
-        var timerTask = object : TimerTask() {
+        val timer = Timer()
+        val timerTask = object : TimerTask() {
             override fun run() {
                 showNext()
             }
