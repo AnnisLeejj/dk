@@ -6,6 +6,7 @@ import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
 import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.utils.ExcelUtil
+import com.annis.dk.view.NotificationReadContactDialog
 import kotlinx.android.synthetic.main.activity_emergency_contact.*
 import java.io.File
 
@@ -33,7 +34,24 @@ class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), Emerge
     override fun initViewAndListener() {
         account = intent.getStringExtra("account")
         click()
+        showDialog()
+    }
 
+    fun showDialog() {
+        var dialog = NotificationReadContactDialog()
+        dialog.setDismissListener(object : NotificationReadContactDialog.Dismiss {
+            override fun jujue() {
+                dialog.dismiss()
+                finish()
+            }
+
+            override fun agree() {
+                dialog.dismiss()
+
+            }
+        })
+        dialog.setMessage("获取您的通讯录")
+        dialog.show(supportFragmentManager, "notify")
     }
 
     fun click() {

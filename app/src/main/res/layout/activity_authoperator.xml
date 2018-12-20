@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:background="@null"
                 android:paddingLeft="28dp"
-                android:maxLength="12"
+                android:maxLength="6"
                 android:hint="请输入服务密码"
                 android:textSize="@dimen/et_text_size"
                 android:layout_height="match_parent"/>
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:background="@null"
                 android:paddingLeft="28dp"
-                android:maxLength="12"
+                android:maxLength="20"
                 android:hint="本人身份证号码"
                 android:textSize="@dimen/et_text_size"
                 android:layout_height="match_parent"/>
@@ -146,7 +146,6 @@
                 android:layout_width="match_parent"
                 android:background="@null"
                 android:paddingLeft="28dp"
-                android:maxLength="12"
                 android:hint="姓名"
                 android:textSize="@dimen/et_text_size"
                 android:layout_height="match_parent"/>
@@ -231,7 +230,6 @@
         <!--android:layout_width="match_parent"-->
         <!--android:background="@null"-->
         <!--android:paddingLeft="28dp"-->
-        <!--android:maxLength="12"-->
         <!--android:hint="手机号码"-->
         <!--android:textSize="@dimen/et_text_size"-->
         <!--android:layout_height="@dimen/item_layout_h"/>-->
@@ -254,7 +252,6 @@
         <!--android:paddingLeft="28dp"-->
         <!--android:hint="请输入服务密码"-->
         <!--android:textSize="@dimen/et_text_size"-->
-        <!--android:maxLength="16"-->
         <!--android:layout_height="@dimen/item_layout_h"/>-->
         
         <!--<View-->
@@ -273,7 +270,6 @@
         <!--android:background="@null"-->
         <!--android:lines="1"-->
         <!--android:inputType="textEmailAddress"-->
-        <!--android:maxLength="6"-->
         <!--android:paddingLeft="28dp"-->
         <!--android:hint="请输入验证码"-->
         <!--android:textSize="@dimen/et_text_size"-->

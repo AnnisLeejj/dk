@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.widget.CheckBox
-import android.widget.Toast
 import com.annis.baselib.base.mvp.MVPFragment
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
@@ -17,9 +16,8 @@ import com.annis.dk.ui.authentication.alipay.AuthAlipayActivity
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
-import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
-import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
 import com.annis.dk.utils.DkSPUtils
+import com.annis.dk.view.CodeDialog
 import com.annis.dk.view.NotificationDialog
 import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -127,24 +125,34 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
         userEntity?.let {
             //it.isChecIdentity = 0
             initAuth(it.isChecIdentity, it.isChecOperator, it.isChecAlipay, it.isChecBankCard)
-//            initAuth(it.isChecIdentity, 2, it.isChecAlipay, it.isChecBankCard)
+//            initAuth(0, 0, 0, 0)
 //            initAuth(0, 0, 2, 2)
         }
         showPact()
     }
 
-    fun initAuth(havID: Int, havOperator: Int, havAlipay: Int, havBank: Int) {
+    /**
+     * 显示二维码
+     */
+    fun showCode(url: String, money: String) {
+        var codeDialog = CodeDialog()
+        codeDialog.setInfo(url, money, 1)
+        codeDialog.show(childFragmentManager, "code")
+    }
 
+    fun initAuth(havID: Int, havOperator: Int, havAlipay: Int, havBank: Int) {
         when (havID) {
             1 -> {
                 item_tv_1_status.text = "已认证"
                 item_tv_1_status.setTextColor(resources.getColor(R.color.green))
                 item_img_1_status.setImageResource(R.drawable.renzheng_icon)
                 item_img_1_status.visibility = View.VISIBLE
+                renzheng_id.setOnClickListener { }
             }
             2 -> {
                 item_tv_1_status.text = "认证中"
                 item_img_1_status.visibility = View.INVISIBLE
+                renzheng_id.setOnClickListener { }
             }
             0 -> {
                 item_img_1_status.visibility = View.VISIBLE
@@ -164,15 +172,16 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_2_status.setTextColor(resources.getColor(R.color.green))
                 item_img_2_status.setImageResource(R.drawable.renzheng_icon)
                 item_img_2_status.visibility = View.VISIBLE
+                renzheng_operator.setOnClickListener { }
             }
             2 -> {
                 item_tv_2_status.text = "认证中"
                 item_img_2_status.visibility = View.INVISIBLE
-//                renzheng_operator.setOnClickListener {
-//                    startActivity(AuthoperatorActivity::class.java)
-////                    startActivity(LoanBackActivity::class.java)
-//
-//                }
+                renzheng_operator.setOnClickListener {
+                    //startActivity(AuthoperatorActivity::class.java)
+                    //startActivity(EmergencyContactActivity::class.java)
+                    //startActivity(LoanBackActivity::class.java)
+                }
             }
             0 -> {
                 item_img_2_status.visibility = View.VISIBLE
@@ -181,6 +190,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_img_2_status.setImageResource(R.drawable.a)
                 renzheng_operator.setOnClickListener {
                     checkPermision()
+//                    showCode("","")
                     //紧急->运营商
                 }
             }
@@ -191,10 +201,12 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_3_status.setTextColor(resources.getColor(R.color.green))
                 item_img_3_status.setImageResource(R.drawable.renzheng_icon)
                 item_img_3_status.visibility = View.VISIBLE
+                renzheng_alipay.setOnClickListener {}
             }
             2 -> {
                 item_tv_3_status.text = "认证中"
                 item_img_3_status.visibility = View.INVISIBLE
+                renzheng_alipay.setOnClickListener {}
             }
             0 -> {
                 item_img_3_status.visibility = View.VISIBLE
@@ -213,10 +225,12 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_4_status.setTextColor(resources.getColor(R.color.green))
                 item_img_4_status.setImageResource(R.drawable.renzheng_icon)
                 item_img_4_status.visibility = View.VISIBLE
+                renzheng_bank.setOnClickListener {}
             }
             2 -> {
                 item_tv_4_status.text = "认证中"
                 item_img_4_status.visibility = View.INVISIBLE
+                renzheng_bank.setOnClickListener {}
             }
             0 -> {
                 item_img_4_status.visibility = View.VISIBLE

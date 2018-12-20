@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:background="@null"
             android:layout_marginLeft="28dp"
+            android:maxLength="12"
             android:hint="登录手机号"
             android:textSize="@dimen/et_text_size"
             android:layout_height="@dimen/item_layout_h"/>
@@ -45,6 +46,7 @@
             android:lines="1"
             android:inputType="number"
             android:layout_marginLeft="28dp"
+            android:maxLength="6"
             android:hint="输入手机验证码"
             android:textSize="@dimen/et_text_size"
             android:layout_height="@dimen/item_layout_h"/>

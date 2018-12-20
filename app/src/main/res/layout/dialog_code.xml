@@ -18,15 +18,15 @@
             android:id="@+id/dialog_code_hint"
             android:textSize="24dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="55dp"
-            android:textColor="#a5a5a5"
-            android:text="可添加客服微信在线转账"
+            android:layout_marginTop="47dp"
+            android:textColor="#444444"
+            android:text="客服微信"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     
     <ImageView
             android:id="@+id/dialog_iv_code"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/dialog_code_hint"
             android:src="@mipmap/erweima"
@@ -35,7 +35,7 @@
     
     <TextView
             android:id="@+id/dialog_tv_money"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="12dp"
             android:textSize="41dp"
             android:textColor="@color/colorPrimary"
             android:layout_below="@+id/dialog_iv_code"
@@ -46,7 +46,7 @@
     
     <TextView
             android:id="@+id/dialog_tv_emailhint"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="9dp"
             android:layout_below="@+id/dialog_tv_money"
             android:text="支付宝账号"
             android:textSize="17dp"
@@ -56,10 +56,10 @@
     
     <TextView
             android:id="@+id/dialog_tv_email"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:layout_below="@+id/dialog_tv_emailhint"
             android:text="rongyijiejinrong@163.com"
-            android:textSize="20dp"
+            android:textSize="21dp"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -68,7 +68,7 @@
             android:id="@+id/dialog_tv_hint"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:textSize="17dp"
             android:layout_below="@+id/dialog_tv_email"
             android:layout_centerHorizontal="true"
@@ -77,12 +77,12 @@
             android:layout_height="wrap_content"/>
     
     <TextView
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:textSize="@dimen/text_size_normal"
             android:layout_below="@+id/dialog_tv_hint"
             android:layout_centerHorizontal="true"
             android:text="长按保存二维码至相册"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 </RelativeLayout>

@@ -41,25 +41,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
     }
 
     override fun initViewAndListener() {
-
-        showDialog()
-    }
-
-    fun showDialog() {
-        var dialog = NotificationReadContactDialog()
-        dialog.setDismissListener(object : NotificationReadContactDialog.Dismiss {
-            override fun jujue() {
-                dialog.dismiss()
-                finish()
-            }
-
-            override fun agree() {
-                dialog.dismiss()
-                initView()
-            }
-        })
-        dialog.setMessage("获取您的通讯录")
-        dialog.show(supportFragmentManager, "notify")
+        initView()
     }
 
     var phone: String? = null
