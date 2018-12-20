@@ -30,7 +30,7 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
     }
 
     override fun getMyTitle(): TitleBean {
-        return TitleBean("手机认证").setBack(true)
+        return TitleBean("运营商认证").setBack(true)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

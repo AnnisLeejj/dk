@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.annis.dk.ui.authentication.operator.AuthoperatorActivity">
-    
+        
     <EditText
             android:id="@+id/act_et_tel"
             android:lines="1"
