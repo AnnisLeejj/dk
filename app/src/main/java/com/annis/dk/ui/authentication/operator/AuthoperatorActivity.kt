@@ -246,7 +246,8 @@ class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorVi
     }
 
     fun showNext() {
-        startActivity(WaittingActivity::class.java)
+//        startActivity(WaittingActivity::class.java)
+        startActivity(ReadBackActivity::class.java)
         finish()
     }
 }

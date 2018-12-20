@@ -9,14 +9,14 @@ import kotlinx.android.synthetic.main.activity_read_back.*
 
 class ReadBackActivity : BaseActivity() {
     override fun getMyTitle(): TitleBean? {
-        return null
+        return TitleBean("运营商认证").setBack(true)
     }
 
     override fun initViewAndListener() {
-        showWait()
-        act_readback_back.setOnClickListener {
-            timer?.onFinish()
-//            finish()
+        //showWait()
+        act_read_back_sure.setOnClickListener {
+//            timer?.onFinish()
+            finish()
         }
     }
 
@@ -25,12 +25,13 @@ class ReadBackActivity : BaseActivity() {
         setContentView(R.layout.activity_read_back)
     }
 
+
     var timer: CountDownTimer? = null
     fun showWait() {
         //开始倒计时
         timer = object : CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                act_readback_time.text = "${millisUntilFinished / 1000}s"
+                //act_readback_time.text = "${millisUntilFinished / 1000}s"
             }
 
             override fun onFinish() {

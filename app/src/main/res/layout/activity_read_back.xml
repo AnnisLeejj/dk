@@ -8,27 +8,83 @@
         tools:context="com.annis.dk.ui.authentication.operator.ReadBackActivity">
     
     <LinearLayout
+            android:id="@+id/infoconteainer"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#ffffff"
+            android:gravity="center_horizontal"
+            android:paddingBottom="40dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
         
+        
+        <ImageView
+                android:id="@+id/asfasdf"
+                android:src="@drawable/jiekuanchenggong"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="48dp"
+                android:layout_width="86dp"
+                android:layout_height="86dp"/>
+        
         <TextView
-                android:id="@+id/act_readback_time"
-                android:textSize="@dimen/text_size_normal"
+                android:id="@+id/sdfeews"
+                android:textSize="@dimen/bt_text_size"
+                app:layout_constraintTop_toBottomOf="@+id/asfasdf"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="#1a81e3"
+                android:layout_marginTop="13dp"
+                android:text="提交成功"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         
         <TextView
-                android:id="@+id/act_readback_back"
-                android:textSize="@dimen/text_size_normal"
-                android:text="立即返回"
+                app:layout_constraintTop_toBottomOf="@+id/sdfeews"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="#858585"
+                android:layout_marginTop="8.5dp"
+                android:textSize="17dp"
+                android:text="您所输入的内容以提交成功"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
-
-
+    
+    <Button
+            android:id="@+id/act_read_back_sure"
+            android:background="@drawable/sp_bt_bg_sure"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/infoconteainer"
+            android:layout_marginLeft="@dimen/margin_window"
+            android:layout_marginRight="@dimen/margin_window"
+            android:textSize="@dimen/bt_text_size"
+            android:textColor="#ffffff"
+            android:text="完 成"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_h"/>
+    
+    <LinearLayout
+            
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        
+        <ImageView
+                android:src="@drawable/anquanbaomi"
+                android:layout_width="20dp"
+                android:layout_height="24dp"/>
+        
+        <TextView
+                android:text="信息安全保护中.."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
