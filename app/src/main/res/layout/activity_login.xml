@@ -19,13 +19,13 @@
     <EditText
             android:id="@+id/act_et_tel"
             android:lines="1"
-            android:inputType="number"
+            android:inputType="phone"
             app:layout_constraintBottom_toTopOf="@+id/act_tel_line"
             android:textColorHint="@color/et_hint_color"
             android:layout_width="match_parent"
             android:background="@null"
             android:layout_marginLeft="28dp"
-            android:maxLength="12"
+            android:maxLength="15"
             android:hint="登录手机号"
             android:textSize="@dimen/et_text_size"
             android:layout_height="@dimen/item_layout_h"/>

@@ -72,13 +72,12 @@
                     android:layout_gravity="center"
                     android:gravity="end|center_vertical"
                     android:textSize="@dimen/et_text_size"
-                    android:inputType="number"
+                    android:inputType="textEmailAddress"
                     android:maxLength="20"
                     android:hint="身份证"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
                     android:layout_height="match_parent"/>
-        
         </RelativeLayout>
         
         <View
@@ -110,8 +109,8 @@
                     android:layout_gravity="center"
                     android:gravity="end|center_vertical"
                     android:textSize="@dimen/et_text_size"
-                    android:inputType="number"
-                    android:maxLength="18"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="30"
                     android:hint="银行卡"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
@@ -148,8 +147,8 @@
                     android:layout_gravity="center"
                     android:gravity="end|center_vertical"
                     android:textSize="@dimen/et_text_size"
-                    android:inputType="number"
-                    android:maxLength="12"
+                    android:inputType="phone"
+                    android:maxLength="15"
                     android:hint="预留手机号"
                     android:layout_marginRight="@dimen/item_layout_margin_left"
                     android:layout_alignParentRight="true"
