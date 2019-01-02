@@ -23,12 +23,17 @@ open class DKPresenter<V : BaseView?>(view: V?) : MvpPresenter<V>(view) {
     }
 
     fun getKey() {
-        addSubscribe(getHttpApi()?.key?.compose(RxUtil.rxSchedulerHelper())?.subscribe {
-            it.key.let { it ->
-                DkSPUtils.saveKey(it)
-                getWebsite()
-            }
-        })
+        addSubscribe(
+            getHttpApi()?.key?.compose(RxUtil.rxSchedulerHelper())
+                ?.subscribe({
+                    it.key.let { it ->
+                        DkSPUtils.saveKey(it)
+                        getWebsite()
+                    }
+                }, {
+                    it.message
+                })
+        )
     }
 
     fun updateAllInfo() {

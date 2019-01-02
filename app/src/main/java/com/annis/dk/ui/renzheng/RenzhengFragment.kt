@@ -85,7 +85,7 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
         }
         agreementLoan.setOnClickListener {
             var intent = Intent(activity, TextActivity::class.java)
-            intent.putExtra("title", "容易借贷款协议")
+            intent.putExtra("title", "红鲤鱼贷款协议")
             intent.putExtra("content", resources.getString(R.string.agreement_loan))
             startActivity(intent)
         }

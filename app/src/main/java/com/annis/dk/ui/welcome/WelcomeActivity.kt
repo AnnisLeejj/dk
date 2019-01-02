@@ -3,13 +3,10 @@ package com.annis.dk.ui.welcome
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
-import com.annis.dk.BuildConfig
 import com.annis.dk.R
-import com.annis.dk.base.DKConstant
 import com.annis.dk.ui.MainActivity
 import com.annis.dk.ui.login.LoginActivity
 import com.annis.dk.utils.DkSPUtils
-import java.lang.RuntimeException
 
 class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
     override fun getPresenter(): WelcomePresenter {
@@ -30,10 +27,10 @@ class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
         presenter.getKey()
         presenter.getControlCode()
         var time = 2500L
-        when (BuildConfig.DEBUG) {
-            true -> 500L
-            false -> 2500L
-        }
+//        when (BuildConfig.DEBUG) {
+//            true -> 500L
+//            false -> 2500L
+//        }
         window.decorView.postDelayed(
             {
                 startNextActvitiy()

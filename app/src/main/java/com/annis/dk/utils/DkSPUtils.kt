@@ -13,7 +13,7 @@ class DkSPUtils {
             spUtils.putString("key", key)
         }
 
-        fun getKey(): String {
+        fun getKey(): String? {
             return spUtils.getString("key")
         }
 
