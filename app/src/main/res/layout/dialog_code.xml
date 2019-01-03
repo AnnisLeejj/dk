@@ -43,43 +43,21 @@
             android:text="支付*00元"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    
-    <TextView
-            android:id="@+id/dialog_tv_emailhint"
-            android:layout_marginTop="9dp"
-            android:layout_below="@+id/dialog_tv_money"
-            android:text="支付宝账号"
-            android:textSize="17dp"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    
+     
     <TextView
             android:id="@+id/dialog_tv_email"
             android:layout_marginTop="7dp"
-            android:layout_below="@+id/dialog_tv_emailhint"
-            android:text="rongyijiejinrong@163.com"
+            android:layout_below="@+id/dialog_tv_money"
+            android:text="请添加红鲤鱼客服微信缴纳费用"
             android:textSize="21dp"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    
-    <TextView
-            android:id="@+id/dialog_tv_hint"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            android:textSize="17dp"
-            android:layout_below="@+id/dialog_tv_email"
-            android:layout_centerHorizontal="true"
-            android:text="【方式1】可添加客服微信转账\n【方式2】支付宝转账务必备注借款人姓名和注册手机号码"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    
+     
     <TextView
             android:layout_marginTop="8dp"
             android:textSize="@dimen/text_size_normal"
-            android:layout_below="@+id/dialog_tv_hint"
+            android:layout_below="@+id/dialog_tv_email"
             android:layout_centerHorizontal="true"
             android:text="长按保存二维码至相册"
             android:layout_marginBottom="15dp"

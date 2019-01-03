@@ -15,7 +15,7 @@ import com.annis.dk.R
  * @date 2018/12/17 18:19
  * @Description
  */
-class ExitDialog : DialogFragment() {
+class PaidDialog : DialogFragment() {
     interface Dismiss {
         fun agree()
         fun jujue()
@@ -28,7 +28,7 @@ class ExitDialog : DialogFragment() {
     var mDismiss: Dismiss? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)//取消对话框fragment的标题
-        return inflater.inflate(R.layout.dialog_paid, container, false)
+        return inflater.inflate(R.layout.dialog_exit, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -44,9 +44,8 @@ class ExitDialog : DialogFragment() {
         mMessage?.let {
             tvTitle?.text = mMessage
         }
-
-        view?.findViewById<TextView>(R.id.tongyi)?.setOnClickListener { mDismiss?.agree() }
-        view?.findViewById<TextView>(R.id.jujue)?.setOnClickListener { mDismiss?.jujue() }
+        view?.findViewById<TextView>(R.id.tongyi)?.setOnClickListener { mDismiss?.jujue() }
+        view?.findViewById<TextView>(R.id.jujue)?.setOnClickListener { mDismiss?.agree() }
     }
 
     fun setMessage(message: String) {

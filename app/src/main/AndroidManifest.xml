@@ -12,6 +12,8 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning"
             tools:replace="android:label,android:icon">
+        <activity android:name=".ui.mine.progress.PaidActivity">
+        </activity>
         <activity android:name=".ui.authentication.operator.ReadBackActivity">
         </activity>
         <activity android:name=".ui.authentication.operator.WaittingActivity">

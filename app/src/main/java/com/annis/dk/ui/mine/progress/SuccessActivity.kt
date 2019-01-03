@@ -14,6 +14,7 @@ import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
 import com.annis.dk.view.CodeDialog
+import com.annis.dk.view.PaidDialog
 import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_success.*
@@ -40,13 +41,13 @@ class SuccessActivity : BaseActivity() {
     /**
      * 显示二维码
      */
-    fun showCode(url: String, serviceCharge: String) {
+    private fun showCode(url: String, serviceCharge: String) {
         var codeDialog = CodeDialog()
         codeDialog.setInfo(url, serviceCharge, 2)
         codeDialog.show(supportFragmentManager, "code")
     }
 
-    fun click() {
+    private fun click() {
         act_bt_pay.setOnClickListener {
             //支付
             var loan = DKConstant.getLoan() ?: let {
@@ -69,7 +70,20 @@ class SuccessActivity : BaseActivity() {
                 showCode(it, loan.serviceCharge)
             }
         }
+        //我已支付
+        act_bt_paid.setOnClickListener {
+            var dialog = PaidDialog()
+            dialog.setDismissListener(object : PaidDialog.Dismiss {
+                override fun agree() {
+                    dialog.dismiss()
+                    startActivity(PaidActivity::class.java)
+                }
 
+                override fun jujue() {
+                    dialog.dismiss()
+                }
+            })
+        }
         act_bt_call.setOnClickListener {
             //打电话
             call(tvPhone.text.toString())
@@ -89,7 +103,7 @@ class SuccessActivity : BaseActivity() {
         }
     }
 
-    fun call(tel: String) {
+    private fun call(tel: String) {
         var permission = RxPermissions(this)
         permission.requestEach(Manifest.permission.CALL_PHONE).subscribe { r ->
             if (r.granted) {
@@ -105,7 +119,6 @@ class SuccessActivity : BaseActivity() {
                     }.show()
             }
         }
-
     }
 
     fun callOut(tel: String) {

@@ -33,6 +33,7 @@
             android:id="@+id/success_edu_hint"
             android:textSize="@dimen/title_text_size"
             android:layout_marginTop="36dp"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/waiting_text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -43,7 +44,7 @@
     <TextView
             android:id="@+id/success_edu_tv"
             android:textSize="82dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@null"
             app:layout_constraintTop_toBottomOf="@+id/success_edu_hint"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"/>
     
     <ImageView
-            android:src="@drawable/loan_hint"
+            android:src="@drawable/zhifubanner"
             app:layout_constraintTop_toBottomOf="@+id/fuwufei"
             app:layout_constraintBottom_toTopOf="@+id/act_bt_pay"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -184,6 +185,19 @@
             android:id="@+id/act_bt_pay"
             android:textColor="@color/white"
             android:text="支付"
+            app:layout_constraintBottom_toTopOf="@+id/act_bt_paid"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="@dimen/bt_margin_window_side"
+            android:layout_marginRight="@dimen/bt_margin_window_side"
+            android:background="@drawable/sp_bt_bg_primary_dark_c"
+            android:textSize="@dimen/bt_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_h"/>
+    
+    <Button
+            android:id="@+id/act_bt_paid"
+            android:textColor="@color/white"
+            android:text="我已完成支付"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="@dimen/bt_margin_window_side"

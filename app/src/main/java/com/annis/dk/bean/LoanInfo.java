@@ -19,29 +19,24 @@ public class LoanInfo {
     isPass int 审核状态（0：未审核 1：已审核未通过 2：已审核已通过）
 */
     /**
-     * id : 8
-     * uid : 8
-     * loanAmount : 0
-     * loanTime : 0
-     * repaymentTime : 0
-     * serviceCharge : 0
-     * isPayCost : 0
-     * isPayLoan : 0
-     * resultInfo :
-     * mloan : 0
-     * isNew : 1
-     * isPass : 0
-     *
-     * CSTelephone : 15310085739
-     * CSWeChat : jacke
-     * receiptAddress : /Imgs/20181216/GZQaqD.jpg
-     * feeAddress1 : %2fImgs%2f20181213%2fbPUanq.jpg
-     * feeAddress2 : %2fImgs%2f20181213%2fbPUanq.jpg
-     * feeAddress3 : %2fImgs%2f20181213%2fbPUanq.jpg
-     * website : 43.229.152.127
-     * mykey :
+     *  
+     * GetLoan接口
+     * isnew = 1,ispass==0,ispaycost=0,mloan=0  用户申请贷款
+     *  
+     * isnew = 1,ispass==1,ispaycost=0,mloan=0  用户未通过贷款申请
+     *  
+     * isnew = 1,ispass==2,ispaycost=0,mloan=0  用户通过贷款申请 未确认已支付
+     *  
+     * isnew = 1,ispass==2,ispaycost=2,mloan=0  用户通过贷款申请 已确认已支付
+     *  
+     * isnew = 1,ispass==2,ispaycost=1,mloan=0  用户已支付费用
+     *  
+     * isnew = 1,ispass==2,ispaycost=1,mloan=1  后台已发放贷款
+     *  
+     * isnew = 0,ispass==0,ispayloan=1,mloan=0  用户已还款
+     *  
+     * isnew = 0,ispass==0,ispaycost=0,mloan=0  用户未申请贷款
      */
-
     private int id;
     private int uid;
     private String loanAmount;

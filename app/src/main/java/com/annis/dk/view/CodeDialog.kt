@@ -1,13 +1,11 @@
 package com.annis.dk.view
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.DisplayMetrics
@@ -25,11 +23,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.dialog_code.*
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.util.*
-
 
 class CodeDialog : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,9 +46,11 @@ class CodeDialog : DialogFragment() {
         when (type) {
             1 -> {
                 dialog_tv_money.text = "需还款：${money}元"
+                dialog_tv_email.text = "请添加红鲤鱼客服微信还款"
             }
             2 -> {
                 dialog_tv_money.text = "会员服务费：${money}元"
+                dialog_tv_email.text = "请添加红鲤鱼客服微信缴纳会员费"
             }
         }
 
@@ -69,7 +64,7 @@ class CodeDialog : DialogFragment() {
     }
 
     var subscribe: Disposable? = null
-    fun checkPermission() {
+    private fun checkPermission() {
         subscribe =
                 RxPermissions(activity!!).requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .subscribe { permission ->
@@ -82,7 +77,7 @@ class CodeDialog : DialogFragment() {
                                 dismiss()
                                 //永远拒绝
                                 Snackbar.make(view!!, "您已禁止读写，请手动添加权限。", Snackbar.LENGTH_INDEFINITE)
-                                    .setAction("添加") { v1 ->
+                                    .setAction("添加") {
                                         //启动到手机的设置页面
                                         startActivity(Intent(Settings.ACTION_SETTINGS))
                                     }.show()
@@ -96,7 +91,7 @@ class CodeDialog : DialogFragment() {
         super.onDestroy()
     }
 
-    fun save() {
+    private fun save() {
         var bitmap = getViewBp(view)// screenshot(view!!)
         bitmap?.let { bitmap ->
             //                val path = saveBitmap(this, context, bitmap)
@@ -121,20 +116,6 @@ class CodeDialog : DialogFragment() {
         }
     }
 
-    /**
-     * 针对系统文夹只需要扫描,不用插入内容提供者,不然会重复
-     *
-     * @param context  上下文
-     * @param filePath 文件路径
-     */
-    private fun scanFile(context: Context, filePath: String) {
-        if (!File(filePath).exists())
-            return
-        var intent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
-        intent.data = Uri.fromFile(File(filePath))
-        context.sendBroadcast(intent)
-    }
-
     override fun onStart() {
         super.onStart()
         var dialog = dialog
@@ -145,109 +126,46 @@ class CodeDialog : DialogFragment() {
         }
     }
 
-    /**
-     * 对View进行量测，布局后截图
-     *
-     * @param view
-     * @return
-     */
-    fun screenshot(view: View): Bitmap {
-        view.measure(
-            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-        )
-        view.layout(0, 0, view.measuredWidth, view.measuredHeight)
-        view.isDrawingCacheEnabled = true
-        view.buildDrawingCache()
-        var bitmap = view.drawingCache
-        return bitmap
-    }
-
-    /**
-     * 随机生产文件名
-     *
-     * @return
-     */
-    private fun generateFileName(): String {
-        return UUID.randomUUID().toString()
-    }
-
-    var codeUrl: String? = null
-    var money: String? = null
-    var type: Int? = null
+    private var codeUrl: String? = null
+    private var money: String? = null
+    private var type: Int? = null
     fun setInfo(url: String, money: String, type: Int) {
         codeUrl = url
         this.money = money
         this.type = type
     }
 
-    companion object {
-        private const val IN_PATH = "/dskqxt/pic/"
-        private fun getViewBp(v: View?): Bitmap? {
-            if (null == v) {
-                return null
-            }
-            v.isDrawingCacheEnabled = true
-            v.buildDrawingCache()
-            if (Build.VERSION.SDK_INT >= 11) {
-                v.measure(
-                    View.MeasureSpec.makeMeasureSpec(
-                        v.width,
-                        View.MeasureSpec.EXACTLY
-                    ), View.MeasureSpec.makeMeasureSpec(
-                        v.height, View.MeasureSpec.EXACTLY
-                    )
-                )
-                v.layout(
-                    v.x.toInt(), v.y.toInt(),
-                    v.x.toInt() + v.measuredWidth,
-                    v.y.toInt() + v.measuredHeight
-                )
-            } else {
-                v.measure(
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-                )
-                v.layout(0, 0, v.measuredWidth, v.measuredHeight)
-            }
-            val b = Bitmap.createBitmap(v.drawingCache, 0, 0, v.measuredWidth, v.measuredHeight)
-
-            v.isDrawingCacheEnabled = false
-            v.destroyDrawingCache()
-            return b
+    private fun getViewBp(v: View?): Bitmap? {
+        if (null == v) {
+            return null
         }
-
-        /**
-         * 保存bitmap到本地
-         *
-         * @param context
-         * @param mBitmap
-         * @return
-         */
-        private fun saveBitmap(codeDialog: CodeDialog, context: Context, mBitmap: Bitmap): String? {
-            var savePath: File?
-            var filePic: File?
-            if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-                savePath = context.externalCacheDir
-            } else {
-                savePath = context.obbDir
-            }
-            try {
-                filePic = File(savePath, codeDialog.generateFileName() + ".jpg")
-                if (!filePic.exists()) {
-                    filePic.parentFile.mkdirs()
-                    filePic.createNewFile()
-                }
-                var fos = FileOutputStream(filePic)
-                mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-                fos.flush()
-                fos.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-                return null
-            } finally {
-            }
-            return filePic?.absolutePath
+        v.isDrawingCacheEnabled = true
+        v.buildDrawingCache()
+        if (Build.VERSION.SDK_INT >= 11) {
+            v.measure(
+                View.MeasureSpec.makeMeasureSpec(
+                    v.width,
+                    View.MeasureSpec.EXACTLY
+                ), View.MeasureSpec.makeMeasureSpec(
+                    v.height, View.MeasureSpec.EXACTLY
+                )
+            )
+            v.layout(
+                v.x.toInt(), v.y.toInt(),
+                v.x.toInt() + v.measuredWidth,
+                v.y.toInt() + v.measuredHeight
+            )
+        } else {
+            v.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            )
+            v.layout(0, 0, v.measuredWidth, v.measuredHeight)
         }
+        val b = Bitmap.createBitmap(v.drawingCache, 0, 0, v.measuredWidth, v.measuredHeight)
+
+        v.isDrawingCacheEnabled = false
+        v.destroyDrawingCache()
+        return b
     }
 }

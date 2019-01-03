@@ -67,7 +67,7 @@
             android:layout_height="44dp"/>
     
     <ImageView
-            android:src="@drawable/loan_hint"
+            android:src="@drawable/zhifubanner"
             app:layout_constraintTop_toBottomOf="@+id/time_hint"
             app:layout_constraintBottom_toTopOf="@+id/act_bt_pay"
             app:layout_constraintLeft_toLeftOf="parent"

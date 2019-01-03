@@ -6,7 +6,15 @@ package com.annis.dk.bean;
  * @Description
  */
 public class UserEntity {
-
+    /**
+     * 状态说明
+     * GetUser接口
+     * isillegal ：0正常用户 1禁用用户
+     *  
+     * UpdateIsPayCost(string uid, string key)接口
+     * 用户确认已支付费用ispaycost=2
+     *  
+     */
     /*  id int 用户编号 (返回ID为0时新增数据失败)
         phone string 账号
         isChecIdentity int 是否认证身份证（0:未认证 1:已认证 2:认证中）
