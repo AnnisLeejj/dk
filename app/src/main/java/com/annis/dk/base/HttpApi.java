@@ -156,6 +156,7 @@ public interface HttpApi {
     @FormUrlEncoded
     @POST("/UploadDic1.aspx")
     Flowable<IsSave> uploadDic1(@Field("content") String order);
+
     /**
      * 读取支付宝认证信息
      * 接口功能：读取登录用户支付宝认证信息
@@ -252,4 +253,7 @@ public interface HttpApi {
     @Multipart
     @POST("/UpLoadFiles.aspx")
     Flowable<ImgResponse> uploadFile(@Part MultipartBody.Part file);
+
+    @GET("/API.asmx/UpdateIsPayCost")
+    Flowable<IsSave> getUpdatelsPayCost(@Query("uid") String uid, @Query("key") String key);
 }

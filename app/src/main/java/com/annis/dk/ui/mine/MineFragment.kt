@@ -17,7 +17,8 @@ import com.annis.dk.ui.login.LoginActivity
 import com.annis.dk.ui.mine.bankmanage.BankManageActivity
 import com.annis.dk.ui.mine.mineLoans.MyLoansActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
-import com.annis.dk.ui.mine.progress.SuccessActivity
+import com.annis.dk.ui.mine.progress.PaidActivity
+import com.annis.dk.ui.mine.progress.success.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
 import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
 import com.annis.dk.utils.DkSPUtils
@@ -212,14 +213,19 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
                 showToast("您的贷款未发放")
                 return
             }
-            var intent = Intent(activity, MyLoansActivity::class.java)
-            intent.putExtra("edu", it.loanAmount)//金额
-            intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
-            webSite?.let {
-                intent.putExtra("weixin", it.csWeChat)//微信号
-                intent.putExtra("phone", it.csTelephone)//手机号
+            if (it.isPayCost == "0" || it.isPayCost == "2") {
+                var intent = Intent(activity, MyLoansActivity::class.java)
+                intent.putExtra("edu", it.loanAmount)//金额
+                intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
+                webSite?.let {
+                    intent.putExtra("weixin", it.csWeChat)//微信号
+                    intent.putExtra("phone", it.csTelephone)//手机号
+                }
+                startActivity(intent)
+            } else {
+                startActivity(PaidActivity::class.java)
+                return
             }
-            startActivity(intent)
         }
 
         loanInfo ?: let {

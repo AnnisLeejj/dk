@@ -43,7 +43,7 @@
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
-                android:name=".ui.mine.progress.SuccessActivity"
+                android:name=".ui.mine.progress.success.SuccessActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity

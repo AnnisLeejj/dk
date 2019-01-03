@@ -28,7 +28,7 @@ class ExitDialog : DialogFragment() {
     var mDismiss: Dismiss? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)//取消对话框fragment的标题
-        return inflater.inflate(R.layout.dialog_paid, container, false)
+        return inflater.inflate(R.layout.dialog_exit, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

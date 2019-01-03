@@ -5,15 +5,29 @@ import android.os.CountDownTimer
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.dk.R
+import com.annis.dk.bean.UserEntity
 import com.annis.dk.ui.MainActivity
+import com.annis.dk.view.NotificationDialog
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : MVPActivty<LoginPresenter>(), LoginView {
 
 
-    override fun loginSuccess() {
-        startActivity(MainActivity::class.java)
-        finish()
+    override fun loginSuccess(it: UserEntity) {
+        if (it.isillegal == "1") {
+            var dialog = NotificationDialog()
+            dialog.setDismissListener(object : NotificationDialog.Dismiss {
+                override fun finish() {
+
+                }
+
+            })
+            dialog.setMessage("您已被加入黑名单，暂时禁止使用该app，请联系工作人员")
+            dialog.show(supportFragmentManager, "notify")
+        } else {
+            startActivity(MainActivity::class.java)
+            finish()
+        }
     }
 
     override fun getMyTitle(): TitleBean? {

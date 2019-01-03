@@ -1,6 +1,7 @@
 package com.annis.dk.ui.login
 
 import com.annis.baselib.base.mvp.BaseView
+import com.annis.dk.bean.UserEntity
 
 /**
  * @author Lee
@@ -8,5 +9,5 @@ import com.annis.baselib.base.mvp.BaseView
  * @Description
  */
 interface LoginView : BaseView {
-    fun loginSuccess()
+    fun loginSuccess(it: UserEntity)
 }

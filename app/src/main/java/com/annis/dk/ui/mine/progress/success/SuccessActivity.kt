@@ -1,4 +1,4 @@
-package com.annis.dk.ui.mine.progress
+package com.annis.dk.ui.mine.progress.success
 
 import android.Manifest
 import android.content.ClipData
@@ -8,18 +8,24 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import com.annis.baselib.base.base.BaseActivity
 import com.annis.baselib.base.base.TitleBean
+import com.annis.baselib.base.mvp.MVPActivty
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
+import com.annis.dk.ui.mine.progress.PaidActivity
+import com.annis.dk.utils.DkSPUtils
 import com.annis.dk.view.CodeDialog
 import com.annis.dk.view.PaidDialog
 import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_success.*
 
-class SuccessActivity : BaseActivity() {
+class SuccessActivity : MVPActivty<SuccessPresenter>(), SuccessView {
+    override fun getPresenter(): SuccessPresenter {
+        return SuccessPresenter(this)
+    }
+
     override fun getMyTitle(): TitleBean {
         return TitleBean("贷款进度").setBack(true)
     }
@@ -69,19 +75,21 @@ class SuccessActivity : BaseActivity() {
                 showCode(it, loan.serviceCharge)
             }
         }
+
         //我已支付
         act_bt_paid.setOnClickListener {
             var dialog = PaidDialog()
             dialog.setDismissListener(object : PaidDialog.Dismiss {
                 override fun agree() {
                     dialog.dismiss()
-                    startActivity(PaidActivity::class.java)
+                    getMyLoan()
                 }
 
                 override fun jujue() {
                     dialog.dismiss()
                 }
             })
+            dialog.show(supportFragmentManager, "notify")
         }
         act_bt_call.setOnClickListener {
             //打电话
@@ -125,5 +133,13 @@ class SuccessActivity : BaseActivity() {
         var data = Uri.parse("tel:$tel")
         intent.data = data
         startActivity(intent)
+    }
+
+    fun getMyLoan() {
+        presenter.updatelsPayCost(DkSPUtils.getUID(), DkSPUtils.getKey())
+    }
+
+    override fun nextActivity() {
+        startActivity(PaidActivity::class.java)
     }
 }

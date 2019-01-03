@@ -33,7 +33,7 @@ class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
                 .subscribe({ r ->
                     r?.let {
                         DKConstant.saveUserEntity(it)
-                        view.loginSuccess()
+                        view.loginSuccess(it)
                     }
                     r ?: let {
                         view.errorMsg("登录失败")

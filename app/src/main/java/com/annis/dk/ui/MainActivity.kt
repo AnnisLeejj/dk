@@ -37,7 +37,7 @@ class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
     /**
      * 底部菜单初始化
      */
-    fun bottomInit() {
+    private fun bottomInit() {
         act_main_rl_renzheng.setOnClickListener { bottomClick(0) }
         act_main_rb_renzheng.setOnClickListener { bottomClick(0) }
         act_main_rl_mine.setOnClickListener { bottomClick(1) }
@@ -45,7 +45,7 @@ class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
         bottomClick(0)
     }
 
-    fun bottomClick(index: Int) {
+    private fun bottomClick(index: Int) {
         act_main_rb_renzheng.isChecked = false
         act_main_rb_mine.isChecked = false
 
@@ -57,15 +57,15 @@ class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
         setFragment(index)
     }
 
-    fun setFragment(index: Int) {
+    private fun setFragment(index: Int) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.act_main_container, getFragment(index), "${index}")
         transaction.commit()
     }
 
-    var renzhengFragment: RenzhengFragment? = null
-    var mineFragment: MineFragment? = null
-    fun getFragment(index: Int): BaseFragment {
+    private var renzhengFragment: RenzhengFragment? = null
+    private var mineFragment: MineFragment? = null
+    private fun getFragment(index: Int): BaseFragment {
         if (index == 0) {
             if (renzhengFragment == null) {
                 renzhengFragment = RenzhengFragment.newInstance("", "")

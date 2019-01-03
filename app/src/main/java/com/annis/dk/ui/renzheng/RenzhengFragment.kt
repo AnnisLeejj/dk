@@ -17,7 +17,6 @@ import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import com.annis.dk.ui.authentication.emergency_contact.EmergencyContactActivity
 import com.annis.dk.ui.authentication.idCard.AuthIdcardActivity
 import com.annis.dk.utils.DkSPUtils
-import com.annis.dk.view.CodeDialog
 import com.annis.dk.view.NotificationDialog
 import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -30,6 +29,17 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
     override fun updateSuccess(it: UserEntity) {
         userEntity = it
         initByUserEntity(it)
+//        if (it.isillegal == "1") {
+//            var dialog = NotificationDialog()
+//            dialog.setDismissListener(object : NotificationDialog.Dismiss {
+//                override fun finish() {
+//
+//                }
+//
+//            })
+//            dialog.setMessage("您已被加入黑名单，暂时禁止使用该app，请联系工作人员")
+//            dialog.show(childFragmentManager, "notify")
+//        }
     }
 
     override fun getPresenter(): RenzhengPresenter {

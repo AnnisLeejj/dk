@@ -190,7 +190,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="@dimen/bt_margin_window_side"
             android:layout_marginRight="@dimen/bt_margin_window_side"
-            android:background="@drawable/sp_bt_bg_primary_dark_c"
+            android:background="@drawable/sp_bt_bg_primary_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_h"/>
@@ -203,7 +203,7 @@
             android:layout_marginBottom="25dp"
             android:layout_marginLeft="@dimen/bt_margin_window_side"
             android:layout_marginRight="@dimen/bt_margin_window_side"
-            android:background="@drawable/sp_bt_bg_primary_c"
+            android:background="@drawable/sp_bt_bg_primary_dark_c"
             android:textSize="@dimen/bt_text_size"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_h"/>

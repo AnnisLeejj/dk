@@ -24,7 +24,7 @@ public class UserEntity {
         userHead string 用户头像地址
         limit int 用户额度（分三档 1 2 3 默认1）*/
 
-
+    private String isillegal;//0正常用户 1禁用用户
     private String id;
     private String phone;
     private int isChecIdentity;
@@ -42,6 +42,14 @@ public class UserEntity {
      */
     public boolean authAll() {
         return isChecIdentity == 1 && isChecOperator == 1 && isChecAlipay == 1 && isChecBankCard == 1;
+    }
+
+    public String getIsillegal() {
+        return isillegal;
+    }
+
+    public void setIsillegal(String isillegal) {
+        this.isillegal = isillegal;
     }
 
     public String getId() {
