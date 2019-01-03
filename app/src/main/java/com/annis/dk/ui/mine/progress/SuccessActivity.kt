@@ -54,7 +54,6 @@ class SuccessActivity : BaseActivity() {
                 showToast("没有查到贷款信息")
                 return@setOnClickListener
             }
-
             //支付
             var user = DKConstant.getUserEntity() ?: let {
                 showToast("没有查到用户信息")

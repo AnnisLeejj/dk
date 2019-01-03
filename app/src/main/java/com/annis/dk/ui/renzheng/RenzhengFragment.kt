@@ -131,15 +131,6 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
         showPact()
     }
 
-    /**
-     * 显示二维码
-     */
-    fun showCode(url: String, money: String) {
-        var codeDialog = CodeDialog()
-        codeDialog.setInfo(url, money, 1)
-        codeDialog.show(childFragmentManager, "code")
-    }
-
     fun initAuth(havID: Int, havOperator: Int, havAlipay: Int, havBank: Int) {
         when (havID) {
             1 -> {

@@ -146,6 +146,7 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
             })
             dialog.show(childFragmentManager, "notify")
         }
+        //放款进度
         rl_progress.setOnClickListener {
             userEntity = DKConstant.getUserEntity()
             userEntity?.let {
@@ -230,12 +231,7 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
      * 显示我的进度
      */
     override fun showMyProgress(loanInfo: LoanInfo?) {
-
         loanInfo?.let {
-            //isnew int 是否审请了贷款（0：未申请 1：已申请）
-            //mloan int 是否已发放贷款(0:未发放 1:已发放)
-//            it.isNew = "1"
-//            it.mloan = "1"
             if (it.isNew == "0") {
                 startActivity(LoanBackActivity::class.java)
                 return
@@ -247,7 +243,6 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
                     return
                 }
             }
-
             when (it.isPass) {
                 "0" -> startActivity(WaitingActivity::class.java)
                 "1" -> {

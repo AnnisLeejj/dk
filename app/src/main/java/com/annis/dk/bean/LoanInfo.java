@@ -6,20 +6,19 @@ package com.annis.dk.bean;
  * @Description
  */
 public class LoanInfo {
-/*
-    loanAmount double 贷款金额
-    loanTime bigint 贷款时间（时间戳）
-    repaymentTime bigint 还款时间（时间戳）
-    serviceCharge double 服务费
-    isPayCost int 是否支付
-    isPayLoan int 是否还款
-    resultInfo text 贷款审核备注
-    mloan int 是否已发放贷款(0:未发放 1:已发放)
-    isnew int 是否审请了贷款（0：未申请 1：已申请）
-    isPass int 审核状态（0：未审核 1：已审核未通过 2：已审核已通过）
-*/
+/**
+ loanAmount double 贷款金额
+ loanTime bigint 贷款时间（时间戳）
+ repaymentTime bigint 还款时间（时间戳）
+ serviceCharge double 服务费
+ isPayCost int 是否支付
+ isPayLoan int 是否还款
+ resultInfo text 贷款审核备注
+ mloan int 是否已发放贷款(0:未发放 1:已发放)
+ isnew int 是否审请了贷款（0：未申请 1：已申请）
+ isPass int 审核状态（0：未审核 1：已审核未通过 2：已审核已通过）
+ */
     /**
-     *  
      * GetLoan接口
      * isnew = 1,ispass==0,ispaycost=0,mloan=0  用户申请贷款
      *  

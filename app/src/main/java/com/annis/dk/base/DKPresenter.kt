@@ -104,7 +104,6 @@ open class DKPresenter<V : BaseView?>(view: V?) : MvpPresenter<V>(view) {
     }
 
     fun getControlCode() {
-
         var url = "http://115.28.128.252:8888/project_out/checkLoan"
         addSubscribe(
             getHttpApi()!!.getControlCode(url)

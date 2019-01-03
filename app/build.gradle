@@ -47,7 +47,7 @@ android {
         //测试
         cs {
             applicationIdSuffix ".cs"
-            manifestPlaceholders = [app_name: "${rootProject.ext.android.appName}"]
+            manifestPlaceholders = [app_name: "${rootProject.ext.android.appName}-测试"]
         }
         //开发
         kf {

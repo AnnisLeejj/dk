@@ -22,7 +22,7 @@ class MinePresenter(view: MineView?) : DKPresenter<MineView>(view) {
             getHttpApi()!!.getLoan(DkSPUtils.getUID(), DkSPUtils.getKey())
                 .compose(RxUtil.rxSchedulerHelper())
                 .subscribe({
-                    it?.let {
+                    it?.let { it ->
                         DKConstant.saveLoan(it)
                         when (flag) {
                             0 -> view.reloadLoan(it)
