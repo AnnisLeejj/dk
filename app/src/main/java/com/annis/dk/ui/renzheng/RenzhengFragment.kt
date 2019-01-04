@@ -79,7 +79,6 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
 
     fun click() {
         act_bt_login.setOnClickListener {
-
             DKConstant.getLoan()?.let {
                 if (it.isNew == "1") {
                     /***已经申请***/
@@ -89,7 +88,6 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                     return@setOnClickListener
                 }
             }
-
             //提交贷款申请
             presenter.saveLoan()
         }
@@ -148,12 +146,18 @@ class RenzhengFragment : MVPFragment<RenzhengPresenter>(), RenzhengView {
                 item_tv_1_status.setTextColor(resources.getColor(R.color.green))
                 item_img_1_status.setImageResource(R.drawable.renzheng_icon)
                 item_img_1_status.visibility = View.VISIBLE
-                renzheng_id.setOnClickListener { }
+                renzheng_id.setOnClickListener {
+                    //身份证
+                   // startActivity(AuthIdcardActivity::class.java)
+                }
             }
             2 -> {
                 item_tv_1_status.text = "认证中"
                 item_img_1_status.visibility = View.INVISIBLE
-                renzheng_id.setOnClickListener { }
+                renzheng_id.setOnClickListener {
+                    //身份证
+                    //startActivity(AuthIdcardActivity::class.java)
+                }
             }
             0 -> {
                 item_img_1_status.visibility = View.VISIBLE

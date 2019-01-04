@@ -24,7 +24,7 @@
             android:layout_below="@+id/dialog_noti_title"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:text="已经支付完成?\n(请精神点击若被发现恶意操作将面临封号风险永久失去贷款资格)"
+            android:text="已经支付完成?\n(请谨慎点击若被发现恶意操作将面临封号风险永久失去贷款资格)"
             android:textColor="@color/bar_grey"
             android:textSize="@dimen/text_size_normal"
             android:layout_marginBottom="25dp"

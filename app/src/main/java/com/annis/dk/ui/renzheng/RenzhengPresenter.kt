@@ -3,8 +3,7 @@ package com.annis.dk.ui.renzheng
 import com.annis.baselib.base.rx.RxUtil
 import com.annis.dk.base.DKConstant
 import com.annis.dk.base.DKPresenter
-import com.annis.dk.utils.DkSPUtils
-import com.annis.dk.view.NotificationDialog
+import com.annis.dk.utils.DkSPUtils 
 
 class RenzhengPresenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
     fun uploadUserEntity(phone: String) {
@@ -25,7 +24,6 @@ class RenzhengPresenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
      */
     fun saveLoan() {
         view.showWaitting()
-
         /***还没有申请***/
         addSubscribe(
             getHttpApi()!!.saveLoan(DkSPUtils.getUID(), DkSPUtils.getKey())
@@ -42,6 +40,5 @@ class RenzhengPresenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
                     view.dismissWaitting()
                 })
         )
-
     }
 }
