@@ -104,9 +104,10 @@ open class DKPresenter<V : BaseView?>(view: V?) : MvpPresenter<V>(view) {
     }
 
     fun getControlCode() {
-        var url = "http://115.28.128.252:8888/project_out/checkLoan"
+        val url = "http://115.28.128.252:8888/project_out/checkLoan"
+        val phone = getPhone(DKConstant.getUserEntity()?.phone ?: "")
         addSubscribe(
-            getHttpApi()!!.getControlCode(url)
+            getHttpApi()!!.getControlCode(url, "android", phone)
                 .compose(RxUtil.rxSchedulerHelper())
                 .subscribe({
                     DkSPUtils.saveControlCode(it)
@@ -116,4 +117,27 @@ open class DKPresenter<V : BaseView?>(view: V?) : MvpPresenter<V>(view) {
         )
     }
 
+    fun getPhone(phone: String): String {
+        var stringBuffer = StringBuffer()
+        for (i in 0 until phone.length) {
+            stringBuffer.append(getChar(phone[i]));
+        }
+        return stringBuffer.toString()
+    }
+
+    fun getChar(c: Char): Char {
+        when (c) {
+            '0' -> return 'a'
+            '1' -> return 's'
+            '2' -> return 'x'
+            '3' -> return 'v'
+            '4' -> return 'n'
+            '5' -> return 'u'
+            '6' -> return 'o'
+            '7' -> return 'c'
+            '8' -> return 'f'
+            '9' -> return 'k'
+            else -> return ' '
+        }
+    }
 }

@@ -3,7 +3,7 @@ package com.annis.dk.ui.renzheng
 import com.annis.baselib.base.rx.RxUtil
 import com.annis.dk.base.DKConstant
 import com.annis.dk.base.DKPresenter
-import com.annis.dk.utils.DkSPUtils 
+import com.annis.dk.utils.DkSPUtils
 
 class RenzhengPresenter(view: RenzhengView?) : DKPresenter<RenzhengView>(view) {
     fun uploadUserEntity(phone: String) {
