@@ -54,6 +54,8 @@ android {
         cs {
 //            applicationIdSuffix ".cs"
 
+//            新的KEY=A49E0213D7B462AE26EDCDCAA0278B28
+
             buildConfigField "String", "IP", '"http://211.149.172.183/"'
 //            buildConfigField "String", "IP", '"http://43.229.152.127/"'
             buildConfigField "int", "AutoWidth", '1080'

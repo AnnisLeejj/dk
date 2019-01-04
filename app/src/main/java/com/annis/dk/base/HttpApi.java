@@ -36,7 +36,7 @@ public interface HttpApi {
     5.可再次申请贷款（还款成功）
         isnew=0  申请贷款*/
     @GET
-    Flowable<String> getControlCode(@Url String url);
+    Flowable<String> getControlCode(@Url String url, @Query("platform") String platform, @Query("phone") String phone);
     /*** 短信接口还没写***/
 
     /**

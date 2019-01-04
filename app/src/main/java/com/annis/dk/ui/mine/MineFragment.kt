@@ -18,9 +18,9 @@ import com.annis.dk.ui.mine.bankmanage.BankManageActivity
 import com.annis.dk.ui.mine.mineLoans.MyLoansActivity
 import com.annis.dk.ui.mine.progress.FailedActivity
 import com.annis.dk.ui.mine.progress.PaidActivity
-import com.annis.dk.ui.mine.progress.success.SuccessActivity
 import com.annis.dk.ui.mine.progress.WaitingActivity
 import com.annis.dk.ui.mine.progress.backed.LoanBackActivity
+import com.annis.dk.ui.mine.progress.success.SuccessActivity
 import com.annis.dk.utils.DkSPUtils
 import com.annis.dk.view.ExitDialog
 import com.annis.dk.view.NotificationDialog
@@ -213,19 +213,14 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
                 showToast("您的贷款未发放")
                 return
             }
-            if (it.isPayCost == "0" || it.isPayCost == "2") {
-                var intent = Intent(activity, MyLoansActivity::class.java)
-                intent.putExtra("edu", it.loanAmount)//金额
-                intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
-                webSite?.let {
-                    intent.putExtra("weixin", it.csWeChat)//微信号
-                    intent.putExtra("phone", it.csTelephone)//手机号
-                }
-                startActivity(intent)
-            } else {
-                startActivity(PaidActivity::class.java)
-                return
+            var intent = Intent(activity, MyLoansActivity::class.java)
+            intent.putExtra("edu", it.loanAmount)//金额
+            intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
+            webSite?.let {
+                intent.putExtra("weixin", it.csWeChat)//微信号
+                intent.putExtra("phone", it.csTelephone)//手机号
             }
+            startActivity(intent)
         }
 
         loanInfo ?: let {
@@ -257,17 +252,22 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
                     startActivity(intent)
                 }
                 "2" -> {
-                    var intent = Intent(activity, SuccessActivity::class.java)
-                    intent.putExtra("edu", "${it.loanAmount}")//额度
-                    intent.putExtra("fuwufei", "会员服务费:${it.serviceCharge}元")//服务费
-                    intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
-                    webSite?.let {
-                        intent.putExtra("weixin", it.csWeChat)//微信号
-                        intent.putExtra("phone", it.csTelephone)//手机号
+                    if (it.isPayCost == "1" || it.isPayCost == "2") {
+                        startActivity(PaidActivity::class.java)
+                    } else {
+                        var intent = Intent(activity, SuccessActivity::class.java)
+                        intent.putExtra("edu", "${it.loanAmount}")//额度
+                        intent.putExtra("fuwufei", "会员服务费:${it.serviceCharge}元")//服务费
+                        intent.putExtra("remark", resources.getString(R.string.daikuan_remark))//服务费提示
+                        webSite?.let {
+                            intent.putExtra("weixin", it.csWeChat)//微信号
+                            intent.putExtra("phone", it.csTelephone)//手机号
+                        }
+                        startActivity(intent)
                     }
-                    startActivity(intent)
                 }
             }
+
         }
     }
 }
