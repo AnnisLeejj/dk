@@ -2,12 +2,12 @@ package com.annis.dk.ui.authentication.bank
 
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.dk.R
 import com.annis.dk.bean.BankInfo
 import kotlinx.android.synthetic.main.activity_auth_bank.*
 
-class AuthBankActivity : MVPActivty<AuthBankPresenter>(), AuthBankView {
+class AuthBankActivity : MVPActivity<AuthBankPresenter>(), AuthBankView {
     override fun updateBankCard(it: BankInfo) {
         setBank(it)
     }

@@ -9,7 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.view.CodeDialog
@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_my_loans.*
 
-class MyLoansActivity : MVPActivty<MyLoansPresenter>(), MyLoansView {
+class MyLoansActivity : MVPActivity<MyLoansPresenter>(), MyLoansView {
 
     override fun getPresenter(): MyLoansPresenter {
         return MyLoansPresenter(this)

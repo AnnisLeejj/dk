@@ -2,13 +2,13 @@ package com.annis.dk.ui.welcome
 
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.dk.R
 import com.annis.dk.ui.MainActivity
 import com.annis.dk.ui.login.LoginActivity
 import com.annis.dk.utils.DkSPUtils
 
-class WelcomeActivity : MVPActivty<WelcomePresenter>(), WelcomeView {
+class WelcomeActivity : MVPActivity<WelcomePresenter>(), WelcomeView {
     override fun getPresenter(): WelcomePresenter {
         return WelcomePresenter(this)
     }

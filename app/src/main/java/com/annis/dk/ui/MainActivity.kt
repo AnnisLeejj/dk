@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.annis.baselib.base.base.BaseFragment
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.BaseView
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.dk.R
 import com.annis.dk.base.DKPresenter
 import com.annis.dk.ui.mine.MineFragment
@@ -12,7 +12,7 @@ import com.annis.dk.ui.renzheng.RenzhengFragment
 import com.annis.dk.view.CodeDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : MVPActivty<DKPresenter<BaseView>>(), BaseView {
+class MainActivity : MVPActivity<DKPresenter<BaseView>>(), BaseView {
     override fun getMyTitle(): TitleBean? {
         return null
     }

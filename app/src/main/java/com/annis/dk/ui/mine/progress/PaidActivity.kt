@@ -3,11 +3,11 @@ package com.annis.dk.ui.mine.progress
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
 import com.annis.baselib.base.mvp.BaseView
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.dk.R
 import com.annis.dk.base.DKPresenter
 
-class PaidActivity : MVPActivty<DKPresenter<BaseView>>() {
+class PaidActivity : MVPActivity<DKPresenter<BaseView>>() {
     override fun getMyTitle(): TitleBean {
         return TitleBean("贷款进度").setBack(true)
     }

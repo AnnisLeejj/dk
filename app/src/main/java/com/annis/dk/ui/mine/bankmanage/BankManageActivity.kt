@@ -2,14 +2,14 @@ package com.annis.dk.ui.mine.bankmanage
 
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
 import com.annis.dk.bean.BankInfo
 import com.annis.dk.ui.authentication.bank.AuthBankActivity
 import kotlinx.android.synthetic.main.activity_bank_manage.*
 
-class BankManageActivity : MVPActivty<BankManagePresenter>(), BankManageVIew {
+class BankManageActivity : MVPActivity<BankManagePresenter>(), BankManageVIew {
     override fun updateBankCard(it: BankInfo) {
         setBank(it)
     }

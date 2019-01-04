@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.dk.R
 import com.google.android.material.snackbar.Snackbar
@@ -17,7 +17,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_auth_alipay.*
 import java.io.File
 
-class AuthAlipayActivity : MVPActivty<AuthAlipayPresenter>(), AuthAlipayView {
+class AuthAlipayActivity : MVPActivity<AuthAlipayPresenter>(), AuthAlipayView {
     override fun uploadAuthSuccess() {
         showToast("提示成功")
         finish()

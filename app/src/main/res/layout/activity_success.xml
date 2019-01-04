@@ -7,179 +7,97 @@
         android:layout_height="match_parent"
         tools:context="com.annis.dk.ui.mine.progress.WaitingActivity">
     
-    <ImageView
-            android:id="@+id/waiting_img"
+    <ScrollView
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="30dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:src="@drawable/pass_icon"
-            android:layout_width="66dp"
-            android:layout_height="66dp"/>
-    
-    <TextView
-            android:id="@+id/waiting_text"
-            android:textColor="#00c30e"
-            android:layout_marginTop="15dp"
-            android:textSize="@dimen/text_size_normal"
-            android:text="您的申请已通过 !"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/waiting_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    
-    <TextView
-            android:id="@+id/success_edu_hint"
-            android:textSize="@dimen/title_text_size"
-            android:layout_marginTop="18dp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/waiting_text"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="可贷款额度（元）"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    
-    <TextView
-            android:id="@+id/success_edu_tv"
-            android:textSize="82dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@null"
-            app:layout_constraintTop_toBottomOf="@+id/success_edu_hint"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="-"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    
-    <TextView
-            android:id="@+id/time_hint"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/success_edu_tv"
-            android:text="借款期限：七天"
-            android:textSize="24dp"
-            android:layout_width="280dp"
-            android:textColor="#ffffff"
-            android:background="@drawable/shape_or"
-            android:gravity="center"
-            android:layout_height="44dp"/>
-    
-    <TextView
-            android:id="@+id/fuwufei"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="@dimen/text_size_normal"
-            android:text="会员服务费:-元"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    
-    <ImageView
-            android:src="@drawable/zhifubanner"
-            app:layout_constraintTop_toBottomOf="@+id/fuwufei"
             app:layout_constraintBottom_toTopOf="@+id/act_bt_pay"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="525dp"
-            android:layout_height="310dp"/>
-    
-    <TextView
-            android:id="@+id/act_success_remark"
-            android:visibility="gone"
-            android:textColor="@color/text_color_black"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="@dimen/margin_window"
-            android:layout_marginRight="@dimen/margin_window"
-            android:textSize="@dimen/text_size_normal"
-            android:text="@string/daikuan_remark"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fuwufei"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    
-    <RelativeLayout
-            android:id="@+id/weixin_container"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/act_success_remark"
-            android:layout_width="match_parent"
-            android:background="@drawable/shape_bottom_line"
-            android:layout_height="@dimen/item_layout_h">
+            android:layout_height="0dp">
         
-        <ImageView
-                android:id="@+id/icon_weixin"
-                android:layout_marginLeft="@dimen/margin_window"
-                android:src="@drawable/weixin"
-                android:layout_centerVertical="true"
-                android:layout_width="41dp"
-                android:layout_height="41dp"/>
-        
-        <TextView
-                android:id="@+id/tvWeixin"
-                android:layout_toRightOf="@+id/icon_weixin"
-                android:textSize="19dp"
-                android:text="castle0905"
-                android:layout_marginLeft="18dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        
-        <Button
-                android:id="@+id/act_bt_copy"
-                android:layout_width="140dp"
-                android:layout_height="54dp"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginRight="32dp"
-                android:background="@drawable/sp_bt_get_code"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="复制"
-                android:textSize="@dimen/et_text_size"/>
-    </RelativeLayout>
-    
-    <RelativeLayout
-            android:id="@+id/phone_container"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/weixin_container"
-            android:layout_width="match_parent"
-            android:background="@drawable/shape_bottom_line"
-            android:layout_height="@dimen/item_layout_h">
-        
-        <ImageView
-                android:id="@+id/icon_phone"
-                android:layout_marginLeft="@dimen/margin_window"
-                android:src="@drawable/phone"
-                android:layout_centerVertical="true"
-                android:layout_width="41dp"
-                android:layout_height="41dp"/>
-        
-        <TextView
-                android:id="@+id/tvPhone"
-                android:layout_toRightOf="@+id/icon_phone"
-                android:textSize="19dp"
-                android:text="castle0905"
-                android:layout_marginLeft="18dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        
-        <Button
-                android:id="@+id/act_bt_call"
-                android:layout_width="140dp"
-                android:layout_height="54dp"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginRight="32dp"
-                android:background="@drawable/sp_bt_get_code"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="拨打"
-                android:textSize="@dimen/et_text_size"/>
-    </RelativeLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            
+            <ImageView
+                    android:id="@+id/waiting_img"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/pass_icon"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"/>
+            
+            <TextView
+                    android:id="@+id/waiting_text"
+                    android:textColor="#00c30e"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="您的申请已通过 !"
+                    android:layout_below="@+id/waiting_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <TextView
+                    android:id="@+id/success_edu_hint"
+                    android:textSize="@dimen/title_text_size"
+                    android:layout_marginTop="18dp"
+                    android:textColor="@color/black"
+                    android:layout_below="@+id/waiting_text"
+                    android:text="可贷款额度（元）"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <TextView
+                    android:id="@+id/success_edu_tv"
+                    android:textSize="82dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="@null"
+                    android:layout_below="@+id/success_edu_hint"
+                    android:text="-"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <TextView
+                    android:id="@+id/time_hint"
+                    android:layout_below="@+id/success_edu_tv"
+                    android:text="借款期限：七天"
+                    android:textSize="24dp"
+                    android:layout_width="280dp"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/shape_or"
+                    android:gravity="center"
+                    android:layout_height="44dp"/>
+            
+            <TextView
+                    android:id="@+id/fuwufei"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="会员服务费:-元"
+                    android:layout_below="@+id/time_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            
+            <ImageView
+                    android:src="@drawable/zhifubanner"
+                    android:layout_below="@+id/act_bt_pay"
+                    android:layout_width="525dp"
+                    android:layout_height="310dp"/>
+            
+            <TextView
+                    android:id="@+id/act_success_remark"
+                    android:visibility="gone"
+                    android:textColor="@color/text_color_black"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="@dimen/margin_window"
+                    android:layout_marginRight="@dimen/margin_window"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="@string/daikuan_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
     
     <Button
             android:id="@+id/act_bt_pay"

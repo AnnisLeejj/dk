@@ -2,11 +2,11 @@ package com.annis.dk.ui.mine.progress.backed
 
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.dk.R
 import kotlinx.android.synthetic.main.activity_loan_back.*
 
-class LoanBackActivity : MVPActivty<LoanBaackPrensenter>(), LoanBaackView {
+class LoanBackActivity : MVPActivity<LoanBaackPrensenter>(), LoanBaackView {
     override fun success() {
          showToast("申请提交成功")
         finish()

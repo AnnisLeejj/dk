@@ -2,7 +2,7 @@ package com.annis.dk.ui.authentication.emergency_contact
 
 import android.os.Bundle
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.dk.R
 import com.annis.dk.ui.authentication.operator.AuthoperatorActivity
 import com.annis.dk.utils.ExcelUtil
@@ -10,7 +10,7 @@ import com.annis.dk.view.NotificationReadContactDialog
 import kotlinx.android.synthetic.main.activity_emergency_contact.*
 import java.io.File
 
-class EmergencyContactActivity : MVPActivty<EmergencyContactPresenter>(), EmergencyContactView {
+class EmergencyContactActivity : MVPActivity<EmergencyContactPresenter>(), EmergencyContactView {
     override fun upSuccess() {
         startActivity(AuthoperatorActivity::class.java)
         showToast("上传成功")

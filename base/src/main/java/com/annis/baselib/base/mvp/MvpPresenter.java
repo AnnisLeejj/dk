@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable;
 
 import java.lang.ref.WeakReference;
 
-public class MvpPresenter<V extends BaseView> implements BasePersenter<V> {
+public class MvpPresenter<V extends BaseView> implements BasePersenter<V>, IDisposable {
     protected Activity mContext;
 
     //    private V view;
@@ -41,18 +41,13 @@ public class MvpPresenter<V extends BaseView> implements BasePersenter<V> {
         unSubscribe();
     }
 
-    public CompositeDisposable mCompositeDisposable;
-
+    @Override
     public void unSubscribe() {
-        if (mCompositeDisposable != null) {
-            mCompositeDisposable.clear();
-        }
+        mCompositeDisposable.clear();
     }
 
+    @Override
     public void addSubscribe(Disposable subscription) {
-        if (mCompositeDisposable == null) {
-            mCompositeDisposable = new CompositeDisposable();
-        }
         mCompositeDisposable.add(subscription);
     }
 }

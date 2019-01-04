@@ -10,7 +10,7 @@ import android.provider.ContactsContract
 import android.text.TextUtils
 import android.widget.CheckBox
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.baselib.utils.utils_haoma.ToastUtils
 import com.annis.dk.R
 import com.annis.dk.base.DKConstant
@@ -21,7 +21,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_authoperator.*
 import java.util.*
 
-class AuthoperatorActivity : MVPActivty<AuthoperatorPresenter>(), AuthoperatorView {
+class AuthoperatorActivity : MVPActivity<AuthoperatorPresenter>(), AuthoperatorView {
     var updated = false
     override fun uploadContactsSuccess() {
         updated = true

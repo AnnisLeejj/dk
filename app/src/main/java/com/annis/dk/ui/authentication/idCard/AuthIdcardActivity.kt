@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import com.annis.baselib.base.base.TitleBean
-import com.annis.baselib.base.mvp.MVPActivty
+import  com.annis.baselib.base.mvp.MVPActivity
 import com.annis.baselib.utils.picasso.PicassoUtil
 import com.annis.dk.R
 import com.annis.dk.view.NotificationDialog
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_auth_idcard.*
 import java.io.File
 
 
-class AuthIdcardActivity : MVPActivty<AuthenPresenter>(), AuthenView {
+class AuthIdcardActivity : MVPActivity<AuthenPresenter>(), AuthenView {
     override fun uploadSuccess() {
         showToast("提交成功")
 
