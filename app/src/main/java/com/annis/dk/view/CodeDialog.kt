@@ -46,11 +46,11 @@ class CodeDialog : DialogFragment() {
         when (type) {
             1 -> {
                 dialog_tv_money.text = "需还款：${money}元"
-                dialog_tv_email.text = "请添加红鲤鱼客服微信还款"
+                dialog_tv_email.text = "请添加前风科技客服微信还款"
             }
             2 -> {
                 dialog_tv_money.text = "会员服务费：${money}元"
-                dialog_tv_email.text = "请添加红鲤鱼客服微信缴纳会员费"
+                dialog_tv_email.text = "请添加前风科技客服微信缴纳会员费"
             }
         }
 

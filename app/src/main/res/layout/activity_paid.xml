@@ -35,7 +35,7 @@
             android:layout_marginTop="20dp"
             android:textSize="@dimen/text_size_normal"
             app:layout_constraintTop_toBottomOf="@+id/act_paid_text"
-            android:text="红鲤鱼在收到您的会员费用以后最快30分钟最晚48小时以内放款到签约银行卡"
+            android:text="前风科技在收到您的会员费用以后最快30分钟最晚48小时以内放款到签约银行卡"
             android:gravity="left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

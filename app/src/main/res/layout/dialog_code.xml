@@ -48,7 +48,7 @@
             android:id="@+id/dialog_tv_email"
             android:layout_marginTop="7dp"
             android:layout_below="@+id/dialog_tv_money"
-            android:text="请添加红鲤鱼客服微信缴纳费用"
+            android:text="请添加前风科技客服微信缴纳费用"
             android:textSize="21dp"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"

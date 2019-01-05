@@ -222,7 +222,6 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
             }
             startActivity(intent)
         }
-
         loanInfo ?: let {
             showToast("未查询到您的贷款信息")
         }
@@ -267,7 +266,6 @@ class MineFragment : MVPFragment<MinePresenter>(), MineView {
                     }
                 }
             }
-
         }
     }
 }

@@ -52,7 +52,7 @@ android {
         //开发
         kf {
             applicationIdSuffix ".kf"
-            manifestPlaceholders = [app_name: "${rootProject.ext.android.appName}-开发"]
+            manifestPlaceholders = [app_name: "${rootProject.ext.android.appName}"]
         }
     }
 

@@ -14,7 +14,8 @@ class DkSPUtils {
         }
 
         fun getKey(): String? {
-            return spUtils.getString("key")
+            return "1142743C2628F70B1CD7BDAC49B2364F"
+//            return spUtils.getString("key")
         }
 
         /**
