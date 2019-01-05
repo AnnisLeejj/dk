@@ -32,7 +32,7 @@ public class UserEntity {
     private int isChecAlipay;
     private int isChecBankCard;
     private String userHead;
-    private int limit;
+    private Integer limit;
 
 
     /**

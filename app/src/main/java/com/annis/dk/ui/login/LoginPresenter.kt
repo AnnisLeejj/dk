@@ -40,6 +40,8 @@ class LoginPresenter(view: LoginView?) : DKPresenter<LoginView>(view) {
                     }
                     view.dismissWaitting()
                 }, { e ->
+                    //{"id":944,"phone":15823681501,"isChecAlipay":0,"isChecBankCard":0,"isChecIdentity":0,"isChecOperator":0,"userHead":"","limit":0,"ltime":,"isillegal":0}
+//                    "ltime":,  有问题
                     view.dismissWaitting()
                     view.errorMsg("网络请求失败")
                 })
